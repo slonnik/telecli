@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/Arman92/go-tdlib"
 	"github.com/rivo/tview"
 )
@@ -96,7 +97,12 @@ func main() {
 			update := <-updates
 			switch tdlib.UpdateEnum(update["@type"].(string)) {
 			case tdlib.UpdateNewMessageType:
-				break
+				app.QueueUpdate(func() {
+					_, page := pages.GetFrontPage()
+					form := page.(*tview.Form)
+					fmt.Println(form)
+				})
+				app.Draw()
 			}
 		}
 	}()
