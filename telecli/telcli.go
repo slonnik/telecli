@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/Arman92/go-tdlib"
 	"github.com/rivo/tview"
 )
@@ -59,8 +58,7 @@ func main() {
 			AddButton("Previous", func() { pages.SwitchToPage(phonePageLabel) }).
 			AddButton("Done", func() { client.SendAuthCode(codeNumber) }), true, true).
 		AddPage(mainPageLabel, tview.
-			NewForm().
-			AddButton("Done", func() { app.Stop() }), true, true)
+			NewList(), true, true)
 
 	pages.SwitchToPage(startPageLabel)
 
@@ -97,12 +95,22 @@ func main() {
 			update := <-updates
 			switch tdlib.UpdateEnum(update["@type"].(string)) {
 			case tdlib.UpdateNewMessageType:
-				app.QueueUpdate(func() {
-					_, page := pages.GetFrontPage()
-					form := page.(*tview.Form)
-					fmt.Println(form)
-				})
-				app.Draw()
+
+				//
+				message := update["message"].(map[string]interface{})
+				messageType := message["content"].(map[string]interface{})["@type"]
+				chat, _ := client.GetChat(int64(message["chat_id"].(float64)))
+				switch tdlib.MessageContentEnum(messageType.(string)) {
+				case tdlib.MessageTextType:
+					messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
+					app.QueueUpdate(func() {
+						_, page := pages.GetFrontPage()
+						list := page.(*tview.List)
+						list.AddItem(chat.Title, messageText.(string), 'a', nil)
+					})
+					app.Draw()
+				}
+
 			}
 		}
 	}()
