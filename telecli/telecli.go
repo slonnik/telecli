@@ -57,8 +57,8 @@ func main() {
 			AddButton("Cancel", func() { app.Stop() }).
 			AddButton("Previous", func() { pages.SwitchToPage(phonePageLabel) }).
 			AddButton("Done", func() { client.SendAuthCode(codeNumber) }), true, true).
-		AddPage(mainPageLabel, tview.
-			NewList(), true, true)
+		AddPage(mainPageLabel,
+			NewTeleList(), true, true)
 
 	pages.SwitchToPage(startPageLabel)
 
@@ -105,8 +105,8 @@ func main() {
 					messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
 					app.QueueUpdate(func() {
 						_, page := pages.GetFrontPage()
-						list := page.(*tview.List)
-						list.AddItem(chat.Title, messageText.(string), 'a', nil)
+						list := page.(*TeleList)
+						list.AddItem(chat.Title, messageText.(string))
 					})
 					app.Draw()
 				}
