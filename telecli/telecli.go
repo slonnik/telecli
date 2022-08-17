@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/Arman92/go-tdlib"
 	"github.com/rivo/tview"
+	"slonnik.ru/telecli/core"
 )
 
 const (
@@ -58,7 +59,7 @@ func main() {
 			AddButton("Previous", func() { pages.SwitchToPage(phonePageLabel) }).
 			AddButton("Done", func() { client.SendAuthCode(codeNumber) }), true, true).
 		AddPage(mainPageLabel,
-			NewTeleList(), true, true)
+			core.NewTeleList(), true, true)
 
 	pages.SwitchToPage(startPageLabel)
 
@@ -105,7 +106,7 @@ func main() {
 					messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
 					app.QueueUpdate(func() {
 						_, page := pages.GetFrontPage()
-						list := page.(*TeleList)
+						list := page.(*core.TeleList)
 						list.AddItem(chat.Title, messageText.(string))
 					})
 					app.Draw()
@@ -121,6 +122,9 @@ func main() {
 
 		for {
 			currentState, _ := client.Authorize()
+			if currentState == nil {
+				continue
+			}
 			if currentState.GetAuthorizationStateEnum() != previousStateEnum {
 				previousStateEnum = currentState.GetAuthorizationStateEnum()
 				authStates <- previousStateEnum
