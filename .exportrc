@@ -1,2 +1,2 @@
-export CGO_CFLAGS="-I/Users/slonnik/root/projects/tdlib/include"
-export CGO_LDFLAGS="-L/Users/slonnik/root/projects/tdlib/lib -L/opt/homebrew/opt/openssl/lib"
+export CGO_CFLAGS="-I/$ROOT/projects/tdlib/include"
+export CGO_LDFLAGS="-L/$ROOT/projects/tdlib/lib -L/opt/homebrew/opt/openssl/lib -L/opt/local/lib"
