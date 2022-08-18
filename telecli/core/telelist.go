@@ -34,12 +34,16 @@ func (teleList *TeleList) AddItem(mainText, secondaryText string) *TeleList {
 
 func (teleList *TeleList) Draw(screen tcell.Screen) {
 	teleList.Box.DrawForSubclass(screen, teleList)
-	if len(teleList.items) == 0 {
-		return
-	}
+	left, top, _, _ := teleList.Box.GetRect()
+	innerLeft, innerTop, _, _ := teleList.Box.GetInnerRect()
+	x, y := left+innerLeft, top+innerTop
 	for index, item := range teleList.items {
-		tview.Print(screen, item.MainText, 0, index*2, 100, 0, tcell.ColorWhite)
-		tview.Print(screen, item.SecondaryText, 4, index*2+1, 100, 0, tcell.ColorGreen)
+		tview.Print(screen, item.MainText, x, y+index*2, 100, 0, tcell.ColorOlive)
+		tview.Print(screen, item.SecondaryText, x+4, y+index*2+1, 100, 0, tcell.ColorGreen)
 	}
+}
 
+func (teleList *TeleList) SetBorder(show bool) *TeleList {
+	teleList.Box.SetBorder(show)
+	return teleList
 }

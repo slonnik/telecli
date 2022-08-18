@@ -59,7 +59,14 @@ func main() {
 			AddButton("Previous", func() { pages.SwitchToPage(phonePageLabel) }).
 			AddButton("Done", func() { client.SendAuthCode(codeNumber) }), true, true).
 		AddPage(mainPageLabel,
-			core.NewTeleList(), true, true)
+			tview.NewFlex().
+				AddItem(
+					tview.NewFlex().
+						SetDirection(tview.FlexRow).
+						AddItem(core.NewTeleList().SetBorder(true), 0, 3, false).
+						AddItem(tview.NewBox().SetBorder(true), 3, 1, false), 0, 2, false).
+				AddItem(tview.NewBox().SetBorder(true).SetTitle(" Chats "), 20, 1, false),
+			true, true)
 
 	pages.SwitchToPage(startPageLabel)
 
@@ -106,8 +113,9 @@ func main() {
 					messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
 					app.QueueUpdate(func() {
 						_, page := pages.GetFrontPage()
-						list := page.(*core.TeleList)
+						list := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
 						list.AddItem(chat.Title, messageText.(string))
+						//fmt.Printf("%v %v \n", chat.Title, messageText.(string))
 					})
 					app.Draw()
 				}
