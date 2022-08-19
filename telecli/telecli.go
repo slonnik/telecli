@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/Arman92/go-tdlib"
 	"github.com/rivo/tview"
+	"math"
 	"slonnik.ru/telecli/core"
 )
 
@@ -65,7 +66,7 @@ func main() {
 						SetDirection(tview.FlexRow).
 						AddItem(core.NewTeleList().SetBorder(true), 0, 3, false).
 						AddItem(tview.NewBox().SetBorder(true), 3, 1, false), 0, 2, false).
-				AddItem(tview.NewBox().SetBorder(true).SetTitle(" Chats "), 20, 1, false),
+				AddItem(core.NewTeleList().SetBorder(true).SetTitle(" Chats "), 20, 1, false),
 			true, true)
 
 	pages.SwitchToPage(startPageLabel)
@@ -88,10 +89,20 @@ func main() {
 
 			}
 			if state == tdlib.AuthorizationStateReadyType {
+
 				app.QueueUpdate(func() {
 					pages.SwitchToPage(mainPageLabel)
+					_, page := pages.GetFrontPage()
+					list := page.(*tview.Flex).GetItem(1).(*core.TeleList)
+
+					chatList, _ := getChatList(client, 100)
+
+					for _, chat := range chatList {
+						list.AddItem("", chat.Title)
+					}
 				})
 				app.Draw()
+
 				break
 			}
 		}
@@ -156,4 +167,47 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+}
+
+func getChatList(client *tdlib.Client, limit int) ([]*tdlib.Chat, error) {
+	var allChats []*tdlib.Chat
+	var offsetOrder = int64(math.MaxInt64)
+	var offsetChatID = int64(0)
+	var chatList = tdlib.NewChatListMain()
+	var lastChat *tdlib.Chat
+
+	for len(allChats) < limit {
+		if len(allChats) > 0 {
+			lastChat = allChats[len(allChats)-1]
+			for i := 0; i < len(lastChat.Positions); i++ {
+				//Find the main chat list
+				if lastChat.Positions[i].List.GetChatListEnum() == tdlib.ChatListMainType {
+					offsetOrder = int64(lastChat.Positions[i].Order)
+				}
+			}
+			offsetChatID = lastChat.ID
+		}
+
+		// get chats (ids) from tdlib
+		var chats, getChatsErr = client.GetChats(chatList, tdlib.JSONInt64(offsetOrder),
+			offsetChatID, int32(limit-len(allChats)))
+		if getChatsErr != nil {
+			return nil, getChatsErr
+		}
+		if len(chats.ChatIDs) == 0 {
+			return allChats, nil
+		}
+
+		for _, chatID := range chats.ChatIDs {
+			// get chat info from tdlib
+			var chat, getChatErr = client.GetChat(chatID)
+			if getChatErr == nil {
+				allChats = append(allChats, chat)
+			} else {
+				return nil, getChatErr
+			}
+		}
+	}
+
+	return allChats, nil
 }
