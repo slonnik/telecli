@@ -66,7 +66,7 @@ func main() {
 						SetDirection(tview.FlexRow).
 						AddItem(core.NewTeleList().SetBorder(true), 0, 3, false).
 						AddItem(tview.NewBox().SetBorder(true), 3, 1, false), 0, 2, false).
-				AddItem(core.NewTeleList().SetBorder(true).SetTitle(" Chats "), 20, 1, false),
+				AddItem(core.NewChatList().SetBorder(true).SetTitle(" Chats "), 20, 1, false),
 			true, true)
 
 	pages.SwitchToPage(startPageLabel)
@@ -93,13 +93,14 @@ func main() {
 				app.QueueUpdate(func() {
 					pages.SwitchToPage(mainPageLabel)
 					_, page := pages.GetFrontPage()
-					list := page.(*tview.Flex).GetItem(1).(*core.TeleList)
+					chats := page.(*tview.Flex).GetItem(1).(*core.ChatList)
 
 					chatList, _ := getChatList(client, 100)
 
 					for _, chat := range chatList {
-						list.AddItem("", chat.Title)
+						chats.AddChat(chat.Title)
 					}
+					chats.SelectChat(7)
 				})
 				app.Draw()
 
