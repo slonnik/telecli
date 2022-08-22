@@ -7,6 +7,7 @@ import (
 
 type chatItem struct {
 	Title string
+	Id    int64
 }
 
 type ChatList struct {
@@ -24,6 +25,8 @@ func NewChatList() *ChatList {
 		case tcell.KeyDown:
 			{
 				chatList.selectedChat++
+				chatId := chatList.chats[chatList.selectedChat].Id
+				PublishEvent(NewChatSelectedEvent(chatId))
 			}
 		case tcell.KeyUp:
 			{
@@ -31,6 +34,8 @@ func NewChatList() *ChatList {
 				if chatList.selectedChat < 0 {
 					chatList.selectedChat = 0
 				}
+				chatId := chatList.chats[chatList.selectedChat].Id
+				PublishEvent(NewChatSelectedEvent(chatId))
 			}
 		}
 		return event
@@ -38,10 +43,11 @@ func NewChatList() *ChatList {
 	return chatList
 }
 
-func (chatList *ChatList) AddChat(title string) *ChatList {
+func (chatList *ChatList) AddChat(title string, id int64) *ChatList {
 
 	chat := &chatItem{
 		Title: title,
+		Id:    id,
 	}
 
 	chatList.chats = append(chatList.chats, chat)

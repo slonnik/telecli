@@ -71,44 +71,6 @@ func main() {
 
 	pages.SwitchToPage(startPageLabel)
 
-	authStates := make(chan tdlib.AuthorizationStateEnum)
-	go func() {
-		for {
-			state := <-authStates
-			if state == tdlib.AuthorizationStateWaitPhoneNumberType {
-				app.QueueUpdate(func() {
-					pages.SwitchToPage(phonePageLabel)
-				})
-				app.Draw()
-			} else if state == tdlib.AuthorizationStateWaitCodeType {
-				app.QueueUpdate(func() {
-					pages.SwitchToPage(codePageLabel)
-				})
-				app.Draw()
-			} else if state == tdlib.AuthorizationStateWaitPasswordType {
-
-			}
-			if state == tdlib.AuthorizationStateReadyType {
-
-				app.QueueUpdate(func() {
-					pages.SwitchToPage(mainPageLabel)
-					_, page := pages.GetFrontPage()
-					chats := page.(*tview.Flex).GetItem(1).(*core.ChatList)
-
-					chatList, _ := getChatList(client, 100)
-
-					for _, chat := range chatList {
-						chats.AddChat(chat.Title)
-					}
-					chats.SelectChat(7)
-				})
-				app.Draw()
-
-				break
-			}
-		}
-	}()
-
 	updates := make(chan tdlib.UpdateData)
 	go func() {
 		for {
@@ -138,20 +100,20 @@ func main() {
 
 	go func() {
 
-		var previousStateEnum tdlib.AuthorizationStateEnum
-
 		for {
+
 			currentState, _ := client.Authorize()
-			if currentState == nil {
-				continue
+
+			if currentState.GetAuthorizationStateEnum() == tdlib.AuthorizationStateWaitPhoneNumberType {
+				core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateWaitPhoneNumberType))
 			}
-			if currentState.GetAuthorizationStateEnum() != previousStateEnum {
-				previousStateEnum = currentState.GetAuthorizationStateEnum()
-				authStates <- previousStateEnum
+
+			if currentState.GetAuthorizationStateEnum() == tdlib.AuthorizationStateWaitCodeType {
+				core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateWaitCodeType))
 			}
 
 			if currentState.GetAuthorizationStateEnum() == tdlib.AuthorizationStateReadyType {
-				//fmt.Println("Authorization Ready! Let's rock")
+				core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateReadyType))
 				break
 			}
 		}
@@ -160,6 +122,69 @@ func main() {
 		rawUpdates := client.GetRawUpdatesChannel(100)
 		for update := range rawUpdates {
 			updates <- update.Data
+		}
+	}()
+
+	go func() {
+		for {
+			event := core.ReadEvent()
+			switch core.CustomEventTypeEnum(event["@type"].(string)) {
+			case core.ChatSelectedEventType:
+				{
+					chatId := event["chatId"].(int64)
+					chat, _ := client.GetChat(chatId)
+					messages, _ := client.GetChatHistory(chatId, chat.LastReadInboxMessageID, -10, 10, false)
+
+					app.QueueUpdate(func() {
+						_, page := pages.GetFrontPage()
+						list := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
+						list.ClearItems()
+						for _, message := range messages.Messages {
+							switch message.Content.GetMessageContentEnum() {
+							case tdlib.MessageTextType:
+								{
+									//message.Content.(*tdlib.MessageText).Text
+									list.AddItem(chat.Title, message.Content.(*tdlib.MessageText).Text.Text)
+									//fmt.Printf("%v %v \n", chat.Title, messageText.(string))
+								}
+							}
+						}
+					})
+					app.Draw()
+				}
+			case core.AuthorizationStateWaitPhoneNumberType:
+				{
+					app.QueueUpdate(func() {
+						pages.SwitchToPage(phonePageLabel)
+					})
+					app.Draw()
+				}
+			case core.AuthorizationStateWaitCodeType:
+				{
+					app.QueueUpdate(func() {
+						pages.SwitchToPage(codePageLabel)
+					})
+					app.Draw()
+				}
+			case core.AuthorizationStateReadyType:
+				{
+					app.QueueUpdate(func() {
+						pages.SwitchToPage(mainPageLabel)
+						_, page := pages.GetFrontPage()
+						chats := page.(*tview.Flex).GetItem(1).(*core.ChatList)
+
+						chatList, _ := getChatList(client, 100)
+
+						for _, chat := range chatList {
+							chats.AddChat(chat.Title, chat.ID)
+						}
+						chats.SelectChat(7)
+					})
+					app.Draw()
+				}
+
+			}
+
 		}
 	}()
 

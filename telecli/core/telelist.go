@@ -32,6 +32,12 @@ func (teleList *TeleList) AddItem(mainText, secondaryText string) *TeleList {
 	return teleList
 }
 
+func (teleList *TeleList) ClearItems() *TeleList {
+
+	teleList.items = nil
+	return teleList
+}
+
 func (teleList *TeleList) Draw(screen tcell.Screen) {
 	teleList.Box.DrawForSubclass(screen, teleList)
 	innerLeft, innerTop, _, _ := teleList.Box.GetInnerRect()
