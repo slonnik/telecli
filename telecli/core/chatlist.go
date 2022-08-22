@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
 )
@@ -17,9 +16,26 @@ type ChatList struct {
 }
 
 func NewChatList() *ChatList {
-	return &ChatList{
+	chatList := &ChatList{
 		Box: tview.NewBox(),
 	}
+	chatList.Box.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
+		switch event.Key() {
+		case tcell.KeyDown:
+			{
+				chatList.selectedChat++
+			}
+		case tcell.KeyUp:
+			{
+				chatList.selectedChat--
+				if chatList.selectedChat < 0 {
+					chatList.selectedChat = 0
+				}
+			}
+		}
+		return event
+	})
+	return chatList
 }
 
 func (chatList *ChatList) AddChat(title string) *ChatList {
@@ -38,12 +54,15 @@ func (chatList *ChatList) SelectChat(index int) {
 
 func (chatList *ChatList) Draw(screen tcell.Screen) {
 	chatList.Box.DrawForSubclass(screen, chatList)
-	innerLeft, innerTop, _, _ := chatList.Box.GetInnerRect()
+	innerLeft, innerTop, width, _ := chatList.Box.GetInnerRect()
 	x, y := innerLeft, innerTop
 	for index, chat := range chatList.chats {
 		title := chat.Title
 		if index == chatList.selectedChat {
-			title = fmt.Sprintf(`[red]%v[white]`, title)
+			for pos := 0; pos < width; pos++ {
+				screen.SetContent(x+pos, y+index, 1, nil, tcell.StyleDefault.Background(tcell.ColorWhite))
+			}
+
 		}
 		tview.Print(screen, title, x, y+index, 100, 0, tcell.ColorOlive)
 	}
