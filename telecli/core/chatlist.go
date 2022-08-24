@@ -58,6 +58,10 @@ func (chatList *ChatList) SelectChat(index int) {
 	chatList.selectedChat = index
 }
 
+func (chatList *ChatList) GetSelectedChatId() int64 {
+	return chatList.chats[chatList.selectedChat].Id
+}
+
 func (chatList *ChatList) Draw(screen tcell.Screen) {
 	chatList.Box.DrawForSubclass(screen, chatList)
 	innerLeft, innerTop, width, _ := chatList.Box.GetInnerRect()

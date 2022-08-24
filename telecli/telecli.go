@@ -71,57 +71,48 @@ func main() {
 
 	pages.SwitchToPage(startPageLabel)
 
-	updates := make(chan tdlib.UpdateData)
-	go func() {
-		for {
-			update := <-updates
-			switch tdlib.UpdateEnum(update["@type"].(string)) {
-			case tdlib.UpdateNewMessageType:
-
-				//
-				message := update["message"].(map[string]interface{})
-				messageType := message["content"].(map[string]interface{})["@type"]
-				chat, _ := client.GetChat(int64(message["chat_id"].(float64)))
-				switch tdlib.MessageContentEnum(messageType.(string)) {
-				case tdlib.MessageTextType:
-					messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
-					app.QueueUpdate(func() {
-						_, page := pages.GetFrontPage()
-						list := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
-						list.AddItem(chat.Title, messageText.(string))
-						//fmt.Printf("%v %v \n", chat.Title, messageText.(string))
-					})
-					app.Draw()
-				}
-
-			}
-		}
-	}()
-
 	go func() {
 
 		for {
 
 			currentState, _ := client.Authorize()
 
-			if currentState.GetAuthorizationStateEnum() == tdlib.AuthorizationStateWaitPhoneNumberType {
-				core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateWaitPhoneNumberType))
+			switch currentState.GetAuthorizationStateEnum() {
+			case tdlib.AuthorizationStateWaitPhoneNumberType:
+				{
+					core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateWaitPhoneNumberType))
+				}
+			case tdlib.AuthorizationStateWaitCodeType:
+				{
+					core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateWaitCodeType))
+				}
+			case tdlib.AuthorizationStateReadyType:
+				{
+					core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateReadyType))
+					goto MAIN_LOOP
+				}
 			}
 
-			if currentState.GetAuthorizationStateEnum() == tdlib.AuthorizationStateWaitCodeType {
-				core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateWaitCodeType))
-			}
-
-			if currentState.GetAuthorizationStateEnum() == tdlib.AuthorizationStateReadyType {
-				core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateReadyType))
-				break
-			}
 		}
 
-		// Main loop
+	MAIN_LOOP: // Main loop
 		rawUpdates := client.GetRawUpdatesChannel(100)
 		for update := range rawUpdates {
-			updates <- update.Data
+
+			switch tdlib.UpdateEnum(update.Data["@type"].(string)) {
+			case tdlib.UpdateNewMessageType:
+
+				message := update.Data["message"].(map[string]interface{})
+				messageType := message["content"].(map[string]interface{})["@type"]
+				chat, _ := client.GetChat(int64(message["chat_id"].(float64)))
+				switch tdlib.MessageContentEnum(messageType.(string)) {
+				case tdlib.MessageTextType:
+					messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
+					event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, messageText.(string))
+					core.PublishEvent(event)
+
+				}
+			}
 		}
 	}()
 
@@ -143,9 +134,8 @@ func main() {
 							switch message.Content.GetMessageContentEnum() {
 							case tdlib.MessageTextType:
 								{
-									//message.Content.(*tdlib.MessageText).Text
 									list.AddItem(chat.Title, message.Content.(*tdlib.MessageText).Text.Text)
-									//fmt.Printf("%v %v \n", chat.Title, messageText.(string))
+
 								}
 							}
 						}
@@ -179,6 +169,23 @@ func main() {
 							chats.AddChat(chat.Title, chat.ID)
 						}
 						chats.SelectChat(7)
+					})
+					app.Draw()
+				}
+
+			case core.UpdateNewMessageTextType:
+				{
+					chatTitle := event["chatTitle"]
+					messageText := event["text"]
+					chatId := event["chatId"]
+					app.QueueUpdate(func() {
+						_, page := pages.GetFrontPage()
+						chatList := page.(*tview.Flex).GetItem(1).(*core.ChatList)
+						if chatList.GetSelectedChatId() == chatId {
+							mainList := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
+							mainList.AddItem(chatTitle.(string), messageText.(string))
+						}
+
 					})
 					app.Draw()
 				}

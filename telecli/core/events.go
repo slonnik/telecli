@@ -8,6 +8,7 @@ const (
 	AuthorizationStateWaitPhoneNumberType CustomEventTypeEnum = "authorizationStateWaitPhoneNumber"
 	AuthorizationStateWaitCodeType        CustomEventTypeEnum = "authorizationStateWaitCodeType"
 	AuthorizationStateReadyType           CustomEventTypeEnum = "authorizationStateReadyType"
+	UpdateNewMessageTextType              CustomEventTypeEnum = "updateNewMessageTextType"
 )
 
 func NewChatSelectedEvent(chatId int64) CustomEvent {
@@ -20,6 +21,15 @@ func NewChatSelectedEvent(chatId int64) CustomEvent {
 func NewSimpleCustomEvent(state CustomEventTypeEnum) CustomEvent {
 	var event = make(CustomEvent)
 	event["@type"] = string(state)
+	return event
+}
+
+func NewUpdateNewMessageTextEvent(chatId int64, chatTitle, text string) CustomEvent {
+	var event = make(CustomEvent)
+	event["@type"] = string(UpdateNewMessageTextType)
+	event["chatId"] = chatId
+	event["chatTitle"] = chatTitle
+	event["text"] = text
 	return event
 }
 
