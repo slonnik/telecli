@@ -24,23 +24,31 @@ func NewChatList() *ChatList {
 		switch event.Key() {
 		case tcell.KeyDown:
 			{
-				chatList.selectedChat++
-				chatId := chatList.chats[chatList.selectedChat].Id
-				PublishEvent(NewChatSelectedEvent(chatId))
+				chatList.onKeyDown(event)
 			}
 		case tcell.KeyUp:
 			{
-				chatList.selectedChat--
-				if chatList.selectedChat < 0 {
-					chatList.selectedChat = 0
-				}
-				chatId := chatList.chats[chatList.selectedChat].Id
-				PublishEvent(NewChatSelectedEvent(chatId))
+				chatList.onKeyUp(event)
 			}
 		}
 		return event
 	})
 	return chatList
+}
+
+func (chatList *ChatList) onKeyDown(event *tcell.EventKey) {
+	chatList.selectedChat++
+	chatId := chatList.chats[chatList.selectedChat].Id
+	PublishEvent(NewChatSelectedEvent(chatId))
+}
+
+func (chatList *ChatList) onKeyUp(event *tcell.EventKey) {
+	chatList.selectedChat--
+	if chatList.selectedChat < 0 {
+		chatList.selectedChat = 0
+	}
+	chatId := chatList.chats[chatList.selectedChat].Id
+	PublishEvent(NewChatSelectedEvent(chatId))
 }
 
 func (chatList *ChatList) AddChat(title string, id int64) *ChatList {
