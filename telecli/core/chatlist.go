@@ -100,6 +100,11 @@ func (chatList *ChatList) SetTitle(title string) *ChatList {
 	return chatList
 }
 
+func (chatList *ChatList) SetFocus() *ChatList {
+	chatList.Box.Focus(nil)
+	return chatList
+}
+
 func (chatList *ChatList) getVisibleItems(height int) []*chatItem {
 	return chatList.chats[chatList.startIndex : chatList.startIndex+height]
 }

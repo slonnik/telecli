@@ -169,6 +169,7 @@ func main() {
 							chats.AddChat(chat.Title, chat.ID)
 						}
 						chats.SelectChat(7)
+						chats.SetFocus()
 					})
 					app.Draw()
 				}
