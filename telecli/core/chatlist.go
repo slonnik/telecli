@@ -12,8 +12,9 @@ type chatItem struct {
 
 type ChatList struct {
 	*tview.Box
-	chats        []*chatItem
-	selectedChat int
+	chats         []*chatItem
+	selectedIndex int
+	startIndex    int
 }
 
 func NewChatList() *ChatList {
@@ -37,18 +38,20 @@ func NewChatList() *ChatList {
 }
 
 func (chatList *ChatList) onKeyDown(event *tcell.EventKey) {
-	chatList.selectedChat++
-	chatId := chatList.chats[chatList.selectedChat].Id
-	PublishEvent(NewChatSelectedEvent(chatId))
+
+	if chatList.isScrollDownRequired() {
+		chatList.scrollDown()
+	}
+	chat := chatList.selectNext()
+	PublishEvent(NewChatSelectedEvent(chat.Id))
 }
 
 func (chatList *ChatList) onKeyUp(event *tcell.EventKey) {
-	chatList.selectedChat--
-	if chatList.selectedChat < 0 {
-		chatList.selectedChat = 0
+	if chatList.isScrollUpRequired() {
+		chatList.scrollUp()
 	}
-	chatId := chatList.chats[chatList.selectedChat].Id
-	PublishEvent(NewChatSelectedEvent(chatId))
+	chat := chatList.selectPrevious()
+	PublishEvent(NewChatSelectedEvent(chat.Id))
 }
 
 func (chatList *ChatList) AddChat(title string, id int64) *ChatList {
@@ -63,26 +66,27 @@ func (chatList *ChatList) AddChat(title string, id int64) *ChatList {
 }
 
 func (chatList *ChatList) SelectChat(index int) {
-	chatList.selectedChat = index
+	chatList.selectedIndex = index
 }
 
 func (chatList *ChatList) GetSelectedChatId() int64 {
-	return chatList.chats[chatList.selectedChat].Id
+	return chatList.chats[chatList.selectedIndex].Id
 }
 
 func (chatList *ChatList) Draw(screen tcell.Screen) {
 	chatList.Box.DrawForSubclass(screen, chatList)
-	innerLeft, innerTop, width, _ := chatList.Box.GetInnerRect()
+	innerLeft, innerTop, width, height := chatList.Box.GetInnerRect()
 	x, y := innerLeft, innerTop
-	for index, chat := range chatList.chats {
+	for index, chat := range chatList.getVisibleItems(height) {
 		title := chat.Title
-		if index == chatList.selectedChat {
+		if index == chatList.selectedIndex {
 			for pos := 0; pos < width; pos++ {
 				screen.SetContent(x+pos, y+index, 1, nil, tcell.StyleDefault.Background(tcell.ColorWhite))
 			}
 
 		}
-		tview.Print(screen, title, x, y+index, 100, 0, tcell.ColorOlive)
+
+		tview.Print(screen, substr(title, width), x, y+index, 100, 0, tcell.ColorOlive)
 	}
 }
 
@@ -94,4 +98,53 @@ func (chatList *ChatList) SetBorder(show bool) *ChatList {
 func (chatList *ChatList) SetTitle(title string) *ChatList {
 	chatList.Box.SetTitle(title)
 	return chatList
+}
+
+func (chatList *ChatList) getVisibleItems(height int) []*chatItem {
+	return chatList.chats[chatList.startIndex : chatList.startIndex+height]
+}
+
+func (chatList *ChatList) scrollDown() {
+	chatList.startIndex++
+	chatList.selectedIndex--
+}
+
+func (chatList *ChatList) scrollUp() {
+	chatList.startIndex--
+	chatList.selectedIndex++
+	if chatList.startIndex < 0 {
+		chatList.startIndex = 0
+	}
+}
+
+func (chatList *ChatList) isScrollDownRequired() bool {
+	_, _, _, height := chatList.Box.GetInnerRect()
+	return chatList.selectedIndex == height-1
+}
+
+func (chatList *ChatList) isScrollUpRequired() bool {
+	return chatList.selectedIndex == 0
+}
+
+func (chatList *ChatList) selectNext() *chatItem {
+	chatList.selectedIndex++
+	return chatList.chats[chatList.startIndex+chatList.selectedIndex]
+}
+
+func (chatList *ChatList) selectPrevious() *chatItem {
+	chatList.selectedIndex--
+	if chatList.selectedIndex < 0 {
+		chatList.selectedIndex = 0
+	}
+	return chatList.chats[chatList.startIndex+chatList.selectedIndex]
+}
+
+func substr(input string, length int) string {
+	asRunes := []rune(input)
+
+	if length > len(asRunes) {
+		length = len(asRunes)
+	}
+
+	return string(asRunes[0:length])
 }
