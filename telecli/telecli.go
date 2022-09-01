@@ -124,13 +124,39 @@ func main() {
 				{
 					chatId := event["chatId"].(int64)
 					chat, _ := client.GetChat(chatId)
-					messages, _ := client.GetChatHistory(chatId, chat.LastReadInboxMessageID, -10, 10, false)
+					/*var lastMessageId int64
+					if chat.LastMessage != nil {
+						lastMessageId = chat.LastMessage.ID
+					} else {
+						lastMessageId = chat.LastReadInboxMessageID
+					}*/
+
+					fromMessageId := chat.LastReadInboxMessageID
+					messages := make([]tdlib.Message, 10)
+					count := 0
+					for count < 10 {
+						history, _ := client.GetChatHistory(chatId, fromMessageId, -2, 2, false)
+						if len(history.Messages) == 0 {
+							break
+						}
+						message := history.Messages[0]
+						if message.Content != nil {
+							messages = append(messages, message)
+							count++
+						}
+						fromMessageId = message.ID
+					}
+
+					//history, _  := client.GetChatMessageByDate(chatId, 0)
 
 					app.QueueUpdate(func() {
 						_, page := pages.GetFrontPage()
 						list := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
 						list.ClearItems()
-						for _, message := range messages.Messages {
+						for _, message := range messages {
+							if message.Content == nil {
+								continue
+							}
 							switch message.Content.GetMessageContentEnum() {
 							case tdlib.MessageTextType:
 								{
