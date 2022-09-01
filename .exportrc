@@ -1,2 +1,2 @@
-export CGO_CFLAGS="-I/$ROOT/projects/tdlib/include"
-export CGO_LDFLAGS="-L/$ROOT/projects/tdlib/lib -L/opt/homebrew/opt/openssl/lib -L/opt/local/lib"
+export CGO_CFLAGS="-I$ROOT/projects/tdlib/include -I/usr/include/c++/11"
+export CGO_LDFLAGS="-L$ROOT/projects/tdlib/lib -L/opt/homebrew/opt/openssl/lib -L/usr/lib/llvm-14/lib/"
