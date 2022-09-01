@@ -1,9 +1,10 @@
 package main
 
 import (
+	"math"
+
 	"github.com/Arman92/go-tdlib"
 	"github.com/rivo/tview"
-	"math"
 	"slonnik.ru/telecli/core"
 )
 
@@ -124,30 +125,24 @@ func main() {
 				{
 					chatId := event["chatId"].(int64)
 					chat, _ := client.GetChat(chatId)
-					/*var lastMessageId int64
-					if chat.LastMessage != nil {
-						lastMessageId = chat.LastMessage.ID
-					} else {
-						lastMessageId = chat.LastReadInboxMessageID
-					}*/
-
 					fromMessageId := chat.LastReadInboxMessageID
-					messages := make([]tdlib.Message, 10)
+					var messages []tdlib.Message
 					count := 0
-					for count < 10 {
-						history, _ := client.GetChatHistory(chatId, fromMessageId, -2, 2, false)
+					for count < 2 {
+						history, _ := client.GetChatHistory(chatId, fromMessageId, 0, 10, false)
 						if len(history.Messages) == 0 {
 							break
 						}
-						message := history.Messages[0]
-						if message.Content != nil {
-							messages = append(messages, message)
-							count++
-						}
-						fromMessageId = message.ID
-					}
+						for _, message := range history.Messages {
+							if message.Content != nil {
+								messages = append(messages, message)
 
-					//history, _  := client.GetChatMessageByDate(chatId, 0)
+							}
+							fromMessageId = message.ID
+						}
+						count++
+
+					}
 
 					app.QueueUpdate(func() {
 						_, page := pages.GetFrontPage()
@@ -162,6 +157,10 @@ func main() {
 								{
 									list.AddItem(chat.Title, message.Content.(*tdlib.MessageText).Text.Text)
 
+								}
+							default:
+								{
+									list.AddItem(chat.Title, string(message.Content.GetMessageContentEnum()))
 								}
 							}
 						}
@@ -225,6 +224,7 @@ func main() {
 	err := app.SetRoot(pages, true).EnableMouse(true).Run()
 
 	if err != nil {
+
 		panic(err)
 	}
 }
