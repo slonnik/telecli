@@ -24,7 +24,7 @@ func NewSimpleCustomEvent(state CustomEventTypeEnum) CustomEvent {
 	return event
 }
 
-func NewUpdateNewMessageTextEvent(chatId int64, chatTitle, text string, timeStamp float64) CustomEvent {
+func NewUpdateNewMessageTextEvent(chatId int64, chatTitle, text string, timeStamp int64) CustomEvent {
 	var event = make(CustomEvent)
 	event["@type"] = string(UpdateNewMessageTextType)
 	event["chatId"] = chatId

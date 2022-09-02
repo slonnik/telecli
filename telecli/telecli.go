@@ -109,7 +109,7 @@ func main() {
 				switch tdlib.MessageContentEnum(messageType.(string)) {
 				case tdlib.MessageTextType:
 					messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
-					event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, messageText.(string), message["date"].(float64))
+					event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, messageText.(string), int64(message["date"].(float64)))
 					core.PublishEvents(event)
 				}
 			}
@@ -151,7 +151,7 @@ func main() {
 								eventText = string(message.Content.GetMessageContentEnum())
 							}
 
-							event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, eventText, float64(message.Date))
+							event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, eventText, int64(message.Date))
 							events = append(events, event)
 							fromMessageId = message.ID
 						}
@@ -205,7 +205,7 @@ func main() {
 						chatList := page.(*tview.Flex).GetItem(1).(*core.ChatList)
 						if chatList.GetSelectedChatId() == chatId {
 							mainList := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
-							mainList.AddItem(chatTitle.(string), messageText.(string), timeStamp.(float64))
+							mainList.AddItem(chatTitle.(string), messageText.(string), timeStamp.(int64))
 						}
 
 					})

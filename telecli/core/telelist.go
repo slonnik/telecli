@@ -8,9 +8,9 @@ import (
 )
 
 type listItem struct {
-	MainText      string  // The main text of the list item.
-	SecondaryText string  // A secondary text to be shown underneath the main text.
-	TimeStamp     float64 // item date-time creation
+	MainText      string    // The main text of the list item.
+	SecondaryText string    // A secondary text to be shown underneath the main text.
+	CreationTime  time.Time // item date-time creation
 }
 
 type TeleList struct {
@@ -24,12 +24,12 @@ func NewTeleList() *TeleList {
 	}
 }
 
-func (teleList *TeleList) AddItem(mainText, secondaryText string, timeStamp float64) *TeleList {
+func (teleList *TeleList) AddItem(mainText, secondaryText string, timeStamp int64) *TeleList {
 
 	item := &listItem{
 		MainText:      mainText,
 		SecondaryText: secondaryText,
-		TimeStamp:     timeStamp,
+		CreationTime:  time.Unix(timeStamp, 0),
 	}
 
 	teleList.items = append(teleList.items, item)
@@ -48,9 +48,9 @@ func (teleList *TeleList) Draw(screen tcell.Screen) {
 	x, y := innerLeft, innerTop
 	for index, item := range teleList.items {
 		tview.Print(screen, item.MainText, x, y+index*2, 100, 0, tcell.ColorOlive)
-		itemTime := time.Unix(int64(item.TimeStamp), 0).Local()
-		year, month, day := itemTime.Date()
-		timeText := fmt.Sprintf("%v-%v-%v %v:%v", year, month, day, itemTime.Hour(), itemTime.Minute())
+		year, month, day := item.CreationTime.Date()
+		hour, minute, _ := item.CreationTime.Clock()
+		timeText := fmt.Sprintf("%v-%v-%v %v:%v", year, month, day, hour, minute)
 		tview.Print(screen, fmt.Sprintf("[%v] %v", timeText, item.SecondaryText), x+4, y+index*2+1, 100, 0, tcell.ColorGreen)
 	}
 }
