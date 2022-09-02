@@ -1,9 +1,0 @@
-prefix=/Users/slonnik/root/apps/minikube/tdlib
-
-Name: tdsqlite
-Description: Telegram Library - SQLite
-Version: 1.8.4
-
-CFlags: -I"${prefix}/include"
-Libs: -L"${prefix}/lib" -ltdsqlite
-Libs.private: -L"/opt/homebrew/opt/openssl/lib" -l:libcrypto.dylib -L"/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/lib" -l:libz.tbd
