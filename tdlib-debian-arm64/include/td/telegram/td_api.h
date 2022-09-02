@@ -881,7 +881,7 @@ class Function: public TlObject {
 };
 
 /**
- * Contains information about the period of inactivity after which the current user's account will automatically be deleted.
+ * Contains information about the period of inactivity after which the current user&\#039;s account will automatically be deleted.
  */
 class accountTtl final : public Object {
  public:
@@ -889,12 +889,12 @@ class accountTtl final : public Object {
   int32 days_;
 
   /**
-   * Contains information about the period of inactivity after which the current user's account will automatically be deleted.
+   * Contains information about the period of inactivity after which the current user&\#039;s account will automatically be deleted.
    */
   accountTtl();
 
   /**
-   * Contains information about the period of inactivity after which the current user's account will automatically be deleted.
+   * Contains information about the period of inactivity after which the current user&\#039;s account will automatically be deleted.
    *
    * \param[in] days_ Number of days of inactivity before the account will be flagged for deletion; 30-366 days.
    */
@@ -1754,13 +1754,13 @@ class authorizationStateWaitEncryptionKey final : public AuthorizationState {
 };
 
 /**
- * TDLib needs the user's phone number to authorize. Call `setAuthenticationPhoneNumber` to provide the phone number, or use `requestQrCodeAuthentication`, or `checkAuthenticationBotToken` for other authentication options.
+ * TDLib needs the user&\#039;s phone number to authorize. Call `setAuthenticationPhoneNumber` to provide the phone number, or use `requestQrCodeAuthentication`, or `checkAuthenticationBotToken` for other authentication options.
  */
 class authorizationStateWaitPhoneNumber final : public AuthorizationState {
  public:
 
   /**
-   * TDLib needs the user's phone number to authorize. Call `setAuthenticationPhoneNumber` to provide the phone number, or use `requestQrCodeAuthentication`, or `checkAuthenticationBotToken` for other authentication options.
+   * TDLib needs the user&\#039;s phone number to authorize. Call `setAuthenticationPhoneNumber` to provide the phone number, or use `requestQrCodeAuthentication`, or `checkAuthenticationBotToken` for other authentication options.
    */
   authorizationStateWaitPhoneNumber();
 
@@ -1783,7 +1783,7 @@ class authorizationStateWaitPhoneNumber final : public AuthorizationState {
 };
 
 /**
- * TDLib needs the user's authentication code to authorize.
+ * TDLib needs the user&\#039;s authentication code to authorize.
  */
 class authorizationStateWaitCode final : public AuthorizationState {
  public:
@@ -1791,12 +1791,12 @@ class authorizationStateWaitCode final : public AuthorizationState {
   object_ptr<authenticationCodeInfo> code_info_;
 
   /**
-   * TDLib needs the user's authentication code to authorize.
+   * TDLib needs the user&\#039;s authentication code to authorize.
    */
   authorizationStateWaitCode();
 
   /**
-   * TDLib needs the user's authentication code to authorize.
+   * TDLib needs the user&\#039;s authentication code to authorize.
    *
    * \param[in] code_info_ Information about the authorization code that was sent.
    */
@@ -3063,7 +3063,7 @@ class botCommandScopeChatMember final : public BotCommandScope {
  */
 class botCommands final : public Object {
  public:
-  /// Bot's user identifier.
+  /// Bot&\#039;s user identifier.
   int53 bot_user_id_;
   /// List of bot commands.
   array<object_ptr<botCommand>> commands_;
@@ -3076,7 +3076,7 @@ class botCommands final : public Object {
   /**
    * Contains a list of bot commands.
    *
-   * \param[in] bot_user_id_ Bot's user identifier.
+   * \param[in] bot_user_id_ Bot&\#039;s user identifier.
    * \param[in] commands_ List of bot commands.
    */
   botCommands(int53 bot_user_id_, array<object_ptr<botCommand>> &&commands_);
@@ -3104,7 +3104,7 @@ class botCommands final : public Object {
  */
 class botInfo final : public Object {
  public:
-  /// The text that is shown on the bot's profile page and is sent together with the link when users share the bot.
+  /// The text that is shown on the bot&\#039;s profile page and is sent together with the link when users share the bot.
   string share_text_;
   /// The text shown in the chat with the bot if the chat is empty.
   string description_;
@@ -3129,7 +3129,7 @@ class botInfo final : public Object {
   /**
    * Contains information about a bot.
    *
-   * \param[in] share_text_ The text that is shown on the bot's profile page and is sent together with the link when users share the bot.
+   * \param[in] share_text_ The text that is shown on the bot&\#039;s profile page and is sent together with the link when users share the bot.
    * \param[in] description_ The text shown in the chat with the bot if the chat is empty.
    * \param[in] photo_ Photo shown in the chat with the bot if the chat is empty; may be null.
    * \param[in] animation_ Animation shown in the chat with the bot if the chat is empty; may be null.
@@ -3258,13 +3258,13 @@ class CallDiscardReason: public Object {
 };
 
 /**
- * The call wasn't discarded, or the reason is unknown.
+ * The call wasn&\#039;t discarded, or the reason is unknown.
  */
 class callDiscardReasonEmpty final : public CallDiscardReason {
  public:
 
   /**
-   * The call wasn't discarded, or the reason is unknown.
+   * The call wasn&\#039;t discarded, or the reason is unknown.
    */
   callDiscardReasonEmpty();
 
@@ -3565,13 +3565,13 @@ class callProblemDistortedSpeech final : public CallProblem {
 };
 
 /**
- * The user couldn't hear the other side.
+ * The user couldn&\#039;t hear the other side.
  */
 class callProblemSilentLocal final : public CallProblem {
  public:
 
   /**
-   * The user couldn't hear the other side.
+   * The user couldn&\#039;t hear the other side.
    */
   callProblemSilentLocal();
 
@@ -3594,13 +3594,13 @@ class callProblemSilentLocal final : public CallProblem {
 };
 
 /**
- * The other side couldn't hear the user.
+ * The other side couldn&\#039;t hear the user.
  */
 class callProblemSilentRemote final : public CallProblem {
  public:
 
   /**
-   * The other side couldn't hear the user.
+   * The other side couldn&\#039;t hear the user.
    */
   callProblemSilentRemote();
 
@@ -4151,7 +4151,7 @@ class callStateError final : public CallState {
 };
 
 /**
- * Contains a bot's answer to a callback query.
+ * Contains a bot&\#039;s answer to a callback query.
  */
 class callbackQueryAnswer final : public Object {
  public:
@@ -4163,12 +4163,12 @@ class callbackQueryAnswer final : public Object {
   string url_;
 
   /**
-   * Contains a bot's answer to a callback query.
+   * Contains a bot&\#039;s answer to a callback query.
    */
   callbackQueryAnswer();
 
   /**
-   * Contains a bot's answer to a callback query.
+   * Contains a bot&\#039;s answer to a callback query.
    *
    * \param[in] text_ Text of the answer.
    * \param[in] show_alert_ True, if an alert must be shown to the user instead of a toast notification.
@@ -4480,13 +4480,13 @@ class chat final : public Object {
   object_ptr<message> last_message_;
   /// Positions of the chat in chat lists.
   array<object_ptr<chatPosition>> positions_;
-  /// Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender.
+  /// Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can&\#039;t change message sender.
   object_ptr<MessageSender> message_sender_id_;
-  /// True, if chat content can't be saved locally, forwarded, or copied.
+  /// True, if chat content can&\#039;t be saved locally, forwarded, or copied.
   bool has_protected_content_;
   /// True, if the chat is marked as unread.
   bool is_marked_as_unread_;
-  /// True, if the chat is blocked by the current user and private messages from the chat can't be received.
+  /// True, if the chat is blocked by the current user and private messages from the chat can&\#039;t be received.
   bool is_blocked_;
   /// True, if the chat has scheduled messages.
   bool has_scheduled_messages_;
@@ -4544,10 +4544,10 @@ class chat final : public Object {
    * \param[in] permissions_ Actions that non-administrator chat members are allowed to take in the chat.
    * \param[in] last_message_ Last message in the chat; may be null.
    * \param[in] positions_ Positions of the chat in chat lists.
-   * \param[in] message_sender_id_ Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender.
-   * \param[in] has_protected_content_ True, if chat content can't be saved locally, forwarded, or copied.
+   * \param[in] message_sender_id_ Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can&\#039;t change message sender.
+   * \param[in] has_protected_content_ True, if chat content can&\#039;t be saved locally, forwarded, or copied.
    * \param[in] is_marked_as_unread_ True, if the chat is marked as unread.
-   * \param[in] is_blocked_ True, if the chat is blocked by the current user and private messages from the chat can't be received.
+   * \param[in] is_blocked_ True, if the chat is blocked by the current user and private messages from the chat can&\#039;t be received.
    * \param[in] has_scheduled_messages_ True, if the chat has scheduled messages.
    * \param[in] can_be_deleted_only_for_self_ True, if the chat messages can be deleted only for the current user while other users will continue to see the messages.
    * \param[in] can_be_deleted_for_all_users_ True, if the chat messages can be deleted for all users.
@@ -5261,13 +5261,13 @@ class chatActionBarAddContact final : public ChatActionBar {
 };
 
 /**
- * The chat is a private or secret chat with a mutual contact and the user's phone number can be shared with the other user using the method sharePhoneNumber.
+ * The chat is a private or secret chat with a mutual contact and the user&\#039;s phone number can be shared with the other user using the method sharePhoneNumber.
  */
 class chatActionBarSharePhoneNumber final : public ChatActionBar {
  public:
 
   /**
-   * The chat is a private or secret chat with a mutual contact and the user's phone number can be shared with the other user using the method sharePhoneNumber.
+   * The chat is a private or secret chat with a mutual contact and the user&\#039;s phone number can be shared with the other user using the method sharePhoneNumber.
    */
   chatActionBarSharePhoneNumber();
 
@@ -5402,7 +5402,7 @@ class chatAdministratorRights final : public Object {
   bool can_promote_members_;
   /// True, if the administrator can manage video chats.
   bool can_manage_video_chats_;
-  /// True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only.
+  /// True, if the administrator isn&\#039;t shown in the chat member list and sends messages anonymously; applicable to supergroups only.
   bool is_anonymous_;
 
   /**
@@ -5423,7 +5423,7 @@ class chatAdministratorRights final : public Object {
    * \param[in] can_pin_messages_ True, if the administrator can pin messages; applicable to basic groups and supergroups only.
    * \param[in] can_promote_members_ True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them.
    * \param[in] can_manage_video_chats_ True, if the administrator can manage video chats.
-   * \param[in] is_anonymous_ True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only.
+   * \param[in] is_anonymous_ True, if the administrator isn&\#039;t shown in the chat member list and sends messages anonymously; applicable to supergroups only.
    */
   chatAdministratorRights(bool can_manage_chat_, bool can_change_info_, bool can_post_messages_, bool can_edit_messages_, bool can_delete_messages_, bool can_invite_users_, bool can_restrict_members_, bool can_pin_messages_, bool can_promote_members_, bool can_manage_video_chats_, bool is_anonymous_);
 
@@ -7165,7 +7165,7 @@ class chatInviteLink final : public Object {
   int32 pending_join_request_count_;
   /// True, if the link only creates join request. If true, total number of joining members will be unlimited.
   bool creates_join_request_;
-  /// True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time.
+  /// True, if the link is primary. Primary invite link can&\#039;t have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time.
   bool is_primary_;
   /// True, if the link was revoked.
   bool is_revoked_;
@@ -7188,7 +7188,7 @@ class chatInviteLink final : public Object {
    * \param[in] member_count_ Number of chat members, which joined the chat using the link.
    * \param[in] pending_join_request_count_ Number of pending join requests created using this link.
    * \param[in] creates_join_request_ True, if the link only creates join request. If true, total number of joining members will be unlimited.
-   * \param[in] is_primary_ True, if the link is primary. Primary invite link can't have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time.
+   * \param[in] is_primary_ True, if the link is primary. Primary invite link can&\#039;t have name, expiration date, or usage limit. There is exactly one primary invite link for each administrator with can_invite_users right at a given time.
    * \param[in] is_revoked_ True, if the link was revoked.
    */
   chatInviteLink(string const &invite_link_, string const &name_, int53 creator_user_id_, int32 date_, int32 edit_date_, int32 expiration_date_, int32 member_limit_, int32 member_count_, int32 pending_join_request_count_, bool creates_join_request_, bool is_primary_, bool is_revoked_);
@@ -7216,7 +7216,7 @@ class chatInviteLink final : public Object {
  */
 class chatInviteLinkCount final : public Object {
  public:
-  /// Administrator's user identifier.
+  /// Administrator&\#039;s user identifier.
   int53 user_id_;
   /// Number of active invite links.
   int32 invite_link_count_;
@@ -7231,7 +7231,7 @@ class chatInviteLinkCount final : public Object {
   /**
    * Describes a chat administrator with a number of active and revoked chat invite links.
    *
-   * \param[in] user_id_ Administrator's user identifier.
+   * \param[in] user_id_ Administrator&\#039;s user identifier.
    * \param[in] invite_link_count_ Number of active invite links.
    * \param[in] revoked_invite_link_count_ Number of revoked invite links.
    */
@@ -7855,7 +7855,7 @@ class chatMemberStatusCreator final : public ChatMemberStatus {
  public:
   /// A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only.
   string custom_title_;
-  /// True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only.
+  /// True, if the creator isn&\#039;t shown in the chat member list and sends messages anonymously; applicable to supergroups only.
   bool is_anonymous_;
   /// True, if the user is a member of the chat.
   bool is_member_;
@@ -7869,7 +7869,7 @@ class chatMemberStatusCreator final : public ChatMemberStatus {
    * The user is the owner of the chat and has all the administrator privileges.
    *
    * \param[in] custom_title_ A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only.
-   * \param[in] is_anonymous_ True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only.
+   * \param[in] is_anonymous_ True, if the creator isn&\#039;t shown in the chat member list and sends messages anonymously; applicable to supergroups only.
    * \param[in] is_member_ True, if the user is a member of the chat.
    */
   chatMemberStatusCreator(string const &custom_title_, bool is_anonymous_, bool is_member_);
@@ -8039,7 +8039,7 @@ class chatMemberStatusLeft final : public ChatMemberStatus {
 };
 
 /**
- * The user or the chat was banned (and hence is not a member of the chat). Implies the user can't return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat.
+ * The user or the chat was banned (and hence is not a member of the chat). Implies the user can&\#039;t return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat.
  */
 class chatMemberStatusBanned final : public ChatMemberStatus {
  public:
@@ -8047,12 +8047,12 @@ class chatMemberStatusBanned final : public ChatMemberStatus {
   int32 banned_until_date_;
 
   /**
-   * The user or the chat was banned (and hence is not a member of the chat). Implies the user can't return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat.
+   * The user or the chat was banned (and hence is not a member of the chat). Implies the user can&\#039;t return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat.
    */
   chatMemberStatusBanned();
 
   /**
-   * The user or the chat was banned (and hence is not a member of the chat). Implies the user can't return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat.
+   * The user or the chat was banned (and hence is not a member of the chat). Implies the user can&\#039;t return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat.
    *
    * \param[in] banned_until_date_ Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Always 0 in basic groups.
    */
@@ -8997,13 +8997,13 @@ class ChatSource: public Object {
 };
 
 /**
- * The chat is sponsored by the user's MTProxy server.
+ * The chat is sponsored by the user&\#039;s MTProxy server.
  */
 class chatSourceMtprotoProxy final : public ChatSource {
  public:
 
   /**
-   * The chat is sponsored by the user's MTProxy server.
+   * The chat is sponsored by the user&\#039;s MTProxy server.
    */
   chatSourceMtprotoProxy();
 
@@ -9830,13 +9830,13 @@ class checkChatUsernameResultPublicChatsTooMuch final : public CheckChatUsername
 };
 
 /**
- * The user can't be a member of a public supergroup.
+ * The user can&\#039;t be a member of a public supergroup.
  */
 class checkChatUsernameResultPublicGroupsUnavailable final : public CheckChatUsernameResult {
  public:
 
   /**
-   * The user can't be a member of a public supergroup.
+   * The user can&\#039;t be a member of a public supergroup.
    */
   checkChatUsernameResultPublicGroupsUnavailable();
 
@@ -11429,7 +11429,7 @@ class encryptedCredentials final : public Object {
   bytes data_;
   /// The decrypted data hash.
   bytes hash_;
-  /// Secret for data decryption, encrypted with the service's public key.
+  /// Secret for data decryption, encrypted with the service&\#039;s public key.
   bytes secret_;
 
   /**
@@ -11442,7 +11442,7 @@ class encryptedCredentials final : public Object {
    *
    * \param[in] data_ The encrypted credentials.
    * \param[in] hash_ The decrypted data hash.
-   * \param[in] secret_ Secret for data decryption, encrypted with the service's public key.
+   * \param[in] secret_ Secret for data decryption, encrypted with the service&\#039;s public key.
    */
   encryptedCredentials(bytes const &data_, bytes const &hash_, bytes const &secret_);
 
@@ -11628,7 +11628,7 @@ class fileDownload final : public Object {
   object_ptr<message> message_;
   /// Point in time (Unix timestamp) when the file was added to the download list.
   int32 add_date_;
-  /// Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn't completed.
+  /// Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn&\#039;t completed.
   int32 complete_date_;
   /// True, if downloading of the file is paused.
   bool is_paused_;
@@ -11644,7 +11644,7 @@ class fileDownload final : public Object {
    * \param[in] file_id_ File identifier.
    * \param[in] message_ The message with the file.
    * \param[in] add_date_ Point in time (Unix timestamp) when the file was added to the download list.
-   * \param[in] complete_date_ Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn't completed.
+   * \param[in] complete_date_ Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn&\#039;t completed.
    * \param[in] is_paused_ True, if downloading of the file is paused.
    */
   fileDownload(int32 file_id_, object_ptr<message> &&message_, int32 add_date_, int32 complete_date_, bool is_paused_);
@@ -12251,7 +12251,7 @@ class formattedText final : public Object {
  public:
   /// The text.
   string text_;
-  /// Entities contained in the text. Entities can be nested, but must not mutually intersect with each other. Pre, Code and PreCode entities can't contain other entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and to be contained in all other entities. All other entities can't contain each other.
+  /// Entities contained in the text. Entities can be nested, but must not mutually intersect with each other. Pre, Code and PreCode entities can&\#039;t contain other entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and to be contained in all other entities. All other entities can&\#039;t contain each other.
   array<object_ptr<textEntity>> entities_;
 
   /**
@@ -12263,7 +12263,7 @@ class formattedText final : public Object {
    * A text with some entities.
    *
    * \param[in] text_ The text.
-   * \param[in] entities_ Entities contained in the text. Entities can be nested, but must not mutually intersect with each other. Pre, Code and PreCode entities can't contain other entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and to be contained in all other entities. All other entities can't contain each other.
+   * \param[in] entities_ Entities contained in the text. Entities can be nested, but must not mutually intersect with each other. Pre, Code and PreCode entities can&\#039;t contain other entities. Bold, Italic, Underline, Strikethrough, and Spoiler entities can contain and to be contained in all other entities. All other entities can&\#039;t contain each other.
    */
   formattedText(string const &text_, array<object_ptr<textEntity>> &&entities_);
 
@@ -12536,15 +12536,15 @@ class groupCall final : public Object {
   bool can_be_managed_;
   /// Number of participants in the group call.
   int32 participant_count_;
-  /// True, if group call participants, which are muted, aren't returned in participant list.
+  /// True, if group call participants, which are muted, aren&\#039;t returned in participant list.
   bool has_hidden_listeners_;
   /// True, if all group call participants are loaded.
   bool loaded_all_participants_;
   /// At most 3 recently speaking users in the group call.
   array<object_ptr<groupCallRecentSpeaker>> recent_speakers_;
-  /// True, if the current user's video is enabled.
+  /// True, if the current user&\#039;s video is enabled.
   bool is_my_video_enabled_;
-  /// True, if the current user's video is paused.
+  /// True, if the current user&\#039;s video is paused.
   bool is_my_video_paused_;
   /// True, if the current user can broadcast video or share screen.
   bool can_enable_video_;
@@ -12577,11 +12577,11 @@ class groupCall final : public Object {
    * \param[in] need_rejoin_ True, if user was kicked from the call because of network loss and the call needs to be rejoined.
    * \param[in] can_be_managed_ True, if the current user can manage the group call.
    * \param[in] participant_count_ Number of participants in the group call.
-   * \param[in] has_hidden_listeners_ True, if group call participants, which are muted, aren't returned in participant list.
+   * \param[in] has_hidden_listeners_ True, if group call participants, which are muted, aren&\#039;t returned in participant list.
    * \param[in] loaded_all_participants_ True, if all group call participants are loaded.
    * \param[in] recent_speakers_ At most 3 recently speaking users in the group call.
-   * \param[in] is_my_video_enabled_ True, if the current user's video is enabled.
-   * \param[in] is_my_video_paused_ True, if the current user's video is paused.
+   * \param[in] is_my_video_enabled_ True, if the current user&\#039;s video is enabled.
+   * \param[in] is_my_video_paused_ True, if the current user&\#039;s video is paused.
    * \param[in] can_enable_video_ True, if the current user can broadcast video or share screen.
    * \param[in] mute_new_participants_ True, if only group call administrators can unmute new participants.
    * \param[in] can_toggle_mute_new_participants_ True, if the current user can enable or disable mute_new_participants setting.
@@ -12654,15 +12654,15 @@ class groupCallParticipant final : public Object {
  public:
   /// Identifier of the group call participant.
   object_ptr<MessageSender> participant_id_;
-  /// User's audio channel synchronization source identifier.
+  /// User&\#039;s audio channel synchronization source identifier.
   int32 audio_source_id_;
-  /// User's screen sharing audio channel synchronization source identifier.
+  /// User&\#039;s screen sharing audio channel synchronization source identifier.
   int32 screen_sharing_audio_source_id_;
-  /// Information about user's video channel; may be null if there is no active video.
+  /// Information about user&\#039;s video channel; may be null if there is no active video.
   object_ptr<groupCallParticipantVideoInfo> video_info_;
-  /// Information about user's screen sharing video channel; may be null if there is no active screen sharing video.
+  /// Information about user&\#039;s screen sharing video channel; may be null if there is no active screen sharing video.
   object_ptr<groupCallParticipantVideoInfo> screen_sharing_video_info_;
-  /// The participant user's bio or the participant chat's description.
+  /// The participant user&\#039;s bio or the participant chat&\#039;s description.
   string bio_;
   /// True, if the participant is the current user.
   bool is_current_user_;
@@ -12684,9 +12684,9 @@ class groupCallParticipant final : public Object {
   bool is_muted_for_current_user_;
   /// True, if the participant is muted for all users, but can unmute themselves.
   bool can_unmute_self_;
-  /// Participant's volume level; 1-20000 in hundreds of percents.
+  /// Participant&\#039;s volume level; 1-20000 in hundreds of percents.
   int32 volume_level_;
-  /// User's order in the group call participant list. Orders must be compared lexicographically. The bigger is order, the higher is user in the list. If order is empty, the user must be removed from the participant list.
+  /// User&\#039;s order in the group call participant list. Orders must be compared lexicographically. The bigger is order, the higher is user in the list. If order is empty, the user must be removed from the participant list.
   string order_;
 
   /**
@@ -12698,11 +12698,11 @@ class groupCallParticipant final : public Object {
    * Represents a group call participant.
    *
    * \param[in] participant_id_ Identifier of the group call participant.
-   * \param[in] audio_source_id_ User's audio channel synchronization source identifier.
-   * \param[in] screen_sharing_audio_source_id_ User's screen sharing audio channel synchronization source identifier.
-   * \param[in] video_info_ Information about user's video channel; may be null if there is no active video.
-   * \param[in] screen_sharing_video_info_ Information about user's screen sharing video channel; may be null if there is no active screen sharing video.
-   * \param[in] bio_ The participant user's bio or the participant chat's description.
+   * \param[in] audio_source_id_ User&\#039;s audio channel synchronization source identifier.
+   * \param[in] screen_sharing_audio_source_id_ User&\#039;s screen sharing audio channel synchronization source identifier.
+   * \param[in] video_info_ Information about user&\#039;s video channel; may be null if there is no active video.
+   * \param[in] screen_sharing_video_info_ Information about user&\#039;s screen sharing video channel; may be null if there is no active screen sharing video.
+   * \param[in] bio_ The participant user&\#039;s bio or the participant chat&\#039;s description.
    * \param[in] is_current_user_ True, if the participant is the current user.
    * \param[in] is_speaking_ True, if the participant is speaking as set by setGroupCallParticipantIsSpeaking.
    * \param[in] is_hand_raised_ True, if the participant hand is raised.
@@ -12713,8 +12713,8 @@ class groupCallParticipant final : public Object {
    * \param[in] is_muted_for_all_users_ True, if the participant is muted for all users.
    * \param[in] is_muted_for_current_user_ True, if the participant is muted for the current user.
    * \param[in] can_unmute_self_ True, if the participant is muted for all users, but can unmute themselves.
-   * \param[in] volume_level_ Participant's volume level; 1-20000 in hundreds of percents.
-   * \param[in] order_ User's order in the group call participant list. Orders must be compared lexicographically. The bigger is order, the higher is user in the list. If order is empty, the user must be removed from the participant list.
+   * \param[in] volume_level_ Participant&\#039;s volume level; 1-20000 in hundreds of percents.
+   * \param[in] order_ User&\#039;s order in the group call participant list. Orders must be compared lexicographically. The bigger is order, the higher is user in the list. If order is empty, the user must be removed from the participant list.
    */
   groupCallParticipant(object_ptr<MessageSender> &&participant_id_, int32 audio_source_id_, int32 screen_sharing_audio_source_id_, object_ptr<groupCallParticipantVideoInfo> &&video_info_, object_ptr<groupCallParticipantVideoInfo> &&screen_sharing_video_info_, string const &bio_, bool is_current_user_, bool is_speaking_, bool is_hand_raised_, bool can_be_muted_for_all_users_, bool can_be_unmuted_for_all_users_, bool can_be_muted_for_current_user_, bool can_be_unmuted_for_current_user_, bool is_muted_for_all_users_, bool is_muted_for_current_user_, bool can_unmute_self_, int32 volume_level_, string const &order_);
 
@@ -12737,7 +12737,7 @@ class groupCallParticipant final : public Object {
 };
 
 /**
- * Contains information about a group call participant's video channel.
+ * Contains information about a group call participant&\#039;s video channel.
  */
 class groupCallParticipantVideoInfo final : public Object {
  public:
@@ -12749,12 +12749,12 @@ class groupCallParticipantVideoInfo final : public Object {
   bool is_paused_;
 
   /**
-   * Contains information about a group call participant's video channel.
+   * Contains information about a group call participant&\#039;s video channel.
    */
   groupCallParticipantVideoInfo();
 
   /**
-   * Contains information about a group call participant's video channel.
+   * Contains information about a group call participant&\#039;s video channel.
    *
    * \param[in] source_groups_ List of synchronization source groups of the video.
    * \param[in] endpoint_id_ Video channel endpoint identifier.
@@ -14286,7 +14286,7 @@ class InputChatPhoto: public Object {
  */
 class inputChatPhotoPrevious final : public InputChatPhoto {
  public:
-  /// Identifier of the current user's profile photo to reuse.
+  /// Identifier of the current user&\#039;s profile photo to reuse.
   int64 chat_photo_id_;
 
   /**
@@ -14297,7 +14297,7 @@ class inputChatPhotoPrevious final : public InputChatPhoto {
   /**
    * A previously used profile photo of the current user.
    *
-   * \param[in] chat_photo_id_ Identifier of the current user's profile photo to reuse.
+   * \param[in] chat_photo_id_ Identifier of the current user&\#039;s profile photo to reuse.
    */
   explicit inputChatPhotoPrevious(int64 chat_photo_id_);
 
@@ -14690,7 +14690,7 @@ class inputFileGenerated final : public InputFile {
  public:
   /// Local path to a file from which the file is generated; may be empty if there is no such file.
   string original_path_;
-  /// String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with '\#' are reserved for internal TDLib usage.
+  /// String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with &\#039;\#&\#039; are reserved for internal TDLib usage.
   string conversion_;
   /// Expected size of the generated file, in bytes; 0 if unknown.
   int53 expected_size_;
@@ -14704,7 +14704,7 @@ class inputFileGenerated final : public InputFile {
    * A file generated by the application.
    *
    * \param[in] original_path_ Local path to a file from which the file is generated; may be empty if there is no such file.
-   * \param[in] conversion_ String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with '\#' are reserved for internal TDLib usage.
+   * \param[in] conversion_ String specifying the conversion applied to the original file; must be persistent across application restarts. Conversions beginning with &\#039;\#&\#039; are reserved for internal TDLib usage.
    * \param[in] expected_size_ Expected size of the generated file, in bytes; 0 if unknown.
    */
   inputFileGenerated(string const &original_path_, string const &conversion_, int53 expected_size_);
@@ -15799,7 +15799,7 @@ class inputMessageDocument final : public InputMessageContent {
  */
 class inputMessagePhoto final : public InputMessageContent {
  public:
-  /// Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20.
+  /// Photo to send. The photo must be at most 10 MB in size. The photo&\#039;s width and height must not exceed 10000 in total. Width and height ratio must be at most 20.
   object_ptr<InputFile> photo_;
   /// Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats.
   object_ptr<inputThumbnail> thumbnail_;
@@ -15822,7 +15822,7 @@ class inputMessagePhoto final : public InputMessageContent {
   /**
    * A photo message.
    *
-   * \param[in] photo_ Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20.
+   * \param[in] photo_ Photo to send. The photo must be at most 10 MB in size. The photo&\#039;s width and height must not exceed 10000 in total. Width and height ratio must be at most 20.
    * \param[in] thumbnail_ Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats.
    * \param[in] added_sticker_file_ids_ File identifiers of the stickers added to the photo, if applicable.
    * \param[in] width_ Photo width.
@@ -16067,7 +16067,7 @@ class inputMessageLocation final : public InputMessageContent {
   int32 live_period_;
   /// For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown.
   int32 heading_;
-  /// For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages.
+  /// For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can&\#039;t be enabled in channels and Saved Messages.
   int32 proximity_alert_radius_;
 
   /**
@@ -16081,7 +16081,7 @@ class inputMessageLocation final : public InputMessageContent {
    * \param[in] location_ Location to be sent.
    * \param[in] live_period_ Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise.
    * \param[in] heading_ For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown.
-   * \param[in] proximity_alert_radius_ For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages.
+   * \param[in] proximity_alert_radius_ For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can&\#039;t be enabled in channels and Saved Messages.
    */
   inputMessageLocation(object_ptr<location> &&location_, int32 live_period_, int32 heading_, int32 proximity_alert_radius_);
 
@@ -16330,7 +16330,7 @@ class inputMessageInvoice final : public InputMessageContent {
 };
 
 /**
- * A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
+ * A message with a poll. Polls can&\#039;t be sent to secret chats. Polls can be sent only to a private chat with a bot.
  */
 class inputMessagePoll final : public InputMessageContent {
  public:
@@ -16338,7 +16338,7 @@ class inputMessagePoll final : public InputMessageContent {
   string question_;
   /// List of poll answer options, 2-10 strings 1-100 characters each.
   array<string> options_;
-  /// True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels.
+  /// True, if the poll voters are anonymous. Non-anonymous polls can&\#039;t be sent or forwarded to channels.
   bool is_anonymous_;
   /// Type of the poll.
   object_ptr<PollType> type_;
@@ -16350,16 +16350,16 @@ class inputMessagePoll final : public InputMessageContent {
   bool is_closed_;
 
   /**
-   * A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
+   * A message with a poll. Polls can&\#039;t be sent to secret chats. Polls can be sent only to a private chat with a bot.
    */
   inputMessagePoll();
 
   /**
-   * A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot.
+   * A message with a poll. Polls can&\#039;t be sent to secret chats. Polls can be sent only to a private chat with a bot.
    *
    * \param[in] question_ Poll question; 1-255 characters (up to 300 characters for bots).
    * \param[in] options_ List of poll answer options, 2-10 strings 1-100 characters each.
-   * \param[in] is_anonymous_ True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels.
+   * \param[in] is_anonymous_ True, if the poll voters are anonymous. Non-anonymous polls can&\#039;t be sent or forwarded to channels.
    * \param[in] type_ Type of the poll.
    * \param[in] open_period_ Amount of time the poll will be active after creation, in seconds; for bots only.
    * \param[in] close_date_ Point in time (Unix timestamp) when the poll will automatically be closed; for bots only.
@@ -16441,7 +16441,7 @@ class InputPassportElement: public Object {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's personal details.
+ * A Telegram Passport element to be saved containing the user&\#039;s personal details.
  */
 class inputPassportElementPersonalDetails final : public InputPassportElement {
  public:
@@ -16449,12 +16449,12 @@ class inputPassportElementPersonalDetails final : public InputPassportElement {
   object_ptr<personalDetails> personal_details_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's personal details.
+   * A Telegram Passport element to be saved containing the user&\#039;s personal details.
    */
   inputPassportElementPersonalDetails();
 
   /**
-   * A Telegram Passport element to be saved containing the user's personal details.
+   * A Telegram Passport element to be saved containing the user&\#039;s personal details.
    *
    * \param[in] personal_details_ Personal details of the user.
    */
@@ -16479,7 +16479,7 @@ class inputPassportElementPersonalDetails final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's passport.
+ * A Telegram Passport element to be saved containing the user&\#039;s passport.
  */
 class inputPassportElementPassport final : public InputPassportElement {
  public:
@@ -16487,12 +16487,12 @@ class inputPassportElementPassport final : public InputPassportElement {
   object_ptr<inputIdentityDocument> passport_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's passport.
+   * A Telegram Passport element to be saved containing the user&\#039;s passport.
    */
   inputPassportElementPassport();
 
   /**
-   * A Telegram Passport element to be saved containing the user's passport.
+   * A Telegram Passport element to be saved containing the user&\#039;s passport.
    *
    * \param[in] passport_ The passport to be saved.
    */
@@ -16517,7 +16517,7 @@ class inputPassportElementPassport final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's driver license.
+ * A Telegram Passport element to be saved containing the user&\#039;s driver license.
  */
 class inputPassportElementDriverLicense final : public InputPassportElement {
  public:
@@ -16525,12 +16525,12 @@ class inputPassportElementDriverLicense final : public InputPassportElement {
   object_ptr<inputIdentityDocument> driver_license_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's driver license.
+   * A Telegram Passport element to be saved containing the user&\#039;s driver license.
    */
   inputPassportElementDriverLicense();
 
   /**
-   * A Telegram Passport element to be saved containing the user's driver license.
+   * A Telegram Passport element to be saved containing the user&\#039;s driver license.
    *
    * \param[in] driver_license_ The driver license to be saved.
    */
@@ -16555,7 +16555,7 @@ class inputPassportElementDriverLicense final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's identity card.
+ * A Telegram Passport element to be saved containing the user&\#039;s identity card.
  */
 class inputPassportElementIdentityCard final : public InputPassportElement {
  public:
@@ -16563,12 +16563,12 @@ class inputPassportElementIdentityCard final : public InputPassportElement {
   object_ptr<inputIdentityDocument> identity_card_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's identity card.
+   * A Telegram Passport element to be saved containing the user&\#039;s identity card.
    */
   inputPassportElementIdentityCard();
 
   /**
-   * A Telegram Passport element to be saved containing the user's identity card.
+   * A Telegram Passport element to be saved containing the user&\#039;s identity card.
    *
    * \param[in] identity_card_ The identity card to be saved.
    */
@@ -16593,7 +16593,7 @@ class inputPassportElementIdentityCard final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's internal passport.
+ * A Telegram Passport element to be saved containing the user&\#039;s internal passport.
  */
 class inputPassportElementInternalPassport final : public InputPassportElement {
  public:
@@ -16601,12 +16601,12 @@ class inputPassportElementInternalPassport final : public InputPassportElement {
   object_ptr<inputIdentityDocument> internal_passport_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's internal passport.
+   * A Telegram Passport element to be saved containing the user&\#039;s internal passport.
    */
   inputPassportElementInternalPassport();
 
   /**
-   * A Telegram Passport element to be saved containing the user's internal passport.
+   * A Telegram Passport element to be saved containing the user&\#039;s internal passport.
    *
    * \param[in] internal_passport_ The internal passport to be saved.
    */
@@ -16631,7 +16631,7 @@ class inputPassportElementInternalPassport final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's address.
+ * A Telegram Passport element to be saved containing the user&\#039;s address.
  */
 class inputPassportElementAddress final : public InputPassportElement {
  public:
@@ -16639,12 +16639,12 @@ class inputPassportElementAddress final : public InputPassportElement {
   object_ptr<address> address_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's address.
+   * A Telegram Passport element to be saved containing the user&\#039;s address.
    */
   inputPassportElementAddress();
 
   /**
-   * A Telegram Passport element to be saved containing the user's address.
+   * A Telegram Passport element to be saved containing the user&\#039;s address.
    *
    * \param[in] address_ The address to be saved.
    */
@@ -16669,7 +16669,7 @@ class inputPassportElementAddress final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's utility bill.
+ * A Telegram Passport element to be saved containing the user&\#039;s utility bill.
  */
 class inputPassportElementUtilityBill final : public InputPassportElement {
  public:
@@ -16677,12 +16677,12 @@ class inputPassportElementUtilityBill final : public InputPassportElement {
   object_ptr<inputPersonalDocument> utility_bill_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's utility bill.
+   * A Telegram Passport element to be saved containing the user&\#039;s utility bill.
    */
   inputPassportElementUtilityBill();
 
   /**
-   * A Telegram Passport element to be saved containing the user's utility bill.
+   * A Telegram Passport element to be saved containing the user&\#039;s utility bill.
    *
    * \param[in] utility_bill_ The utility bill to be saved.
    */
@@ -16707,7 +16707,7 @@ class inputPassportElementUtilityBill final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's bank statement.
+ * A Telegram Passport element to be saved containing the user&\#039;s bank statement.
  */
 class inputPassportElementBankStatement final : public InputPassportElement {
  public:
@@ -16715,12 +16715,12 @@ class inputPassportElementBankStatement final : public InputPassportElement {
   object_ptr<inputPersonalDocument> bank_statement_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's bank statement.
+   * A Telegram Passport element to be saved containing the user&\#039;s bank statement.
    */
   inputPassportElementBankStatement();
 
   /**
-   * A Telegram Passport element to be saved containing the user's bank statement.
+   * A Telegram Passport element to be saved containing the user&\#039;s bank statement.
    *
    * \param[in] bank_statement_ The bank statement to be saved.
    */
@@ -16745,7 +16745,7 @@ class inputPassportElementBankStatement final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's rental agreement.
+ * A Telegram Passport element to be saved containing the user&\#039;s rental agreement.
  */
 class inputPassportElementRentalAgreement final : public InputPassportElement {
  public:
@@ -16753,12 +16753,12 @@ class inputPassportElementRentalAgreement final : public InputPassportElement {
   object_ptr<inputPersonalDocument> rental_agreement_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's rental agreement.
+   * A Telegram Passport element to be saved containing the user&\#039;s rental agreement.
    */
   inputPassportElementRentalAgreement();
 
   /**
-   * A Telegram Passport element to be saved containing the user's rental agreement.
+   * A Telegram Passport element to be saved containing the user&\#039;s rental agreement.
    *
    * \param[in] rental_agreement_ The rental agreement to be saved.
    */
@@ -16783,7 +16783,7 @@ class inputPassportElementRentalAgreement final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's passport registration.
+ * A Telegram Passport element to be saved containing the user&\#039;s passport registration.
  */
 class inputPassportElementPassportRegistration final : public InputPassportElement {
  public:
@@ -16791,12 +16791,12 @@ class inputPassportElementPassportRegistration final : public InputPassportEleme
   object_ptr<inputPersonalDocument> passport_registration_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's passport registration.
+   * A Telegram Passport element to be saved containing the user&\#039;s passport registration.
    */
   inputPassportElementPassportRegistration();
 
   /**
-   * A Telegram Passport element to be saved containing the user's passport registration.
+   * A Telegram Passport element to be saved containing the user&\#039;s passport registration.
    *
    * \param[in] passport_registration_ The passport registration page to be saved.
    */
@@ -16821,7 +16821,7 @@ class inputPassportElementPassportRegistration final : public InputPassportEleme
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's temporary registration.
+ * A Telegram Passport element to be saved containing the user&\#039;s temporary registration.
  */
 class inputPassportElementTemporaryRegistration final : public InputPassportElement {
  public:
@@ -16829,12 +16829,12 @@ class inputPassportElementTemporaryRegistration final : public InputPassportElem
   object_ptr<inputPersonalDocument> temporary_registration_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's temporary registration.
+   * A Telegram Passport element to be saved containing the user&\#039;s temporary registration.
    */
   inputPassportElementTemporaryRegistration();
 
   /**
-   * A Telegram Passport element to be saved containing the user's temporary registration.
+   * A Telegram Passport element to be saved containing the user&\#039;s temporary registration.
    *
    * \param[in] temporary_registration_ The temporary registration document to be saved.
    */
@@ -16859,7 +16859,7 @@ class inputPassportElementTemporaryRegistration final : public InputPassportElem
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's phone number.
+ * A Telegram Passport element to be saved containing the user&\#039;s phone number.
  */
 class inputPassportElementPhoneNumber final : public InputPassportElement {
  public:
@@ -16867,12 +16867,12 @@ class inputPassportElementPhoneNumber final : public InputPassportElement {
   string phone_number_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's phone number.
+   * A Telegram Passport element to be saved containing the user&\#039;s phone number.
    */
   inputPassportElementPhoneNumber();
 
   /**
-   * A Telegram Passport element to be saved containing the user's phone number.
+   * A Telegram Passport element to be saved containing the user&\#039;s phone number.
    *
    * \param[in] phone_number_ The phone number to be saved.
    */
@@ -16897,7 +16897,7 @@ class inputPassportElementPhoneNumber final : public InputPassportElement {
 };
 
 /**
- * A Telegram Passport element to be saved containing the user's email address.
+ * A Telegram Passport element to be saved containing the user&\#039;s email address.
  */
 class inputPassportElementEmailAddress final : public InputPassportElement {
  public:
@@ -16905,12 +16905,12 @@ class inputPassportElementEmailAddress final : public InputPassportElement {
   string email_address_;
 
   /**
-   * A Telegram Passport element to be saved containing the user's email address.
+   * A Telegram Passport element to be saved containing the user&\#039;s email address.
    */
   inputPassportElementEmailAddress();
 
   /**
-   * A Telegram Passport element to be saved containing the user's email address.
+   * A Telegram Passport element to be saved containing the user&\#039;s email address.
    *
    * \param[in] email_address_ The email address to be saved.
    */
@@ -17025,7 +17025,7 @@ class inputPassportElementErrorSourceUnspecified final : public InputPassportEle
 };
 
 /**
- * A data field contains an error. The error is considered resolved when the field's value changes.
+ * A data field contains an error. The error is considered resolved when the field&\#039;s value changes.
  */
 class inputPassportElementErrorSourceDataField final : public InputPassportElementErrorSource {
  public:
@@ -17035,12 +17035,12 @@ class inputPassportElementErrorSourceDataField final : public InputPassportEleme
   bytes data_hash_;
 
   /**
-   * A data field contains an error. The error is considered resolved when the field's value changes.
+   * A data field contains an error. The error is considered resolved when the field&\#039;s value changes.
    */
   inputPassportElementErrorSourceDataField();
 
   /**
-   * A data field contains an error. The error is considered resolved when the field's value changes.
+   * A data field contains an error. The error is considered resolved when the field&\#039;s value changes.
    *
    * \param[in] field_name_ Field name.
    * \param[in] data_hash_ Current data hash.
@@ -17426,9 +17426,9 @@ class inputThumbnail final : public Object {
  public:
   /// Thumbnail file to send. Sending thumbnails by file_id is currently not supported.
   object_ptr<InputFile> thumbnail_;
-  /// Thumbnail width, usually shouldn't exceed 320. Use 0 if unknown.
+  /// Thumbnail width, usually shouldn&\#039;t exceed 320. Use 0 if unknown.
   int32 width_;
-  /// Thumbnail height, usually shouldn't exceed 320. Use 0 if unknown.
+  /// Thumbnail height, usually shouldn&\#039;t exceed 320. Use 0 if unknown.
   int32 height_;
 
   /**
@@ -17440,8 +17440,8 @@ class inputThumbnail final : public Object {
    * A thumbnail to be sent along with a file; must be in JPEG or WEBP format for stickers, and less than 200 KB in size.
    *
    * \param[in] thumbnail_ Thumbnail file to send. Sending thumbnails by file_id is currently not supported.
-   * \param[in] width_ Thumbnail width, usually shouldn't exceed 320. Use 0 if unknown.
-   * \param[in] height_ Thumbnail height, usually shouldn't exceed 320. Use 0 if unknown.
+   * \param[in] width_ Thumbnail width, usually shouldn&\#039;t exceed 320. Use 0 if unknown.
+   * \param[in] height_ Thumbnail height, usually shouldn&\#039;t exceed 320. Use 0 if unknown.
    */
   inputThumbnail(object_ptr<InputFile> &&thumbnail_, int32 width_, int32 height_);
 
@@ -17501,7 +17501,7 @@ class internalLinkTypeActiveSessions final : public InternalLinkType {
 };
 
 /**
- * The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then user needs to confirm adding the bot to attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add it. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
+ * The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then use getAttachmentMenuBot to receive information about the bot. If the bot isn&\#039;t added to attachment menu, then user needs to confirm adding the bot to attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add it. If the attachment menu bot can&\#039;t be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
  */
 class internalLinkTypeAttachmentMenuBot final : public InternalLinkType {
  public:
@@ -17513,12 +17513,12 @@ class internalLinkTypeAttachmentMenuBot final : public InternalLinkType {
   string url_;
 
   /**
-   * The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then user needs to confirm adding the bot to attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add it. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
+   * The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then use getAttachmentMenuBot to receive information about the bot. If the bot isn&\#039;t added to attachment menu, then user needs to confirm adding the bot to attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add it. If the attachment menu bot can&\#039;t be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
    */
   internalLinkTypeAttachmentMenuBot();
 
   /**
-   * The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then user needs to confirm adding the bot to attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add it. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
+   * The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then use getAttachmentMenuBot to receive information about the bot. If the bot isn&\#039;t added to attachment menu, then user needs to confirm adding the bot to attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add it. If the attachment menu bot can&\#039;t be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL.
    *
    * \param[in] target_chat_ Target chat to be opened.
    * \param[in] bot_username_ Username of the bot.
@@ -17665,7 +17665,7 @@ class internalLinkTypeBotStart final : public InternalLinkType {
 };
 
 /**
- * The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat, otherwise just send /start message with bot's username added to the chat.
+ * The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then if start_parameter isn&\#039;t empty, call sendBotStartMessage with the given start parameter and the chosen chat, otherwise just send /start message with bot&\#039;s username added to the chat.
  */
 class internalLinkTypeBotStartInGroup final : public InternalLinkType {
  public:
@@ -17677,12 +17677,12 @@ class internalLinkTypeBotStartInGroup final : public InternalLinkType {
   object_ptr<chatAdministratorRights> administrator_rights_;
 
   /**
-   * The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat, otherwise just send /start message with bot's username added to the chat.
+   * The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then if start_parameter isn&\#039;t empty, call sendBotStartMessage with the given start parameter and the chosen chat, otherwise just send /start message with bot&\#039;s username added to the chat.
    */
   internalLinkTypeBotStartInGroup();
 
   /**
-   * The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat, otherwise just send /start message with bot's username added to the chat.
+   * The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then if start_parameter isn&\#039;t empty, call sendBotStartMessage with the given start parameter and the chosen chat, otherwise just send /start message with bot&\#039;s username added to the chat.
    *
    * \param[in] bot_username_ Username of the bot.
    * \param[in] start_parameter_ The parameter to be passed to sendBotStartMessage.
@@ -18075,11 +18075,11 @@ class internalLinkTypeMessageDraft final : public InternalLinkType {
  */
 class internalLinkTypePassportDataRequest final : public InternalLinkType {
  public:
-  /// User identifier of the service's bot.
+  /// User identifier of the service&\#039;s bot.
   int53 bot_user_id_;
   /// Telegram Passport element types requested by the service.
   string scope_;
-  /// Service's public key.
+  /// Service&\#039;s public key.
   string public_key_;
   /// Unique request identifier provided by the service.
   string nonce_;
@@ -18094,9 +18094,9 @@ class internalLinkTypePassportDataRequest final : public InternalLinkType {
   /**
    * The link contains a request of Telegram passport data. Call getPassportAuthorizationForm with the given parameters to process the link if the link was received from outside of the application, otherwise ignore it.
    *
-   * \param[in] bot_user_id_ User identifier of the service's bot.
+   * \param[in] bot_user_id_ User identifier of the service&\#039;s bot.
    * \param[in] scope_ Telegram Passport element types requested by the service.
-   * \param[in] public_key_ Service's public key.
+   * \param[in] public_key_ Service&\#039;s public key.
    * \param[in] nonce_ Unique request identifier provided by the service.
    * \param[in] callback_url_ An HTTP URL to open once the request is finished or canceled with the parameter tg_passport=success or tg_passport=cancel respectively. If empty, then the link tgbot{bot_user_id}://passport/success or tgbot{bot_user_id}://passport/cancel needs to be opened instead.
    */
@@ -18668,17 +18668,17 @@ class invoice final : public Object {
   string recurring_payment_terms_of_service_url_;
   /// True, if the payment is a test payment.
   bool is_test_;
-  /// True, if the user's name is needed for payment.
+  /// True, if the user&\#039;s name is needed for payment.
   bool need_name_;
-  /// True, if the user's phone number is needed for payment.
+  /// True, if the user&\#039;s phone number is needed for payment.
   bool need_phone_number_;
-  /// True, if the user's email address is needed for payment.
+  /// True, if the user&\#039;s email address is needed for payment.
   bool need_email_address_;
-  /// True, if the user's shipping address is needed for payment.
+  /// True, if the user&\#039;s shipping address is needed for payment.
   bool need_shipping_address_;
-  /// True, if the user's phone number will be sent to the provider.
+  /// True, if the user&\#039;s phone number will be sent to the provider.
   bool send_phone_number_to_provider_;
-  /// True, if the user's email address will be sent to the provider.
+  /// True, if the user&\#039;s email address will be sent to the provider.
   bool send_email_address_to_provider_;
   /// True, if the total price depends on the shipping method.
   bool is_flexible_;
@@ -18697,12 +18697,12 @@ class invoice final : public Object {
    * \param[in] suggested_tip_amounts_ Suggested amounts of tip in the smallest units of the currency.
    * \param[in] recurring_payment_terms_of_service_url_ An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay.
    * \param[in] is_test_ True, if the payment is a test payment.
-   * \param[in] need_name_ True, if the user's name is needed for payment.
-   * \param[in] need_phone_number_ True, if the user's phone number is needed for payment.
-   * \param[in] need_email_address_ True, if the user's email address is needed for payment.
-   * \param[in] need_shipping_address_ True, if the user's shipping address is needed for payment.
-   * \param[in] send_phone_number_to_provider_ True, if the user's phone number will be sent to the provider.
-   * \param[in] send_email_address_to_provider_ True, if the user's email address will be sent to the provider.
+   * \param[in] need_name_ True, if the user&\#039;s name is needed for payment.
+   * \param[in] need_phone_number_ True, if the user&\#039;s phone number is needed for payment.
+   * \param[in] need_email_address_ True, if the user&\#039;s email address is needed for payment.
+   * \param[in] need_shipping_address_ True, if the user&\#039;s shipping address is needed for payment.
+   * \param[in] send_phone_number_to_provider_ True, if the user&\#039;s phone number will be sent to the provider.
+   * \param[in] send_email_address_to_provider_ True, if the user&\#039;s email address will be sent to the provider.
    * \param[in] is_flexible_ True, if the total price depends on the shipping method.
    */
   invoice(string const &currency_, array<object_ptr<labeledPricePart>> &&price_parts_, int53 max_tip_amount_, array<int53> &&suggested_tip_amounts_, string const &recurring_payment_terms_of_service_url_, bool is_test_, bool need_name_, bool need_phone_number_, bool need_email_address_, bool need_shipping_address_, bool send_phone_number_to_provider_, bool send_email_address_to_provider_, bool is_flexible_);
@@ -18730,9 +18730,9 @@ class invoice final : public Object {
  */
 class jsonObjectMember final : public Object {
  public:
-  /// Member's key.
+  /// Member&\#039;s key.
   string key_;
-  /// Member's value.
+  /// Member&\#039;s value.
   object_ptr<JsonValue> value_;
 
   /**
@@ -18743,8 +18743,8 @@ class jsonObjectMember final : public Object {
   /**
    * Represents one member of a JSON object.
    *
-   * \param[in] key_ Member's key.
-   * \param[in] value_ Member's value.
+   * \param[in] key_ Member&\#039;s key.
+   * \param[in] value_ Member&\#039;s value.
    */
   jsonObjectMember(string const &key_, object_ptr<JsonValue> &&value_);
 
@@ -19072,13 +19072,13 @@ class keyboardButtonTypeText final : public KeyboardButtonType {
 };
 
 /**
- * A button that sends the user's phone number when pressed; available only in private chats.
+ * A button that sends the user&\#039;s phone number when pressed; available only in private chats.
  */
 class keyboardButtonTypeRequestPhoneNumber final : public KeyboardButtonType {
  public:
 
   /**
-   * A button that sends the user's phone number when pressed; available only in private chats.
+   * A button that sends the user&\#039;s phone number when pressed; available only in private chats.
    */
   keyboardButtonTypeRequestPhoneNumber();
 
@@ -19101,13 +19101,13 @@ class keyboardButtonTypeRequestPhoneNumber final : public KeyboardButtonType {
 };
 
 /**
- * A button that sends the user's location when pressed; available only in private chats.
+ * A button that sends the user&\#039;s location when pressed; available only in private chats.
  */
 class keyboardButtonTypeRequestLocation final : public KeyboardButtonType {
  public:
 
   /**
-   * A button that sends the user's location when pressed; available only in private chats.
+   * A button that sends the user&\#039;s location when pressed; available only in private chats.
    */
   keyboardButtonTypeRequestLocation();
 
@@ -20185,9 +20185,9 @@ class message final : public Object {
   int53 reply_to_message_id_;
   /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs.
   int53 message_thread_id_;
-  /// For self-destructing messages, the message's TTL (Time To Live), in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the TTL expires.
+  /// For self-destructing messages, the message&\#039;s TTL (Time To Live), in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the TTL expires.
   int32 ttl_;
-  /// Time left before the message expires, in seconds. If the TTL timer isn't started yet, equals to the value of the ttl field.
+  /// Time left before the message expires, in seconds. If the TTL timer isn&\#039;t started yet, equals to the value of the ttl field.
   double ttl_expires_in_;
   /// If non-zero, the user identifier of the bot through which this message was sent.
   int53 via_bot_user_id_;
@@ -20238,8 +20238,8 @@ class message final : public Object {
    * \param[in] reply_in_chat_id_ If non-zero, the identifier of the chat to which the replied message belongs; Currently, only messages in the Replies chat can have different reply_in_chat_id and chat_id.
    * \param[in] reply_to_message_id_ If non-zero, the identifier of the message this message is replying to; can be the identifier of a deleted message.
    * \param[in] message_thread_id_ If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs.
-   * \param[in] ttl_ For self-destructing messages, the message's TTL (Time To Live), in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the TTL expires.
-   * \param[in] ttl_expires_in_ Time left before the message expires, in seconds. If the TTL timer isn't started yet, equals to the value of the ttl field.
+   * \param[in] ttl_ For self-destructing messages, the message&\#039;s TTL (Time To Live), in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the TTL expires.
+   * \param[in] ttl_expires_in_ Time left before the message expires, in seconds. If the TTL timer isn&\#039;t started yet, equals to the value of the ttl field.
    * \param[in] via_bot_user_id_ If non-zero, the user identifier of the bot through which this message was sent.
    * \param[in] author_signature_ For channel posts and anonymous group messages, optional author signature.
    * \param[in] media_album_id_ Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums.
@@ -20364,7 +20364,7 @@ class messageText final : public MessageContent {
  public:
   /// Text of the message.
   object_ptr<formattedText> text_;
-  /// A preview of the web page that's mentioned in the text; may be null.
+  /// A preview of the web page that&\#039;s mentioned in the text; may be null.
   object_ptr<webPage> web_page_;
 
   /**
@@ -20376,7 +20376,7 @@ class messageText final : public MessageContent {
    * A text message.
    *
    * \param[in] text_ Text of the message.
-   * \param[in] web_page_ A preview of the web page that's mentioned in the text; may be null.
+   * \param[in] web_page_ A preview of the web page that&\#039;s mentioned in the text; may be null.
    */
   messageText(object_ptr<formattedText> &&text_, object_ptr<webPage> &&web_page_);
 
@@ -20977,7 +20977,7 @@ class messageDice final : public MessageContent {
   object_ptr<DiceStickers> final_state_;
   /// Emoji on which the dice throw animation is based.
   string emoji_;
-  /// The dice value. If the value is 0, the dice don't have final state yet.
+  /// The dice value. If the value is 0, the dice don&\#039;t have final state yet.
   int32 value_;
   /// Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded.
   int32 success_animation_frame_number_;
@@ -20993,7 +20993,7 @@ class messageDice final : public MessageContent {
    * \param[in] initial_state_ The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known.
    * \param[in] final_state_ The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known.
    * \param[in] emoji_ Emoji on which the dice throw animation is based.
-   * \param[in] value_ The dice value. If the value is 0, the dice don't have final state yet.
+   * \param[in] value_ The dice value. If the value is 0, the dice don&\#039;t have final state yet.
    * \param[in] success_animation_frame_number_ Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded.
    */
   messageDice(object_ptr<DiceStickers> &&initial_state_, object_ptr<DiceStickers> &&final_state_, string const &emoji_, int32 value_, int32 success_animation_frame_number_);
@@ -22442,7 +22442,7 @@ class messageUnsupported final : public MessageContent {
 };
 
 /**
- * Options to be used when a message content is copied without reference to the original sender. Service messages and messageInvoice can't be copied.
+ * Options to be used when a message content is copied without reference to the original sender. Service messages and messageInvoice can&\#039;t be copied.
  */
 class messageCopyOptions final : public Object {
  public:
@@ -22454,12 +22454,12 @@ class messageCopyOptions final : public Object {
   object_ptr<formattedText> new_caption_;
 
   /**
-   * Options to be used when a message content is copied without reference to the original sender. Service messages and messageInvoice can't be copied.
+   * Options to be used when a message content is copied without reference to the original sender. Service messages and messageInvoice can&\#039;t be copied.
    */
   messageCopyOptions();
 
   /**
-   * Options to be used when a message content is copied without reference to the original sender. Service messages and messageInvoice can't be copied.
+   * Options to be used when a message content is copied without reference to the original sender. Service messages and messageInvoice can&\#039;t be copied.
    *
    * \param[in] send_copy_ True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local.
    * \param[in] replace_caption_ True, if media caption of the message copy needs to be replaced. Ignored if send_copy is false.
@@ -22609,9 +22609,9 @@ class messageForwardInfo final : public Object {
   int32 date_;
   /// The type of a public service announcement for the forwarded message.
   string public_service_announcement_type_;
-  /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown.
+  /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel&\#039;s discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown.
   int53 from_chat_id_;
-  /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown.
+  /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel&\#039;s discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown.
   int53 from_message_id_;
 
   /**
@@ -22625,8 +22625,8 @@ class messageForwardInfo final : public Object {
    * \param[in] origin_ Origin of a forwarded message.
    * \param[in] date_ Point in time (Unix timestamp) when the message was originally sent.
    * \param[in] public_service_announcement_type_ The type of a public service announcement for the forwarded message.
-   * \param[in] from_chat_id_ For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown.
-   * \param[in] from_message_id_ For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown.
+   * \param[in] from_chat_id_ For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel&\#039;s discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown.
+   * \param[in] from_message_id_ For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel&\#039;s discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown.
    */
   messageForwardInfo(object_ptr<MessageForwardOrigin> &&origin_, int32 date_, string const &public_service_announcement_type_, int53 from_chat_id_, int53 from_message_id_);
 
@@ -23264,7 +23264,7 @@ class messageSendOptions final : public Object {
   bool from_background_;
   /// Pass true if the content of the message must be protected from forwarding and saving; for bots only.
   bool protect_content_;
-  /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled.
+  /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can&\#039;t be scheduled.
   object_ptr<MessageSchedulingState> scheduling_state_;
 
   /**
@@ -23278,7 +23278,7 @@ class messageSendOptions final : public Object {
    * \param[in] disable_notification_ Pass true to disable notification for the message.
    * \param[in] from_background_ Pass true if the message is sent from the background.
    * \param[in] protect_content_ Pass true if the content of the message must be protected from forwarding and saving; for bots only.
-   * \param[in] scheduling_state_ Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled.
+   * \param[in] scheduling_state_ Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can&\#039;t be scheduled.
    */
   messageSendOptions(bool disable_notification_, bool from_background_, bool protect_content_, object_ptr<MessageSchedulingState> &&scheduling_state_);
 
@@ -23649,9 +23649,9 @@ class messages final : public Object {
  */
 class minithumbnail final : public Object {
  public:
-  /// Thumbnail width, usually doesn't exceed 40.
+  /// Thumbnail width, usually doesn&\#039;t exceed 40.
   int32 width_;
-  /// Thumbnail height, usually doesn't exceed 40.
+  /// Thumbnail height, usually doesn&\#039;t exceed 40.
   int32 height_;
   /// The thumbnail in JPEG format.
   bytes data_;
@@ -23664,8 +23664,8 @@ class minithumbnail final : public Object {
   /**
    * Thumbnail image of a very poor quality and low resolution.
    *
-   * \param[in] width_ Thumbnail width, usually doesn't exceed 40.
-   * \param[in] height_ Thumbnail height, usually doesn't exceed 40.
+   * \param[in] width_ Thumbnail width, usually doesn&\#039;t exceed 40.
+   * \param[in] height_ Thumbnail height, usually doesn&\#039;t exceed 40.
    * \param[in] data_ The thumbnail in JPEG format.
    */
   minithumbnail(int32 width_, int32 height_, bytes const &data_);
@@ -23742,7 +23742,7 @@ class NetworkStatisticsEntry: public Object {
  */
 class networkStatisticsEntryFile final : public NetworkStatisticsEntry {
  public:
-  /// Type of the file the data is part of; pass null if the data isn't related to files.
+  /// Type of the file the data is part of; pass null if the data isn&\#039;t related to files.
   object_ptr<FileType> file_type_;
   /// Type of the network the data was sent through. Call setNetworkType to maintain the actual network type.
   object_ptr<NetworkType> network_type_;
@@ -23759,7 +23759,7 @@ class networkStatisticsEntryFile final : public NetworkStatisticsEntry {
   /**
    * Contains information about the total amount of data that was used to send and receive files.
    *
-   * \param[in] file_type_ Type of the file the data is part of; pass null if the data isn't related to files.
+   * \param[in] file_type_ Type of the file the data is part of; pass null if the data isn&\#039;t related to files.
    * \param[in] network_type_ Type of the network the data was sent through. Call setNetworkType to maintain the actual network type.
    * \param[in] sent_bytes_ Total number of bytes sent.
    * \param[in] received_bytes_ Total number of bytes received.
@@ -26433,7 +26433,7 @@ class PassportElement: public Object {
 };
 
 /**
- * A Telegram Passport element containing the user's personal details.
+ * A Telegram Passport element containing the user&\#039;s personal details.
  */
 class passportElementPersonalDetails final : public PassportElement {
  public:
@@ -26441,12 +26441,12 @@ class passportElementPersonalDetails final : public PassportElement {
   object_ptr<personalDetails> personal_details_;
 
   /**
-   * A Telegram Passport element containing the user's personal details.
+   * A Telegram Passport element containing the user&\#039;s personal details.
    */
   passportElementPersonalDetails();
 
   /**
-   * A Telegram Passport element containing the user's personal details.
+   * A Telegram Passport element containing the user&\#039;s personal details.
    *
    * \param[in] personal_details_ Personal details of the user.
    */
@@ -26471,7 +26471,7 @@ class passportElementPersonalDetails final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's passport.
+ * A Telegram Passport element containing the user&\#039;s passport.
  */
 class passportElementPassport final : public PassportElement {
  public:
@@ -26479,12 +26479,12 @@ class passportElementPassport final : public PassportElement {
   object_ptr<identityDocument> passport_;
 
   /**
-   * A Telegram Passport element containing the user's passport.
+   * A Telegram Passport element containing the user&\#039;s passport.
    */
   passportElementPassport();
 
   /**
-   * A Telegram Passport element containing the user's passport.
+   * A Telegram Passport element containing the user&\#039;s passport.
    *
    * \param[in] passport_ Passport.
    */
@@ -26509,7 +26509,7 @@ class passportElementPassport final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's driver license.
+ * A Telegram Passport element containing the user&\#039;s driver license.
  */
 class passportElementDriverLicense final : public PassportElement {
  public:
@@ -26517,12 +26517,12 @@ class passportElementDriverLicense final : public PassportElement {
   object_ptr<identityDocument> driver_license_;
 
   /**
-   * A Telegram Passport element containing the user's driver license.
+   * A Telegram Passport element containing the user&\#039;s driver license.
    */
   passportElementDriverLicense();
 
   /**
-   * A Telegram Passport element containing the user's driver license.
+   * A Telegram Passport element containing the user&\#039;s driver license.
    *
    * \param[in] driver_license_ Driver license.
    */
@@ -26547,7 +26547,7 @@ class passportElementDriverLicense final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's identity card.
+ * A Telegram Passport element containing the user&\#039;s identity card.
  */
 class passportElementIdentityCard final : public PassportElement {
  public:
@@ -26555,12 +26555,12 @@ class passportElementIdentityCard final : public PassportElement {
   object_ptr<identityDocument> identity_card_;
 
   /**
-   * A Telegram Passport element containing the user's identity card.
+   * A Telegram Passport element containing the user&\#039;s identity card.
    */
   passportElementIdentityCard();
 
   /**
-   * A Telegram Passport element containing the user's identity card.
+   * A Telegram Passport element containing the user&\#039;s identity card.
    *
    * \param[in] identity_card_ Identity card.
    */
@@ -26585,7 +26585,7 @@ class passportElementIdentityCard final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's internal passport.
+ * A Telegram Passport element containing the user&\#039;s internal passport.
  */
 class passportElementInternalPassport final : public PassportElement {
  public:
@@ -26593,12 +26593,12 @@ class passportElementInternalPassport final : public PassportElement {
   object_ptr<identityDocument> internal_passport_;
 
   /**
-   * A Telegram Passport element containing the user's internal passport.
+   * A Telegram Passport element containing the user&\#039;s internal passport.
    */
   passportElementInternalPassport();
 
   /**
-   * A Telegram Passport element containing the user's internal passport.
+   * A Telegram Passport element containing the user&\#039;s internal passport.
    *
    * \param[in] internal_passport_ Internal passport.
    */
@@ -26623,7 +26623,7 @@ class passportElementInternalPassport final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's address.
+ * A Telegram Passport element containing the user&\#039;s address.
  */
 class passportElementAddress final : public PassportElement {
  public:
@@ -26631,12 +26631,12 @@ class passportElementAddress final : public PassportElement {
   object_ptr<address> address_;
 
   /**
-   * A Telegram Passport element containing the user's address.
+   * A Telegram Passport element containing the user&\#039;s address.
    */
   passportElementAddress();
 
   /**
-   * A Telegram Passport element containing the user's address.
+   * A Telegram Passport element containing the user&\#039;s address.
    *
    * \param[in] address_ Address.
    */
@@ -26661,7 +26661,7 @@ class passportElementAddress final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's utility bill.
+ * A Telegram Passport element containing the user&\#039;s utility bill.
  */
 class passportElementUtilityBill final : public PassportElement {
  public:
@@ -26669,12 +26669,12 @@ class passportElementUtilityBill final : public PassportElement {
   object_ptr<personalDocument> utility_bill_;
 
   /**
-   * A Telegram Passport element containing the user's utility bill.
+   * A Telegram Passport element containing the user&\#039;s utility bill.
    */
   passportElementUtilityBill();
 
   /**
-   * A Telegram Passport element containing the user's utility bill.
+   * A Telegram Passport element containing the user&\#039;s utility bill.
    *
    * \param[in] utility_bill_ Utility bill.
    */
@@ -26699,7 +26699,7 @@ class passportElementUtilityBill final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's bank statement.
+ * A Telegram Passport element containing the user&\#039;s bank statement.
  */
 class passportElementBankStatement final : public PassportElement {
  public:
@@ -26707,12 +26707,12 @@ class passportElementBankStatement final : public PassportElement {
   object_ptr<personalDocument> bank_statement_;
 
   /**
-   * A Telegram Passport element containing the user's bank statement.
+   * A Telegram Passport element containing the user&\#039;s bank statement.
    */
   passportElementBankStatement();
 
   /**
-   * A Telegram Passport element containing the user's bank statement.
+   * A Telegram Passport element containing the user&\#039;s bank statement.
    *
    * \param[in] bank_statement_ Bank statement.
    */
@@ -26737,7 +26737,7 @@ class passportElementBankStatement final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's rental agreement.
+ * A Telegram Passport element containing the user&\#039;s rental agreement.
  */
 class passportElementRentalAgreement final : public PassportElement {
  public:
@@ -26745,12 +26745,12 @@ class passportElementRentalAgreement final : public PassportElement {
   object_ptr<personalDocument> rental_agreement_;
 
   /**
-   * A Telegram Passport element containing the user's rental agreement.
+   * A Telegram Passport element containing the user&\#039;s rental agreement.
    */
   passportElementRentalAgreement();
 
   /**
-   * A Telegram Passport element containing the user's rental agreement.
+   * A Telegram Passport element containing the user&\#039;s rental agreement.
    *
    * \param[in] rental_agreement_ Rental agreement.
    */
@@ -26775,7 +26775,7 @@ class passportElementRentalAgreement final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's passport registration pages.
+ * A Telegram Passport element containing the user&\#039;s passport registration pages.
  */
 class passportElementPassportRegistration final : public PassportElement {
  public:
@@ -26783,12 +26783,12 @@ class passportElementPassportRegistration final : public PassportElement {
   object_ptr<personalDocument> passport_registration_;
 
   /**
-   * A Telegram Passport element containing the user's passport registration pages.
+   * A Telegram Passport element containing the user&\#039;s passport registration pages.
    */
   passportElementPassportRegistration();
 
   /**
-   * A Telegram Passport element containing the user's passport registration pages.
+   * A Telegram Passport element containing the user&\#039;s passport registration pages.
    *
    * \param[in] passport_registration_ Passport registration pages.
    */
@@ -26813,7 +26813,7 @@ class passportElementPassportRegistration final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's temporary registration.
+ * A Telegram Passport element containing the user&\#039;s temporary registration.
  */
 class passportElementTemporaryRegistration final : public PassportElement {
  public:
@@ -26821,12 +26821,12 @@ class passportElementTemporaryRegistration final : public PassportElement {
   object_ptr<personalDocument> temporary_registration_;
 
   /**
-   * A Telegram Passport element containing the user's temporary registration.
+   * A Telegram Passport element containing the user&\#039;s temporary registration.
    */
   passportElementTemporaryRegistration();
 
   /**
-   * A Telegram Passport element containing the user's temporary registration.
+   * A Telegram Passport element containing the user&\#039;s temporary registration.
    *
    * \param[in] temporary_registration_ Temporary registration.
    */
@@ -26851,7 +26851,7 @@ class passportElementTemporaryRegistration final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's phone number.
+ * A Telegram Passport element containing the user&\#039;s phone number.
  */
 class passportElementPhoneNumber final : public PassportElement {
  public:
@@ -26859,12 +26859,12 @@ class passportElementPhoneNumber final : public PassportElement {
   string phone_number_;
 
   /**
-   * A Telegram Passport element containing the user's phone number.
+   * A Telegram Passport element containing the user&\#039;s phone number.
    */
   passportElementPhoneNumber();
 
   /**
-   * A Telegram Passport element containing the user's phone number.
+   * A Telegram Passport element containing the user&\#039;s phone number.
    *
    * \param[in] phone_number_ Phone number.
    */
@@ -26889,7 +26889,7 @@ class passportElementPhoneNumber final : public PassportElement {
 };
 
 /**
- * A Telegram Passport element containing the user's email address.
+ * A Telegram Passport element containing the user&\#039;s email address.
  */
 class passportElementEmailAddress final : public PassportElement {
  public:
@@ -26897,12 +26897,12 @@ class passportElementEmailAddress final : public PassportElement {
   string email_address_;
 
   /**
-   * A Telegram Passport element containing the user's email address.
+   * A Telegram Passport element containing the user&\#039;s email address.
    */
   passportElementEmailAddress();
 
   /**
-   * A Telegram Passport element containing the user's email address.
+   * A Telegram Passport element containing the user&\#039;s email address.
    *
    * \param[in] email_address_ Email address.
    */
@@ -27275,13 +27275,13 @@ class PassportElementType: public Object {
 };
 
 /**
- * A Telegram Passport element containing the user's personal details.
+ * A Telegram Passport element containing the user&\#039;s personal details.
  */
 class passportElementTypePersonalDetails final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's personal details.
+   * A Telegram Passport element containing the user&\#039;s personal details.
    */
   passportElementTypePersonalDetails();
 
@@ -27304,13 +27304,13 @@ class passportElementTypePersonalDetails final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the user's passport.
+ * A Telegram Passport element containing the user&\#039;s passport.
  */
 class passportElementTypePassport final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's passport.
+   * A Telegram Passport element containing the user&\#039;s passport.
    */
   passportElementTypePassport();
 
@@ -27333,13 +27333,13 @@ class passportElementTypePassport final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the user's driver license.
+ * A Telegram Passport element containing the user&\#039;s driver license.
  */
 class passportElementTypeDriverLicense final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's driver license.
+   * A Telegram Passport element containing the user&\#039;s driver license.
    */
   passportElementTypeDriverLicense();
 
@@ -27362,13 +27362,13 @@ class passportElementTypeDriverLicense final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the user's identity card.
+ * A Telegram Passport element containing the user&\#039;s identity card.
  */
 class passportElementTypeIdentityCard final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's identity card.
+   * A Telegram Passport element containing the user&\#039;s identity card.
    */
   passportElementTypeIdentityCard();
 
@@ -27391,13 +27391,13 @@ class passportElementTypeIdentityCard final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the user's internal passport.
+ * A Telegram Passport element containing the user&\#039;s internal passport.
  */
 class passportElementTypeInternalPassport final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's internal passport.
+   * A Telegram Passport element containing the user&\#039;s internal passport.
    */
   passportElementTypeInternalPassport();
 
@@ -27420,13 +27420,13 @@ class passportElementTypeInternalPassport final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the user's address.
+ * A Telegram Passport element containing the user&\#039;s address.
  */
 class passportElementTypeAddress final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's address.
+   * A Telegram Passport element containing the user&\#039;s address.
    */
   passportElementTypeAddress();
 
@@ -27449,13 +27449,13 @@ class passportElementTypeAddress final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the user's utility bill.
+ * A Telegram Passport element containing the user&\#039;s utility bill.
  */
 class passportElementTypeUtilityBill final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's utility bill.
+   * A Telegram Passport element containing the user&\#039;s utility bill.
    */
   passportElementTypeUtilityBill();
 
@@ -27478,13 +27478,13 @@ class passportElementTypeUtilityBill final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the user's bank statement.
+ * A Telegram Passport element containing the user&\#039;s bank statement.
  */
 class passportElementTypeBankStatement final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's bank statement.
+   * A Telegram Passport element containing the user&\#039;s bank statement.
    */
   passportElementTypeBankStatement();
 
@@ -27507,13 +27507,13 @@ class passportElementTypeBankStatement final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the user's rental agreement.
+ * A Telegram Passport element containing the user&\#039;s rental agreement.
  */
 class passportElementTypeRentalAgreement final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's rental agreement.
+   * A Telegram Passport element containing the user&\#039;s rental agreement.
    */
   passportElementTypeRentalAgreement();
 
@@ -27536,13 +27536,13 @@ class passportElementTypeRentalAgreement final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the registration page of the user's passport.
+ * A Telegram Passport element containing the registration page of the user&\#039;s passport.
  */
 class passportElementTypePassportRegistration final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the registration page of the user's passport.
+   * A Telegram Passport element containing the registration page of the user&\#039;s passport.
    */
   passportElementTypePassportRegistration();
 
@@ -27565,13 +27565,13 @@ class passportElementTypePassportRegistration final : public PassportElementType
 };
 
 /**
- * A Telegram Passport element containing the user's temporary registration.
+ * A Telegram Passport element containing the user&\#039;s temporary registration.
  */
 class passportElementTypeTemporaryRegistration final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's temporary registration.
+   * A Telegram Passport element containing the user&\#039;s temporary registration.
    */
   passportElementTypeTemporaryRegistration();
 
@@ -27594,13 +27594,13 @@ class passportElementTypeTemporaryRegistration final : public PassportElementTyp
 };
 
 /**
- * A Telegram Passport element containing the user's phone number.
+ * A Telegram Passport element containing the user&\#039;s phone number.
  */
 class passportElementTypePhoneNumber final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's phone number.
+   * A Telegram Passport element containing the user&\#039;s phone number.
    */
   passportElementTypePhoneNumber();
 
@@ -27623,13 +27623,13 @@ class passportElementTypePhoneNumber final : public PassportElementType {
 };
 
 /**
- * A Telegram Passport element containing the user's email address.
+ * A Telegram Passport element containing the user&\#039;s email address.
  */
 class passportElementTypeEmailAddress final : public PassportElementType {
  public:
 
   /**
-   * A Telegram Passport element containing the user's email address.
+   * A Telegram Passport element containing the user&\#039;s email address.
    */
   passportElementTypeEmailAddress();
 
@@ -27779,7 +27779,7 @@ class passportSuitableElement final : public Object {
   bool is_selfie_required_;
   /// True, if a certified English translation is required with the document.
   bool is_translation_required_;
-  /// True, if personal details must include the user's name in the language of their country of residence.
+  /// True, if personal details must include the user&\#039;s name in the language of their country of residence.
   bool is_native_name_required_;
 
   /**
@@ -27793,7 +27793,7 @@ class passportSuitableElement final : public Object {
    * \param[in] type_ Type of the element.
    * \param[in] is_selfie_required_ True, if a selfie is required with the identity document.
    * \param[in] is_translation_required_ True, if a certified English translation is required with the document.
-   * \param[in] is_native_name_required_ True, if personal details must include the user's name in the language of their country of residence.
+   * \param[in] is_native_name_required_ True, if personal details must include the user&\#039;s name in the language of their country of residence.
    */
   passportSuitableElement(object_ptr<PassportElementType> &&type_, bool is_selfie_required_, bool is_translation_required_, bool is_native_name_required_);
 
@@ -28224,7 +28224,7 @@ class paymentResult final : public Object {
 };
 
 /**
- * Contains the user's personal details.
+ * Contains the user&\#039;s personal details.
  */
 class personalDetails final : public Object {
  public:
@@ -28244,18 +28244,18 @@ class personalDetails final : public Object {
   object_ptr<date> birthdate_;
   /// Gender of the user, &quot;male&quot; or &quot;female&quot;.
   string gender_;
-  /// A two-letter ISO 3166-1 alpha-2 country code of the user's country.
+  /// A two-letter ISO 3166-1 alpha-2 country code of the user&\#039;s country.
   string country_code_;
-  /// A two-letter ISO 3166-1 alpha-2 country code of the user's residence country.
+  /// A two-letter ISO 3166-1 alpha-2 country code of the user&\#039;s residence country.
   string residence_country_code_;
 
   /**
-   * Contains the user's personal details.
+   * Contains the user&\#039;s personal details.
    */
   personalDetails();
 
   /**
-   * Contains the user's personal details.
+   * Contains the user&\#039;s personal details.
    *
    * \param[in] first_name_ First name of the user written in English; 1-255 characters.
    * \param[in] middle_name_ Middle name of the user written in English; 0-255 characters.
@@ -28265,8 +28265,8 @@ class personalDetails final : public Object {
    * \param[in] native_last_name_ Native last name of the user; 1-255 characters.
    * \param[in] birthdate_ Birthdate of the user.
    * \param[in] gender_ Gender of the user, &quot;male&quot; or &quot;female&quot;.
-   * \param[in] country_code_ A two-letter ISO 3166-1 alpha-2 country code of the user's country.
-   * \param[in] residence_country_code_ A two-letter ISO 3166-1 alpha-2 country code of the user's residence country.
+   * \param[in] country_code_ A two-letter ISO 3166-1 alpha-2 country code of the user&\#039;s country.
+   * \param[in] residence_country_code_ A two-letter ISO 3166-1 alpha-2 country code of the user&\#039;s residence country.
    */
   personalDetails(string const &first_name_, string const &middle_name_, string const &last_name_, string const &native_first_name_, string const &native_middle_name_, string const &native_last_name_, object_ptr<date> &&birthdate_, string const &gender_, string const &country_code_, string const &residence_country_code_);
 
@@ -28330,7 +28330,7 @@ class personalDocument final : public Object {
 };
 
 /**
- * Contains settings for the authentication of the user's phone number.
+ * Contains settings for the authentication of the user&\#039;s phone number.
  */
 class phoneNumberAuthenticationSettings final : public Object {
  public:
@@ -28346,12 +28346,12 @@ class phoneNumberAuthenticationSettings final : public Object {
   array<string> authentication_tokens_;
 
   /**
-   * Contains settings for the authentication of the user's phone number.
+   * Contains settings for the authentication of the user&\#039;s phone number.
    */
   phoneNumberAuthenticationSettings();
 
   /**
-   * Contains settings for the authentication of the user's phone number.
+   * Contains settings for the authentication of the user&\#039;s phone number.
    *
    * \param[in] allow_flash_call_ Pass true if the authentication code may be sent via a flash call to the specified phone number.
    * \param[in] allow_missed_call_ Pass true if the authentication code may be sent via a missed call to the specified phone number.
@@ -28388,7 +28388,7 @@ class phoneNumberInfo final : public Object {
   object_ptr<countryInfo> country_;
   /// The part of the phone number denoting country calling code or its part.
   string country_calling_code_;
-  /// The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as '-', but even more digits might be entered by the user.
+  /// The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as &\#039;-&\#039;, but even more digits might be entered by the user.
   string formatted_phone_number_;
 
   /**
@@ -28401,7 +28401,7 @@ class phoneNumberInfo final : public Object {
    *
    * \param[in] country_ Information about the country to which the phone number belongs; may be null.
    * \param[in] country_calling_code_ The part of the phone number denoting country calling code or its part.
-   * \param[in] formatted_phone_number_ The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as '-', but even more digits might be entered by the user.
+   * \param[in] formatted_phone_number_ The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as &\#039;-&\#039;, but even more digits might be entered by the user.
    */
   phoneNumberInfo(object_ptr<countryInfo> &&country_, string const &country_calling_code_, string const &formatted_phone_number_);
 
@@ -28522,9 +28522,9 @@ class photoSize final : public Object {
  */
 class point final : public Object {
  public:
-  /// The point's first coordinate.
+  /// The point&\#039;s first coordinate.
   double x_;
-  /// The point's second coordinate.
+  /// The point&\#039;s second coordinate.
   double y_;
 
   /**
@@ -28535,8 +28535,8 @@ class point final : public Object {
   /**
    * A point on a Cartesian plane.
    *
-   * \param[in] x_ The point's first coordinate.
-   * \param[in] y_ The point's second coordinate.
+   * \param[in] x_ The point&\#039;s first coordinate.
+   * \param[in] y_ The point&\#039;s second coordinate.
    */
   point(double x_, double y_);
 
@@ -29001,13 +29001,13 @@ class premiumFeatureCustomEmoji final : public PremiumFeature {
 };
 
 /**
- * Ability to change position of the main chat list, archive and mute all new chats from non-contacts, and completely disable notifications about the user's contacts joined Telegram.
+ * Ability to change position of the main chat list, archive and mute all new chats from non-contacts, and completely disable notifications about the user&\#039;s contacts joined Telegram.
  */
 class premiumFeatureAdvancedChatManagement final : public PremiumFeature {
  public:
 
   /**
-   * Ability to change position of the main chat list, archive and mute all new chats from non-contacts, and completely disable notifications about the user's contacts joined Telegram.
+   * Ability to change position of the main chat list, archive and mute all new chats from non-contacts, and completely disable notifications about the user&\#039;s contacts joined Telegram.
    */
   premiumFeatureAdvancedChatManagement();
 
@@ -29030,13 +29030,13 @@ class premiumFeatureAdvancedChatManagement final : public PremiumFeature {
 };
 
 /**
- * A badge in the user's profile.
+ * A badge in the user&\#039;s profile.
  */
 class premiumFeatureProfileBadge final : public PremiumFeature {
  public:
 
   /**
-   * A badge in the user's profile.
+   * A badge in the user&\#039;s profile.
    */
   premiumFeatureProfileBadge();
 
@@ -29166,7 +29166,7 @@ class premiumFeatures final : public Object {
   array<object_ptr<PremiumFeature>> features_;
   /// The list of limits, increased for Premium users.
   array<object_ptr<premiumLimit>> limits_;
-  /// An internal link to be opened to pay for Telegram Premium if store payment isn't possible; may be null if direct payment isn't available.
+  /// An internal link to be opened to pay for Telegram Premium if store payment isn&\#039;t possible; may be null if direct payment isn&\#039;t available.
   object_ptr<InternalLinkType> payment_link_;
 
   /**
@@ -29179,7 +29179,7 @@ class premiumFeatures final : public Object {
    *
    * \param[in] features_ The list of available features.
    * \param[in] limits_ The list of limits, increased for Premium users.
-   * \param[in] payment_link_ An internal link to be opened to pay for Telegram Premium if store payment isn't possible; may be null if direct payment isn't available.
+   * \param[in] payment_link_ An internal link to be opened to pay for Telegram Premium if store payment isn&\#039;t possible; may be null if direct payment isn&\#039;t available.
    */
   premiumFeatures(array<object_ptr<PremiumFeature>> &&features_, array<object_ptr<premiumLimit>> &&limits_, object_ptr<InternalLinkType> &&payment_link_);
 
@@ -29216,7 +29216,7 @@ class premiumGiftOption final : public Object {
   int32 month_count_;
   /// Identifier of the store product associated with the option.
   string store_product_id_;
-  /// An internal link to be opened for gifting Telegram Premium to the user if store payment isn't possible; may be null if direct payment isn't available.
+  /// An internal link to be opened for gifting Telegram Premium to the user if store payment isn&\#039;t possible; may be null if direct payment isn&\#039;t available.
   object_ptr<InternalLinkType> payment_link_;
 
   /**
@@ -29232,7 +29232,7 @@ class premiumGiftOption final : public Object {
    * \param[in] discount_percentage_ The discount associated with this gift option, as a percentage.
    * \param[in] month_count_ Number of month the Telegram Premium subscription will be active.
    * \param[in] store_product_id_ Identifier of the store product associated with the option.
-   * \param[in] payment_link_ An internal link to be opened for gifting Telegram Premium to the user if store payment isn't possible; may be null if direct payment isn't available.
+   * \param[in] payment_link_ An internal link to be opened for gifting Telegram Premium to the user if store payment isn&\#039;t possible; may be null if direct payment isn&\#039;t available.
    */
   premiumGiftOption(string const &currency_, int53 amount_, int32 discount_percentage_, int32 month_count_, string const &store_product_id_, object_ptr<InternalLinkType> &&payment_link_);
 
@@ -29568,13 +29568,13 @@ class premiumLimitTypeCaptionLength final : public PremiumLimitType {
 };
 
 /**
- * The maximum length of the user's bio.
+ * The maximum length of the user&\#039;s bio.
  */
 class premiumLimitTypeBioLength final : public PremiumLimitType {
  public:
 
   /**
-   * The maximum length of the user's bio.
+   * The maximum length of the user&\#039;s bio.
    */
   premiumLimitTypeBioLength();
 
@@ -29993,7 +29993,7 @@ class proxyTypeHttp final : public ProxyType {
   string username_;
   /// Password for logging in; may be empty.
   string password_;
-  /// Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method.
+  /// Pass true if the proxy supports only HTTP requests and doesn&\#039;t support transparent TCP connections via HTTP CONNECT method.
   bool http_only_;
 
   /**
@@ -30006,7 +30006,7 @@ class proxyTypeHttp final : public ProxyType {
    *
    * \param[in] username_ Username for logging in; may be empty.
    * \param[in] password_ Password for logging in; may be empty.
-   * \param[in] http_only_ Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method.
+   * \param[in] http_only_ Pass true if the proxy supports only HTTP requests and doesn&\#039;t support transparent TCP connections via HTTP CONNECT method.
    */
   proxyTypeHttp(string const &username_, string const &password_, bool http_only_);
 
@@ -30033,7 +30033,7 @@ class proxyTypeHttp final : public ProxyType {
  */
 class proxyTypeMtproto final : public ProxyType {
  public:
-  /// The proxy's secret in hexadecimal encoding.
+  /// The proxy&\#039;s secret in hexadecimal encoding.
   string secret_;
 
   /**
@@ -30044,7 +30044,7 @@ class proxyTypeMtproto final : public ProxyType {
   /**
    * An MTProto proxy server.
    *
-   * \param[in] secret_ The proxy's secret in hexadecimal encoding.
+   * \param[in] secret_ The proxy&\#039;s secret in hexadecimal encoding.
    */
   explicit proxyTypeMtproto(string const &secret_);
 
@@ -30268,7 +30268,7 @@ class pushMessageContentAudio final : public PushMessageContent {
  */
 class pushMessageContentContact final : public PushMessageContent {
  public:
-  /// Contact's name.
+  /// Contact&\#039;s name.
   string name_;
   /// True, if the message is a pinned message with the specified content.
   bool is_pinned_;
@@ -30281,7 +30281,7 @@ class pushMessageContentContact final : public PushMessageContent {
   /**
    * A message with a user contact.
    *
-   * \param[in] name_ Contact's name.
+   * \param[in] name_ Contact&\#039;s name.
    * \param[in] is_pinned_ True, if the message is a pinned message with the specified content.
    */
   pushMessageContentContact(string const &name_, bool is_pinned_);
@@ -31563,7 +31563,7 @@ class ReplyMarkup: public Object {
 };
 
 /**
- * Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent.
+ * Instructs application to remove the keyboard once this message has been received. This kind of keyboard can&\#039;t be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent.
  */
 class replyMarkupRemoveKeyboard final : public ReplyMarkup {
  public:
@@ -31571,12 +31571,12 @@ class replyMarkupRemoveKeyboard final : public ReplyMarkup {
   bool is_personal_;
 
   /**
-   * Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent.
+   * Instructs application to remove the keyboard once this message has been received. This kind of keyboard can&\#039;t be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent.
    */
   replyMarkupRemoveKeyboard();
 
   /**
-   * Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent.
+   * Instructs application to remove the keyboard once this message has been received. This kind of keyboard can&\#039;t be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent.
    *
    * \param[in] is_personal_ True, if the keyboard is removed only for the mentioned users or the target user of a reply.
    */
@@ -33044,13 +33044,13 @@ class searchMessagesFilterMention final : public SearchMessagesFilter {
 };
 
 /**
- * Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
+ * Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can&\#039;t be additionally filtered by a query, a message thread or by the sending user.
  */
 class searchMessagesFilterUnreadMention final : public SearchMessagesFilter {
  public:
 
   /**
-   * Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
+   * Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can&\#039;t be additionally filtered by a query, a message thread or by the sending user.
    */
   searchMessagesFilterUnreadMention();
 
@@ -33073,13 +33073,13 @@ class searchMessagesFilterUnreadMention final : public SearchMessagesFilter {
 };
 
 /**
- * Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
+ * Returns only messages with unread reactions for the current user. When using this filter the results can&\#039;t be additionally filtered by a query, a message thread or by the sending user.
  */
 class searchMessagesFilterUnreadReaction final : public SearchMessagesFilter {
  public:
 
   /**
-   * Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user.
+   * Returns only messages with unread reactions for the current user. When using this filter the results can&\#039;t be additionally filtered by a query, a message thread or by the sending user.
    */
   searchMessagesFilterUnreadReaction();
 
@@ -33210,9 +33210,9 @@ class secretChat final : public Object {
   object_ptr<SecretChatState> state_;
   /// True, if the chat was created by the current user; otherwise false.
   bool is_outbound_;
-  /// Hash of the currently used key for comparison with the hash of the chat partner's key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers.
+  /// Hash of the currently used key for comparison with the hash of the chat partner&\#039;s key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers.
   bytes key_hash_;
-  /// Secret chat layer; determines features supported by the chat partner's application. Nested text entities and underline and strikethrough entities are supported if the layer &gt;= 101, files bigger than 2000MB are supported if the layer &gt;= 143, spoiler and custom emoji text entities are supported if the layer &gt;= 144.
+  /// Secret chat layer; determines features supported by the chat partner&\#039;s application. Nested text entities and underline and strikethrough entities are supported if the layer &gt;= 101, files bigger than 2000MB are supported if the layer &gt;= 143, spoiler and custom emoji text entities are supported if the layer &gt;= 144.
   int32 layer_;
 
   /**
@@ -33227,8 +33227,8 @@ class secretChat final : public Object {
    * \param[in] user_id_ Identifier of the chat partner.
    * \param[in] state_ State of the secret chat.
    * \param[in] is_outbound_ True, if the chat was created by the current user; otherwise false.
-   * \param[in] key_hash_ Hash of the currently used key for comparison with the hash of the chat partner's key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers.
-   * \param[in] layer_ Secret chat layer; determines features supported by the chat partner's application. Nested text entities and underline and strikethrough entities are supported if the layer &gt;= 101, files bigger than 2000MB are supported if the layer &gt;= 143, spoiler and custom emoji text entities are supported if the layer &gt;= 144.
+   * \param[in] key_hash_ Hash of the currently used key for comparison with the hash of the chat partner&\#039;s key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers.
+   * \param[in] layer_ Secret chat layer; determines features supported by the chat partner&\#039;s application. Nested text entities and underline and strikethrough entities are supported if the layer &gt;= 101, files bigger than 2000MB are supported if the layer &gt;= 143, spoiler and custom emoji text entities are supported if the layer &gt;= 144.
    */
   secretChat(int32 id_, int53 user_id_, object_ptr<SecretChatState> &&state_, bool is_outbound_, bytes const &key_hash_, int32 layer_);
 
@@ -34423,7 +34423,7 @@ class sticker final : public Object {
   object_ptr<maskPosition> mask_position_;
   /// Identifier of the emoji if the sticker is a custom emoji.
   int64 custom_emoji_id_;
-  /// Sticker's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+  /// Sticker&\#039;s outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
   array<object_ptr<closedVectorPath>> outline_;
   /// Sticker thumbnail in WEBP or JPEG format; may be null.
   object_ptr<thumbnail> thumbnail_;
@@ -34450,7 +34450,7 @@ class sticker final : public Object {
    * \param[in] type_ Sticker type.
    * \param[in] mask_position_ Position where the mask is placed; may be null even the sticker is a mask.
    * \param[in] custom_emoji_id_ Identifier of the emoji if the sticker is a custom emoji.
-   * \param[in] outline_ Sticker's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+   * \param[in] outline_ Sticker&\#039;s outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
    * \param[in] thumbnail_ Sticker thumbnail in WEBP or JPEG format; may be null.
    * \param[in] is_premium_ True, if only Premium users can use the sticker.
    * \param[in] premium_animation_ Premium animation of the sticker; may be null.
@@ -34584,11 +34584,11 @@ class stickerSet final : public Object {
   string name_;
   /// Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed.
   object_ptr<thumbnail> thumbnail_;
-  /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+  /// Sticker set thumbnail&\#039;s outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
   array<object_ptr<closedVectorPath>> thumbnail_outline_;
   /// True, if the sticker set has been installed by the current user.
   bool is_installed_;
-  /// True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
+  /// True, if the sticker set has been archived. A sticker set can&\#039;t be installed and archived simultaneously.
   bool is_archived_;
   /// True, if the sticker set is official.
   bool is_official_;
@@ -34615,9 +34615,9 @@ class stickerSet final : public Object {
    * \param[in] title_ Title of the sticker set.
    * \param[in] name_ Name of the sticker set.
    * \param[in] thumbnail_ Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed.
-   * \param[in] thumbnail_outline_ Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+   * \param[in] thumbnail_outline_ Sticker set thumbnail&\#039;s outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
    * \param[in] is_installed_ True, if the sticker set has been installed by the current user.
-   * \param[in] is_archived_ True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
+   * \param[in] is_archived_ True, if the sticker set has been archived. A sticker set can&\#039;t be installed and archived simultaneously.
    * \param[in] is_official_ True, if the sticker set is official.
    * \param[in] sticker_format_ Format of the stickers in the set.
    * \param[in] sticker_type_ Type of the stickers in the set.
@@ -34658,11 +34658,11 @@ class stickerSetInfo final : public Object {
   string name_;
   /// Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null.
   object_ptr<thumbnail> thumbnail_;
-  /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+  /// Sticker set thumbnail&\#039;s outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
   array<object_ptr<closedVectorPath>> thumbnail_outline_;
   /// True, if the sticker set has been installed by the current user.
   bool is_installed_;
-  /// True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
+  /// True, if the sticker set has been archived. A sticker set can&\#039;t be installed and archived simultaneously.
   bool is_archived_;
   /// True, if the sticker set is official.
   bool is_official_;
@@ -34689,9 +34689,9 @@ class stickerSetInfo final : public Object {
    * \param[in] title_ Title of the sticker set.
    * \param[in] name_ Name of the sticker set.
    * \param[in] thumbnail_ Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null.
-   * \param[in] thumbnail_outline_ Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
+   * \param[in] thumbnail_outline_ Sticker set thumbnail&\#039;s outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner.
    * \param[in] is_installed_ True, if the sticker set has been installed by the current user.
-   * \param[in] is_archived_ True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously.
+   * \param[in] is_archived_ True, if the sticker set has been archived. A sticker set can&\#039;t be installed and archived simultaneously.
    * \param[in] is_official_ True, if the sticker set is official.
    * \param[in] sticker_format_ Format of the stickers in the set.
    * \param[in] sticker_type_ Type of the stickers in the set.
@@ -36224,7 +36224,7 @@ class tdlibParameters final : public Object {
   int32 api_id_;
   /// Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org.
   string api_hash_;
-  /// IETF language tag of the user's operating system language; must be non-empty.
+  /// IETF language tag of the user&\#039;s operating system language; must be non-empty.
   string system_language_code_;
   /// Model of the device the application is being run on; must be non-empty.
   string device_model_;
@@ -36254,7 +36254,7 @@ class tdlibParameters final : public Object {
    * \param[in] use_secret_chats_ If set to true, support for secret chats will be enabled.
    * \param[in] api_id_ Application identifier for Telegram API access, which can be obtained at https://my.telegram.org.
    * \param[in] api_hash_ Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org.
-   * \param[in] system_language_code_ IETF language tag of the user's operating system language; must be non-empty.
+   * \param[in] system_language_code_ IETF language tag of the user&\#039;s operating system language; must be non-empty.
    * \param[in] device_model_ Model of the device the application is being run on; must be non-empty.
    * \param[in] system_version_ Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib.
    * \param[in] application_version_ Application version; must be non-empty.
@@ -36329,7 +36329,7 @@ class termsOfService final : public Object {
  public:
   /// Text of the terms of service.
   object_ptr<formattedText> text_;
-  /// The minimum age of a user to be able to accept the terms; 0 if age isn't restricted.
+  /// The minimum age of a user to be able to accept the terms; 0 if age isn&\#039;t restricted.
   int32 min_user_age_;
   /// True, if a blocking popup with terms of service must be shown to the user.
   bool show_popup_;
@@ -36343,7 +36343,7 @@ class termsOfService final : public Object {
    * Contains Telegram terms of service.
    *
    * \param[in] text_ Text of the terms of service.
-   * \param[in] min_user_age_ The minimum age of a user to be able to accept the terms; 0 if age isn't restricted.
+   * \param[in] min_user_age_ The minimum age of a user to be able to accept the terms; 0 if age isn&\#039;t restricted.
    * \param[in] show_popup_ True, if a blocking popup with terms of service must be shown to the user.
    */
   termsOfService(object_ptr<formattedText> &&text_, int32 min_user_age_, bool show_popup_);
@@ -38208,7 +38208,7 @@ class updateNewMessage final : public Update {
 };
 
 /**
- * A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option &quot;use_quick_ack&quot; is set to true. This update may be sent multiple times for the same message.
+ * A request to send a message has reached the Telegram server. This doesn&\#039;t mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option &quot;use_quick_ack&quot; is set to true. This update may be sent multiple times for the same message.
  */
 class updateMessageSendAcknowledged final : public Update {
  public:
@@ -38218,12 +38218,12 @@ class updateMessageSendAcknowledged final : public Update {
   int53 message_id_;
 
   /**
-   * A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option &quot;use_quick_ack&quot; is set to true. This update may be sent multiple times for the same message.
+   * A request to send a message has reached the Telegram server. This doesn&\#039;t mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option &quot;use_quick_ack&quot; is set to true. This update may be sent multiple times for the same message.
    */
   updateMessageSendAcknowledged();
 
   /**
-   * A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option &quot;use_quick_ack&quot; is set to true. This update may be sent multiple times for the same message.
+   * A request to send a message has reached the Telegram server. This doesn&\#039;t mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option &quot;use_quick_ack&quot; is set to true. This update may be sent multiple times for the same message.
    *
    * \param[in] chat_id_ The chat identifier of the sent message.
    * \param[in] message_id_ A temporary message identifier.
@@ -39102,7 +39102,7 @@ class updateChatAvailableReactions final : public Update {
 };
 
 /**
- * A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn't be applied.
+ * A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn&\#039;t be applied.
  */
 class updateChatDraftMessage final : public Update {
  public:
@@ -39114,12 +39114,12 @@ class updateChatDraftMessage final : public Update {
   array<object_ptr<chatPosition>> positions_;
 
   /**
-   * A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn't be applied.
+   * A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn&\#039;t be applied.
    */
   updateChatDraftMessage();
 
   /**
-   * A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn't be applied.
+   * A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn&\#039;t be applied.
    *
    * \param[in] chat_id_ Chat identifier.
    * \param[in] draft_message_ The new draft message; may be null.
@@ -39152,7 +39152,7 @@ class updateChatMessageSender final : public Update {
  public:
   /// Chat identifier.
   int53 chat_id_;
-  /// New value of message_sender_id; may be null if the user can't change message sender.
+  /// New value of message_sender_id; may be null if the user can&\#039;t change message sender.
   object_ptr<MessageSender> message_sender_id_;
 
   /**
@@ -39164,7 +39164,7 @@ class updateChatMessageSender final : public Update {
    * The message sender that is selected to send messages in a chat has changed.
    *
    * \param[in] chat_id_ Chat identifier.
-   * \param[in] message_sender_id_ New value of message_sender_id; may be null if the user can't change message sender.
+   * \param[in] message_sender_id_ New value of message_sender_id; may be null if the user can&\#039;t change message sender.
    */
   updateChatMessageSender(int53 chat_id_, object_ptr<MessageSender> &&message_sender_id_);
 
@@ -39597,7 +39597,7 @@ class updateChatHasProtectedContent final : public Update {
 };
 
 /**
- * A chat's has_scheduled_messages field has changed.
+ * A chat&\#039;s has_scheduled_messages field has changed.
  */
 class updateChatHasScheduledMessages final : public Update {
  public:
@@ -39607,12 +39607,12 @@ class updateChatHasScheduledMessages final : public Update {
   bool has_scheduled_messages_;
 
   /**
-   * A chat's has_scheduled_messages field has changed.
+   * A chat&\#039;s has_scheduled_messages field has changed.
    */
   updateChatHasScheduledMessages();
 
   /**
-   * A chat's has_scheduled_messages field has changed.
+   * A chat&\#039;s has_scheduled_messages field has changed.
    *
    * \param[in] chat_id_ Chat identifier.
    * \param[in] has_scheduled_messages_ New value of has_scheduled_messages.
@@ -40687,7 +40687,7 @@ class updateFileDownload final : public Update {
  public:
   /// File identifier.
   int32 file_id_;
-  /// Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn't completed.
+  /// Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn&\#039;t completed.
   int32 complete_date_;
   /// True, if downloading of the file is paused.
   bool is_paused_;
@@ -40703,7 +40703,7 @@ class updateFileDownload final : public Update {
    * A file download was changed. This update is sent only after file download list is loaded for the first time.
    *
    * \param[in] file_id_ File identifier.
-   * \param[in] complete_date_ Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn't completed.
+   * \param[in] complete_date_ Point in time (Unix timestamp) when the file downloading was completed; 0 if the file downloading isn&\#039;t completed.
    * \param[in] is_paused_ True, if downloading of the file is paused.
    * \param[in] counts_ New number of being downloaded and recently downloaded files found.
    */
@@ -42541,11 +42541,11 @@ class user final : public Object {
   bool is_scam_;
   /// True, if many users reported this user as a fake account.
   bool is_fake_;
-  /// If false, the user is inaccessible, and the only information known about the user is inside this class. Identifier of the user can't be passed to any method except GetUser.
+  /// If false, the user is inaccessible, and the only information known about the user is inside this class. Identifier of the user can&\#039;t be passed to any method except GetUser.
   bool have_access_;
   /// Type of the user.
   object_ptr<UserType> type_;
-  /// IETF language tag of the user's language; only available to bots.
+  /// IETF language tag of the user&\#039;s language; only available to bots.
   string language_code_;
   /// True, if the user added the current bot to attachment menu; only available to bots.
   bool added_to_attachment_menu_;
@@ -42573,9 +42573,9 @@ class user final : public Object {
    * \param[in] restriction_reason_ If non-empty, it contains a human-readable description of the reason why access to this user must be restricted.
    * \param[in] is_scam_ True, if many users reported this user as a scam.
    * \param[in] is_fake_ True, if many users reported this user as a fake account.
-   * \param[in] have_access_ If false, the user is inaccessible, and the only information known about the user is inside this class. Identifier of the user can't be passed to any method except GetUser.
+   * \param[in] have_access_ If false, the user is inaccessible, and the only information known about the user is inside this class. Identifier of the user can&\#039;t be passed to any method except GetUser.
    * \param[in] type_ Type of the user.
-   * \param[in] language_code_ IETF language tag of the user's language; only available to bots.
+   * \param[in] language_code_ IETF language tag of the user&\#039;s language; only available to bots.
    * \param[in] added_to_attachment_menu_ True, if the user added the current bot to attachment menu; only available to bots.
    */
   user(int53 id_, string const &first_name_, string const &last_name_, string const &username_, string const &phone_number_, object_ptr<UserStatus> &&status_, object_ptr<profilePhoto> &&profile_photo_, bool is_contact_, bool is_mutual_contact_, bool is_verified_, bool is_premium_, bool is_support_, string const &restriction_reason_, bool is_scam_, bool is_fake_, bool have_access_, object_ptr<UserType> &&type_, string const &language_code_, bool added_to_attachment_menu_);
@@ -42611,11 +42611,11 @@ class userFullInfo final : public Object {
   bool can_be_called_;
   /// True, if a video call can be created with the user.
   bool supports_video_calls_;
-  /// True, if the user can't be called due to their privacy settings.
+  /// True, if the user can&\#039;t be called due to their privacy settings.
   bool has_private_calls_;
-  /// True, if the user can't be linked in forwarded messages due to their privacy settings.
+  /// True, if the user can&\#039;t be linked in forwarded messages due to their privacy settings.
   bool has_private_forwards_;
-  /// True, if voice and video notes can't be sent or forwarded to the user.
+  /// True, if voice and video notes can&\#039;t be sent or forwarded to the user.
   bool has_restricted_voice_and_video_note_messages_;
   /// True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used.
   bool need_phone_number_privacy_exception_;
@@ -42640,9 +42640,9 @@ class userFullInfo final : public Object {
    * \param[in] is_blocked_ True, if the user is blocked by the current user.
    * \param[in] can_be_called_ True, if the user can be called.
    * \param[in] supports_video_calls_ True, if a video call can be created with the user.
-   * \param[in] has_private_calls_ True, if the user can't be called due to their privacy settings.
-   * \param[in] has_private_forwards_ True, if the user can't be linked in forwarded messages due to their privacy settings.
-   * \param[in] has_restricted_voice_and_video_note_messages_ True, if voice and video notes can't be sent or forwarded to the user.
+   * \param[in] has_private_calls_ True, if the user can&\#039;t be called due to their privacy settings.
+   * \param[in] has_private_forwards_ True, if the user can&\#039;t be linked in forwarded messages due to their privacy settings.
+   * \param[in] has_restricted_voice_and_video_note_messages_ True, if voice and video notes can&\#039;t be sent or forwarded to the user.
    * \param[in] need_phone_number_privacy_exception_ True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used.
    * \param[in] bio_ A short user bio; may be null for bots.
    * \param[in] premium_gift_options_ The list of available options for gifting Telegram Premium to the user.
@@ -42678,13 +42678,13 @@ class UserPrivacySetting: public Object {
 };
 
 /**
- * A privacy setting for managing whether the user's online status is visible.
+ * A privacy setting for managing whether the user&\#039;s online status is visible.
  */
 class userPrivacySettingShowStatus final : public UserPrivacySetting {
  public:
 
   /**
-   * A privacy setting for managing whether the user's online status is visible.
+   * A privacy setting for managing whether the user&\#039;s online status is visible.
    */
   userPrivacySettingShowStatus();
 
@@ -42707,13 +42707,13 @@ class userPrivacySettingShowStatus final : public UserPrivacySetting {
 };
 
 /**
- * A privacy setting for managing whether the user's profile photo is visible.
+ * A privacy setting for managing whether the user&\#039;s profile photo is visible.
  */
 class userPrivacySettingShowProfilePhoto final : public UserPrivacySetting {
  public:
 
   /**
-   * A privacy setting for managing whether the user's profile photo is visible.
+   * A privacy setting for managing whether the user&\#039;s profile photo is visible.
    */
   userPrivacySettingShowProfilePhoto();
 
@@ -42736,13 +42736,13 @@ class userPrivacySettingShowProfilePhoto final : public UserPrivacySetting {
 };
 
 /**
- * A privacy setting for managing whether a link to the user's account is included in forwarded messages.
+ * A privacy setting for managing whether a link to the user&\#039;s account is included in forwarded messages.
  */
 class userPrivacySettingShowLinkInForwardedMessages final : public UserPrivacySetting {
  public:
 
   /**
-   * A privacy setting for managing whether a link to the user's account is included in forwarded messages.
+   * A privacy setting for managing whether a link to the user&\#039;s account is included in forwarded messages.
    */
   userPrivacySettingShowLinkInForwardedMessages();
 
@@ -42765,13 +42765,13 @@ class userPrivacySettingShowLinkInForwardedMessages final : public UserPrivacySe
 };
 
 /**
- * A privacy setting for managing whether the user's phone number is visible.
+ * A privacy setting for managing whether the user&\#039;s phone number is visible.
  */
 class userPrivacySettingShowPhoneNumber final : public UserPrivacySetting {
  public:
 
   /**
-   * A privacy setting for managing whether the user's phone number is visible.
+   * A privacy setting for managing whether the user&\#039;s phone number is visible.
    */
   userPrivacySettingShowPhoneNumber();
 
@@ -42976,13 +42976,13 @@ class userPrivacySettingRuleAllowAll final : public UserPrivacySettingRule {
 };
 
 /**
- * A rule to allow all of a user's contacts to do something.
+ * A rule to allow all of a user&\#039;s contacts to do something.
  */
 class userPrivacySettingRuleAllowContacts final : public UserPrivacySettingRule {
  public:
 
   /**
-   * A rule to allow all of a user's contacts to do something.
+   * A rule to allow all of a user&\#039;s contacts to do something.
    */
   userPrivacySettingRuleAllowContacts();
 
@@ -43294,7 +43294,7 @@ class userStatusEmpty final : public UserStatus {
  */
 class userStatusOnline final : public UserStatus {
  public:
-  /// Point in time (Unix timestamp) when the user's online status will expire.
+  /// Point in time (Unix timestamp) when the user&\#039;s online status will expire.
   int32 expires_;
 
   /**
@@ -43305,7 +43305,7 @@ class userStatusOnline final : public UserStatus {
   /**
    * The user is online.
    *
-   * \param[in] expires_ Point in time (Unix timestamp) when the user's online status will expire.
+   * \param[in] expires_ Point in time (Unix timestamp) when the user&\#039;s online status will expire.
    */
   explicit userStatusOnline(int32 expires_);
 
@@ -44368,7 +44368,7 @@ class acceptTermsOfService final : public Function {
 };
 
 /**
- * Adds a new member to a chat. Members can't be added to private or secret chats.
+ * Adds a new member to a chat. Members can&\#039;t be added to private or secret chats.
  *
  * Returns object_ptr<Ok>.
  */
@@ -44382,14 +44382,14 @@ class addChatMember final : public Function {
   int32 forward_limit_;
 
   /**
-   * Default constructor for a function, which adds a new member to a chat. Members can't be added to private or secret chats.
+   * Default constructor for a function, which adds a new member to a chat. Members can&\#039;t be added to private or secret chats.
    *
    * Returns object_ptr<Ok>.
    */
   addChatMember();
 
   /**
-   * Creates a function, which adds a new member to a chat. Members can't be added to private or secret chats.
+   * Creates a function, which adds a new member to a chat. Members can&\#039;t be added to private or secret chats.
    *
    * Returns object_ptr<Ok>.
    *
@@ -44421,7 +44421,7 @@ class addChatMember final : public Function {
 };
 
 /**
- * Adds multiple new members to a chat. Currently, this method is only available for supergroups and channels. This method can't be used to join a chat. Members can't be added to a channel if it has more than 200 members.
+ * Adds multiple new members to a chat. Currently, this method is only available for supergroups and channels. This method can&\#039;t be used to join a chat. Members can&\#039;t be added to a channel if it has more than 200 members.
  *
  * Returns object_ptr<Ok>.
  */
@@ -44433,14 +44433,14 @@ class addChatMembers final : public Function {
   array<int53> user_ids_;
 
   /**
-   * Default constructor for a function, which adds multiple new members to a chat. Currently, this method is only available for supergroups and channels. This method can't be used to join a chat. Members can't be added to a channel if it has more than 200 members.
+   * Default constructor for a function, which adds multiple new members to a chat. Currently, this method is only available for supergroups and channels. This method can&\#039;t be used to join a chat. Members can&\#039;t be added to a channel if it has more than 200 members.
    *
    * Returns object_ptr<Ok>.
    */
   addChatMembers();
 
   /**
-   * Creates a function, which adds multiple new members to a chat. Currently, this method is only available for supergroups and channels. This method can't be used to join a chat. Members can't be added to a channel if it has more than 200 members.
+   * Creates a function, which adds multiple new members to a chat. Currently, this method is only available for supergroups and channels. This method can&\#039;t be used to join a chat. Members can&\#039;t be added to a channel if it has more than 200 members.
    *
    * Returns object_ptr<Ok>.
    *
@@ -44471,7 +44471,7 @@ class addChatMembers final : public Function {
 };
 
 /**
- * Adds a chat to a chat list. A chat can't be simultaneously in Main and Archive chat lists, so it is automatically removed from another one if needed.
+ * Adds a chat to a chat list. A chat can&\#039;t be simultaneously in Main and Archive chat lists, so it is automatically removed from another one if needed.
  *
  * Returns object_ptr<Ok>.
  */
@@ -44483,14 +44483,14 @@ class addChatToList final : public Function {
   object_ptr<ChatList> chat_list_;
 
   /**
-   * Default constructor for a function, which adds a chat to a chat list. A chat can't be simultaneously in Main and Archive chat lists, so it is automatically removed from another one if needed.
+   * Default constructor for a function, which adds a chat to a chat list. A chat can&\#039;t be simultaneously in Main and Archive chat lists, so it is automatically removed from another one if needed.
    *
    * Returns object_ptr<Ok>.
    */
   addChatToList();
 
   /**
-   * Creates a function, which adds a chat to a chat list. A chat can't be simultaneously in Main and Archive chat lists, so it is automatically removed from another one if needed.
+   * Creates a function, which adds a chat to a chat list. A chat can&\#039;t be simultaneously in Main and Archive chat lists, so it is automatically removed from another one if needed.
    *
    * Returns object_ptr<Ok>.
    *
@@ -44529,7 +44529,7 @@ class addContact final : public Function {
  public:
   /// The contact to add or edit; phone number may be empty and needs to be specified only if known, vCard is ignored.
   object_ptr<contact> contact_;
-  /// Pass true to share the current user's phone number with the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber will be added if needed. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number.
+  /// Pass true to share the current user&\#039;s phone number with the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber will be added if needed. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number.
   bool share_phone_number_;
 
   /**
@@ -44545,7 +44545,7 @@ class addContact final : public Function {
    * Returns object_ptr<Ok>.
    *
    * \param[in] contact_ The contact to add or edit; phone number may be empty and needs to be specified only if known, vCard is ignored.
-   * \param[in] share_phone_number_ Pass true to share the current user's phone number with the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber will be added if needed. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number.
+   * \param[in] share_phone_number_ Pass true to share the current user&\#039;s phone number with the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber will be added if needed. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number.
    */
   addContact(object_ptr<contact> &&contact_, bool share_phone_number_);
 
@@ -44618,7 +44618,7 @@ class addCustomServerLanguagePack final : public Function {
 };
 
 /**
- * Adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can't be added to favorite stickers.
+ * Adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can&\#039;t be added to favorite stickers.
  *
  * Returns object_ptr<Ok>.
  */
@@ -44628,14 +44628,14 @@ class addFavoriteSticker final : public Function {
   object_ptr<InputFile> sticker_;
 
   /**
-   * Default constructor for a function, which adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can't be added to favorite stickers.
+   * Default constructor for a function, which adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can&\#039;t be added to favorite stickers.
    *
    * Returns object_ptr<Ok>.
    */
   addFavoriteSticker();
 
   /**
-   * Creates a function, which adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can't be added to favorite stickers.
+   * Creates a function, which adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can&\#039;t be added to favorite stickers.
    *
    * Returns object_ptr<Ok>.
    *
@@ -44933,7 +44933,7 @@ class addProxy final : public Function {
 };
 
 /**
- * Manually adds a new sticker to the list of recently used stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can't be added to recent stickers.
+ * Manually adds a new sticker to the list of recently used stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can&\#039;t be added to recent stickers.
  *
  * Returns object_ptr<Stickers>.
  */
@@ -44945,14 +44945,14 @@ class addRecentSticker final : public Function {
   object_ptr<InputFile> sticker_;
 
   /**
-   * Default constructor for a function, which manually adds a new sticker to the list of recently used stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can't be added to recent stickers.
+   * Default constructor for a function, which manually adds a new sticker to the list of recently used stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can&\#039;t be added to recent stickers.
    *
    * Returns object_ptr<Stickers>.
    */
   addRecentSticker();
 
   /**
-   * Creates a function, which manually adds a new sticker to the list of recently used stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can't be added to recent stickers.
+   * Creates a function, which manually adds a new sticker to the list of recently used stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set can be added to this list. Emoji stickers can&\#039;t be added to recent stickers.
    *
    * Returns object_ptr<Stickers>.
    *
@@ -45077,7 +45077,7 @@ class addSavedAnimation final : public Function {
 };
 
 /**
- * Adds a new notification sound to the list of saved notification sounds. The new notification sound is added to the top of the list. If it is already in the list, its position isn't changed.
+ * Adds a new notification sound to the list of saved notification sounds. The new notification sound is added to the top of the list. If it is already in the list, its position isn&\#039;t changed.
  *
  * Returns object_ptr<NotificationSound>.
  */
@@ -45087,14 +45087,14 @@ class addSavedNotificationSound final : public Function {
   object_ptr<InputFile> sound_;
 
   /**
-   * Default constructor for a function, which adds a new notification sound to the list of saved notification sounds. The new notification sound is added to the top of the list. If it is already in the list, its position isn't changed.
+   * Default constructor for a function, which adds a new notification sound to the list of saved notification sounds. The new notification sound is added to the top of the list. If it is already in the list, its position isn&\#039;t changed.
    *
    * Returns object_ptr<NotificationSound>.
    */
   addSavedNotificationSound();
 
   /**
-   * Creates a function, which adds a new notification sound to the list of saved notification sounds. The new notification sound is added to the top of the list. If it is already in the list, its position isn't changed.
+   * Creates a function, which adds a new notification sound to the list of saved notification sounds. The new notification sound is added to the top of the list. If it is already in the list, its position isn&\#039;t changed.
    *
    * Returns object_ptr<NotificationSound>.
    *
@@ -45610,7 +45610,7 @@ class assignGooglePlayTransaction final : public Function {
 };
 
 /**
- * Bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
+ * Bans a member in a chat. Members can&\#039;t be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
  *
  * Returns object_ptr<Ok>.
  */
@@ -45626,14 +45626,14 @@ class banChatMember final : public Function {
   bool revoke_messages_;
 
   /**
-   * Default constructor for a function, which bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
+   * Default constructor for a function, which bans a member in a chat. Members can&\#039;t be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
    *
    * Returns object_ptr<Ok>.
    */
   banChatMember();
 
   /**
-   * Creates a function, which bans a member in a chat. Members can't be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
+   * Creates a function, which bans a member in a chat. Members can&\#039;t be banned in private or secret chats. In supergroups and channels, the user will not be able to return to the group on their own using invite links, etc., unless unbanned first.
    *
    * Returns object_ptr<Ok>.
    *
@@ -45813,7 +45813,7 @@ class cancelDownloadFile final : public Function {
  public:
   /// Identifier of a file to stop downloading.
   int32 file_id_;
-  /// Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server.
+  /// Pass true to stop downloading only if it hasn&\#039;t been started, i.e. request hasn&\#039;t been sent to server.
   bool only_if_pending_;
 
   /**
@@ -45829,7 +45829,7 @@ class cancelDownloadFile final : public Function {
    * Returns object_ptr<Ok>.
    *
    * \param[in] file_id_ Identifier of a file to stop downloading.
-   * \param[in] only_if_pending_ Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server.
+   * \param[in] only_if_pending_ Pass true to stop downloading only if it hasn&\#039;t been started, i.e. request hasn&\#039;t been sent to server.
    */
   cancelDownloadFile(int32 file_id_, bool only_if_pending_);
 
@@ -45944,7 +45944,7 @@ class cancelPreliminaryUploadFile final : public Function {
  */
 class changeImportedContacts final : public Function {
  public:
-  /// The new list of contacts, contact's vCard are ignored and are not imported.
+  /// The new list of contacts, contact&\#039;s vCard are ignored and are not imported.
   array<object_ptr<contact>> contacts_;
 
   /**
@@ -45959,7 +45959,7 @@ class changeImportedContacts final : public Function {
    *
    * Returns object_ptr<ImportedContacts>.
    *
-   * \param[in] contacts_ The new list of contacts, contact's vCard are ignored and are not imported.
+   * \param[in] contacts_ The new list of contacts, contact&\#039;s vCard are ignored and are not imported.
    */
   explicit changeImportedContacts(array<object_ptr<contact>> &&contacts_);
 
@@ -45985,7 +45985,7 @@ class changeImportedContacts final : public Function {
 };
 
 /**
- * Changes the phone number of the user and sends an authentication code to the user's new phone number. On success, returns information about the sent code.
+ * Changes the phone number of the user and sends an authentication code to the user&\#039;s new phone number. On success, returns information about the sent code.
  *
  * Returns object_ptr<AuthenticationCodeInfo>.
  */
@@ -45993,23 +45993,23 @@ class changePhoneNumber final : public Function {
  public:
   /// The new phone number of the user in international format.
   string phone_number_;
-  /// Settings for the authentication of the user's phone number; pass null to use default settings.
+  /// Settings for the authentication of the user&\#039;s phone number; pass null to use default settings.
   object_ptr<phoneNumberAuthenticationSettings> settings_;
 
   /**
-   * Default constructor for a function, which changes the phone number of the user and sends an authentication code to the user's new phone number. On success, returns information about the sent code.
+   * Default constructor for a function, which changes the phone number of the user and sends an authentication code to the user&\#039;s new phone number. On success, returns information about the sent code.
    *
    * Returns object_ptr<AuthenticationCodeInfo>.
    */
   changePhoneNumber();
 
   /**
-   * Creates a function, which changes the phone number of the user and sends an authentication code to the user's new phone number. On success, returns information about the sent code.
+   * Creates a function, which changes the phone number of the user and sends an authentication code to the user&\#039;s new phone number. On success, returns information about the sent code.
    *
    * Returns object_ptr<AuthenticationCodeInfo>.
    *
    * \param[in] phone_number_ The new phone number of the user in international format.
-   * \param[in] settings_ Settings for the authentication of the user's phone number; pass null to use default settings.
+   * \param[in] settings_ Settings for the authentication of the user&\#039;s phone number; pass null to use default settings.
    */
   changePhoneNumber(string const &phone_number_, object_ptr<phoneNumberAuthenticationSettings> &&settings_);
 
@@ -46045,7 +46045,7 @@ class changeStickerSet final : public Function {
   int64 set_id_;
   /// The new value of is_installed.
   bool is_installed_;
-  /// The new value of is_archived. A sticker set can't be installed and archived simultaneously.
+  /// The new value of is_archived. A sticker set can&\#039;t be installed and archived simultaneously.
   bool is_archived_;
 
   /**
@@ -46062,7 +46062,7 @@ class changeStickerSet final : public Function {
    *
    * \param[in] set_id_ Identifier of the sticker set.
    * \param[in] is_installed_ The new value of is_installed.
-   * \param[in] is_archived_ The new value of is_archived. A sticker set can't be installed and archived simultaneously.
+   * \param[in] is_archived_ The new value of is_archived. A sticker set can&\#039;t be installed and archived simultaneously.
    */
   changeStickerSet(int64 set_id_, bool is_installed_, bool is_archived_);
 
@@ -48593,7 +48593,7 @@ class deleteFile final : public Function {
 };
 
 /**
- * Deletes all information about a language pack in the current localization target. The language pack which is currently in use (including base language pack) or is being synchronized can't be deleted. Can be called before authorization.
+ * Deletes all information about a language pack in the current localization target. The language pack which is currently in use (including base language pack) or is being synchronized can&\#039;t be deleted. Can be called before authorization.
  *
  * Returns object_ptr<Ok>.
  */
@@ -48603,14 +48603,14 @@ class deleteLanguagePack final : public Function {
   string language_pack_id_;
 
   /**
-   * Default constructor for a function, which deletes all information about a language pack in the current localization target. The language pack which is currently in use (including base language pack) or is being synchronized can't be deleted. Can be called before authorization.
+   * Default constructor for a function, which deletes all information about a language pack in the current localization target. The language pack which is currently in use (including base language pack) or is being synchronized can&\#039;t be deleted. Can be called before authorization.
    *
    * Returns object_ptr<Ok>.
    */
   deleteLanguagePack();
 
   /**
-   * Creates a function, which deletes all information about a language pack in the current localization target. The language pack which is currently in use (including base language pack) or is being synchronized can't be deleted. Can be called before authorization.
+   * Creates a function, which deletes all information about a language pack in the current localization target. The language pack which is currently in use (including base language pack) or is being synchronized can&\#039;t be deleted. Can be called before authorization.
    *
    * Returns object_ptr<Ok>.
    *
@@ -49040,7 +49040,7 @@ class discardCall final : public Function {
 };
 
 /**
- * Disconnects all websites from the current user's Telegram account.
+ * Disconnects all websites from the current user&\#039;s Telegram account.
  *
  * Returns object_ptr<Ok>.
  */
@@ -49048,7 +49048,7 @@ class disconnectAllWebsites final : public Function {
  public:
 
   /**
-   * Default constructor for a function, which disconnects all websites from the current user's Telegram account.
+   * Default constructor for a function, which disconnects all websites from the current user&\#039;s Telegram account.
    *
    * Returns object_ptr<Ok>.
    */
@@ -49076,7 +49076,7 @@ class disconnectAllWebsites final : public Function {
 };
 
 /**
- * Disconnects website from the current user's Telegram account.
+ * Disconnects website from the current user&\#039;s Telegram account.
  *
  * Returns object_ptr<Ok>.
  */
@@ -49086,14 +49086,14 @@ class disconnectWebsite final : public Function {
   int64 website_id_;
 
   /**
-   * Default constructor for a function, which disconnects website from the current user's Telegram account.
+   * Default constructor for a function, which disconnects website from the current user&\#039;s Telegram account.
    *
    * Returns object_ptr<Ok>.
    */
   disconnectWebsite();
 
   /**
-   * Creates a function, which disconnects website from the current user's Telegram account.
+   * Creates a function, which disconnects website from the current user&\#039;s Telegram account.
    *
    * Returns object_ptr<Ok>.
    *
@@ -49727,7 +49727,7 @@ class editMessageLiveLocation final : public Function {
 };
 
 /**
- * Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
+ * Edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead. The media can&\#039;t be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can&\#039;t be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
  *
  * Returns object_ptr<Message>.
  */
@@ -49743,14 +49743,14 @@ class editMessageMedia final : public Function {
   object_ptr<InputMessageContent> input_message_content_;
 
   /**
-   * Default constructor for a function, which edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
+   * Default constructor for a function, which edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead. The media can&\#039;t be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can&\#039;t be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
    *
    * Returns object_ptr<Message>.
    */
   editMessageMedia();
 
   /**
-   * Creates a function, which edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead. The media can't be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can't be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
+   * Creates a function, which edits the content of a message with an animation, an audio, a document, a photo or a video, including message caption. If only the caption needs to be edited, use editMessageCaption instead. The media can&\#039;t be edited if the message was set to self-destruct or to a self-destructing media. The type of message content in an album can&\#039;t be changed with exception of replacing a photo with a video or vice versa. Returns the edited message after the edit is completed on the server side.
    *
    * Returns object_ptr<Message>.
    *
@@ -50242,7 +50242,7 @@ class finishFileGeneration final : public Function {
 };
 
 /**
- * Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message.
+ * Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can&\#039;t be forwarded, null will be returned instead of the message.
  *
  * Returns object_ptr<Messages>.
  */
@@ -50264,14 +50264,14 @@ class forwardMessages final : public Function {
   bool only_preview_;
 
   /**
-   * Default constructor for a function, which forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message.
+   * Default constructor for a function, which forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can&\#039;t be forwarded, null will be returned instead of the message.
    *
    * Returns object_ptr<Messages>.
    */
   forwardMessages();
 
   /**
-   * Creates a function, which forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message.
+   * Creates a function, which forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can&\#039;t be forwarded, null will be returned instead of the message.
    *
    * Returns object_ptr<Messages>.
    *
@@ -50687,7 +50687,7 @@ class getAttachedStickerSets final : public Function {
  */
 class getAttachmentMenuBot final : public Function {
  public:
-  /// Bot's user identifier.
+  /// Bot&\#039;s user identifier.
   int53 bot_user_id_;
 
   /**
@@ -50702,7 +50702,7 @@ class getAttachmentMenuBot final : public Function {
    *
    * Returns object_ptr<AttachmentMenuBot>.
    *
-   * \param[in] bot_user_id_ Bot's user identifier.
+   * \param[in] bot_user_id_ Bot&\#039;s user identifier.
    */
   explicit getAttachmentMenuBot(int53 bot_user_id_);
 
@@ -51503,7 +51503,7 @@ class getChatHistory final : public Function {
   int53 from_message_id_;
   /// Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages.
   int32 offset_;
-  /// The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+  /// The maximum number of messages to be returned; must be positive and can&\#039;t be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
   int32 limit_;
   /// Pass true to get only messages that are available without sending network requests.
   bool only_local_;
@@ -51523,7 +51523,7 @@ class getChatHistory final : public Function {
    * \param[in] chat_id_ Chat identifier.
    * \param[in] from_message_id_ Identifier of the message starting from which history must be fetched; use 0 to get results from the last message.
    * \param[in] offset_ Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages.
-   * \param[in] limit_ The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+   * \param[in] limit_ The maximum number of messages to be returned; must be positive and can&\#039;t be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
    * \param[in] only_local_ Pass true to get only messages that are available without sending network requests.
    */
   getChatHistory(int53 chat_id_, int53 from_message_id_, int32 offset_, int32 limit_, bool only_local_);
@@ -52928,7 +52928,7 @@ class getExternalLink final : public Function {
 };
 
 /**
- * Returns information about an action to be done when the current user clicks an external link. Don't use this method for links from secret chats if web page preview is disabled in secret chats.
+ * Returns information about an action to be done when the current user clicks an external link. Don&\#039;t use this method for links from secret chats if web page preview is disabled in secret chats.
  *
  * Returns object_ptr<LoginUrlInfo>.
  */
@@ -52938,14 +52938,14 @@ class getExternalLinkInfo final : public Function {
   string link_;
 
   /**
-   * Default constructor for a function, which returns information about an action to be done when the current user clicks an external link. Don't use this method for links from secret chats if web page preview is disabled in secret chats.
+   * Default constructor for a function, which returns information about an action to be done when the current user clicks an external link. Don&\#039;t use this method for links from secret chats if web page preview is disabled in secret chats.
    *
    * Returns object_ptr<LoginUrlInfo>.
    */
   getExternalLinkInfo();
 
   /**
-   * Creates a function, which returns information about an action to be done when the current user clicks an external link. Don't use this method for links from secret chats if web page preview is disabled in secret chats.
+   * Creates a function, which returns information about an action to be done when the current user clicks an external link. Don&\#039;t use this method for links from secret chats if web page preview is disabled in secret chats.
    *
    * Returns object_ptr<LoginUrlInfo>.
    *
@@ -53362,7 +53362,7 @@ class getGroupCallStreamSegment final : public Function {
   int32 group_call_id_;
   /// Point in time when the stream segment begins; Unix timestamp in milliseconds.
   int53 time_offset_;
-  /// Segment duration scale; 0-1. Segment's duration is 1000/(2**scale) milliseconds.
+  /// Segment duration scale; 0-1. Segment&\#039;s duration is 1000/(2**scale) milliseconds.
   int32 scale_;
   /// Identifier of an audio/video channel to get as received from tgcalls.
   int32 channel_id_;
@@ -53383,7 +53383,7 @@ class getGroupCallStreamSegment final : public Function {
    *
    * \param[in] group_call_id_ Group call identifier.
    * \param[in] time_offset_ Point in time when the stream segment begins; Unix timestamp in milliseconds.
-   * \param[in] scale_ Segment duration scale; 0-1. Segment's duration is 1000/(2**scale) milliseconds.
+   * \param[in] scale_ Segment duration scale; 0-1. Segment&\#039;s duration is 1000/(2**scale) milliseconds.
    * \param[in] channel_id_ Identifier of an audio/video channel to get as received from tgcalls.
    * \param[in] video_quality_ Video quality as received from tgcalls; pass null to get the worst available quality.
    */
@@ -53643,7 +53643,7 @@ class getInlineQueryResults final : public Function {
   int53 bot_user_id_;
   /// Identifier of the chat where the query was sent.
   int53 chat_id_;
-  /// Location of the user; pass null if unknown or the bot doesn't need user's location.
+  /// Location of the user; pass null if unknown or the bot doesn&\#039;t need user&\#039;s location.
   object_ptr<location> user_location_;
   /// Text of the query.
   string query_;
@@ -53664,7 +53664,7 @@ class getInlineQueryResults final : public Function {
    *
    * \param[in] bot_user_id_ The identifier of the target bot.
    * \param[in] chat_id_ Identifier of the chat where the query was sent.
-   * \param[in] user_location_ Location of the user; pass null if unknown or the bot doesn't need user's location.
+   * \param[in] user_location_ Location of the user; pass null if unknown or the bot doesn&\#039;t need user&\#039;s location.
    * \param[in] query_ Text of the query.
    * \param[in] offset_ Offset of the first entry to return.
    */
@@ -54406,7 +54406,7 @@ class getMapThumbnailFile final : public Function {
 };
 
 /**
- * Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously.
+ * Replaces text entities with Markdown formatting in a human-friendly format. Entities that can&\#039;t be represented in Markdown unambiguously are kept as is. Can be called synchronously.
  *
  * Returns object_ptr<FormattedText>.
  */
@@ -54416,14 +54416,14 @@ class getMarkdownText final : public Function {
   object_ptr<formattedText> text_;
 
   /**
-   * Default constructor for a function, which replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously.
+   * Default constructor for a function, which replaces text entities with Markdown formatting in a human-friendly format. Entities that can&\#039;t be represented in Markdown unambiguously are kept as is. Can be called synchronously.
    *
    * Returns object_ptr<FormattedText>.
    */
   getMarkdownText();
 
   /**
-   * Creates a function, which replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously.
+   * Creates a function, which replaces text entities with Markdown formatting in a human-friendly format. Entities that can&\#039;t be represented in Markdown unambiguously are kept as is. Can be called synchronously.
    *
    * Returns object_ptr<FormattedText>.
    *
@@ -54600,7 +54600,7 @@ class getMessageAddedReactions final : public Function {
   string reaction_;
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
   string offset_;
-  /// The maximum number of reactions to be returned; must be positive and can't be greater than 100.
+  /// The maximum number of reactions to be returned; must be positive and can&\#039;t be greater than 100.
   int32 limit_;
 
   /**
@@ -54619,7 +54619,7 @@ class getMessageAddedReactions final : public Function {
    * \param[in] message_id_ Identifier of the message.
    * \param[in] reaction_ If non-empty, only added reactions with the specified text representation will be returned.
    * \param[in] offset_ Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
-   * \param[in] limit_ The maximum number of reactions to be returned; must be positive and can't be greater than 100.
+   * \param[in] limit_ The maximum number of reactions to be returned; must be positive and can&\#039;t be greater than 100.
    */
   getMessageAddedReactions(int53 chat_id_, int53 message_id_, string const &reaction_, string const &offset_, int32 limit_);
 
@@ -55010,7 +55010,7 @@ class getMessagePublicForwards final : public Function {
   int53 message_id_;
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
   string offset_;
-  /// The maximum number of messages to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+  /// The maximum number of messages to be returned; must be positive and can&\#039;t be greater than 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
   int32 limit_;
 
   /**
@@ -55028,7 +55028,7 @@ class getMessagePublicForwards final : public Function {
    * \param[in] chat_id_ Chat identifier of the message.
    * \param[in] message_id_ Message identifier.
    * \param[in] offset_ Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results.
-   * \param[in] limit_ The maximum number of messages to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+   * \param[in] limit_ The maximum number of messages to be returned; must be positive and can&\#039;t be greater than 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
    */
   getMessagePublicForwards(int53 chat_id_, int53 message_id_, string const &offset_, int32 limit_);
 
@@ -55157,7 +55157,7 @@ class getMessageThread final : public Function {
 };
 
 /**
- * Returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
+ * Returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel&\#039;s linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
  *
  * Returns object_ptr<Messages>.
  */
@@ -55171,18 +55171,18 @@ class getMessageThreadHistory final : public Function {
   int53 from_message_id_;
   /// Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages.
   int32 offset_;
-  /// The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+  /// The maximum number of messages to be returned; must be positive and can&\#039;t be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
   int32 limit_;
 
   /**
-   * Default constructor for a function, which returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
+   * Default constructor for a function, which returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel&\#039;s linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
    *
    * Returns object_ptr<Messages>.
    */
   getMessageThreadHistory();
 
   /**
-   * Creates a function, which returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
+   * Creates a function, which returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel&\#039;s linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib.
    *
    * Returns object_ptr<Messages>.
    *
@@ -55190,7 +55190,7 @@ class getMessageThreadHistory final : public Function {
    * \param[in] message_id_ Message identifier, which thread history needs to be returned.
    * \param[in] from_message_id_ Identifier of the message starting from which history must be fetched; use 0 to get results from the last message.
    * \param[in] offset_ Specify 0 to get results from exactly the from_message_id or a negative offset up to 99 to get additionally some newer messages.
-   * \param[in] limit_ The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+   * \param[in] limit_ The maximum number of messages to be returned; must be positive and can&\#039;t be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
    */
   getMessageThreadHistory(int53 chat_id_, int53 message_id_, int53 from_message_id_, int32 offset_, int32 limit_);
 
@@ -55416,11 +55416,11 @@ class getOption final : public Function {
  */
 class getPassportAuthorizationForm final : public Function {
  public:
-  /// User identifier of the service's bot.
+  /// User identifier of the service&\#039;s bot.
   int53 bot_user_id_;
   /// Telegram Passport element types requested by the service.
   string scope_;
-  /// Service's public key.
+  /// Service&\#039;s public key.
   string public_key_;
   /// Unique request identifier provided by the service.
   string nonce_;
@@ -55437,9 +55437,9 @@ class getPassportAuthorizationForm final : public Function {
    *
    * Returns object_ptr<PassportAuthorizationForm>.
    *
-   * \param[in] bot_user_id_ User identifier of the service's bot.
+   * \param[in] bot_user_id_ User identifier of the service&\#039;s bot.
    * \param[in] scope_ Telegram Passport element types requested by the service.
-   * \param[in] public_key_ Service's public key.
+   * \param[in] public_key_ Service&\#039;s public key.
    * \param[in] nonce_ Unique request identifier provided by the service.
    */
   getPassportAuthorizationForm(int53 bot_user_id_, string const &scope_, string const &public_key_, string const &nonce_);
@@ -55813,7 +55813,7 @@ class getPollVoters final : public Function {
   int32 option_id_;
   /// Number of users to skip in the result; must be non-negative.
   int32 offset_;
-  /// The maximum number of users to be returned; must be positive and can't be greater than 50. For optimal performance, the number of returned users is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached.
+  /// The maximum number of users to be returned; must be positive and can&\#039;t be greater than 50. For optimal performance, the number of returned users is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached.
   int32 limit_;
 
   /**
@@ -55832,7 +55832,7 @@ class getPollVoters final : public Function {
    * \param[in] message_id_ Identifier of the message containing the poll.
    * \param[in] option_id_ 0-based identifier of the answer option.
    * \param[in] offset_ Number of users to skip in the result; must be non-negative.
-   * \param[in] limit_ The maximum number of users to be returned; must be positive and can't be greater than 50. For optimal performance, the number of returned users is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached.
+   * \param[in] limit_ The maximum number of users to be returned; must be positive and can&\#039;t be greater than 50. For optimal performance, the number of returned users is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached.
    */
   getPollVoters(int53 chat_id_, int53 message_id_, int32 option_id_, int32 offset_, int32 limit_);
 
@@ -56691,7 +56691,7 @@ class getSavedNotificationSound final : public Function {
 };
 
 /**
- * Returns list of saved notification sounds. If a sound isn't in the list, then default sound needs to be used.
+ * Returns list of saved notification sounds. If a sound isn&\#039;t in the list, then default sound needs to be used.
  *
  * Returns object_ptr<NotificationSounds>.
  */
@@ -56699,7 +56699,7 @@ class getSavedNotificationSounds final : public Function {
  public:
 
   /**
-   * Default constructor for a function, which returns list of saved notification sounds. If a sound isn't in the list, then default sound needs to be used.
+   * Default constructor for a function, which returns list of saved notification sounds. If a sound isn&\#039;t in the list, then default sound needs to be used.
    *
    * Returns object_ptr<NotificationSounds>.
    */
@@ -58227,28 +58227,28 @@ class hideSuggestedAction final : public Function {
 };
 
 /**
- * Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored.
+ * Adds new contacts or edits existing contacts by their phone numbers; contacts&\#039; user identifiers are ignored.
  *
  * Returns object_ptr<ImportedContacts>.
  */
 class importContacts final : public Function {
  public:
-  /// The list of contacts to import or edit; contacts' vCard are ignored and are not imported.
+  /// The list of contacts to import or edit; contacts&\#039; vCard are ignored and are not imported.
   array<object_ptr<contact>> contacts_;
 
   /**
-   * Default constructor for a function, which adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored.
+   * Default constructor for a function, which adds new contacts or edits existing contacts by their phone numbers; contacts&\#039; user identifiers are ignored.
    *
    * Returns object_ptr<ImportedContacts>.
    */
   importContacts();
 
   /**
-   * Creates a function, which adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored.
+   * Creates a function, which adds new contacts or edits existing contacts by their phone numbers; contacts&\#039; user identifiers are ignored.
    *
    * Returns object_ptr<ImportedContacts>.
    *
-   * \param[in] contacts_ The list of contacts to import or edit; contacts' vCard are ignored and are not imported.
+   * \param[in] contacts_ The list of contacts to import or edit; contacts&\#039; vCard are ignored and are not imported.
    */
   explicit importContacts(array<object_ptr<contact>> &&contacts_);
 
@@ -58377,7 +58377,7 @@ class inviteGroupCallParticipants final : public Function {
 };
 
 /**
- * Adds the current user as a new member to a chat. Private and secret chats can't be joined using this method. May return an error with a message &quot;INVITE_REQUEST_SENT&quot; if only a join request was created.
+ * Adds the current user as a new member to a chat. Private and secret chats can&\#039;t be joined using this method. May return an error with a message &quot;INVITE_REQUEST_SENT&quot; if only a join request was created.
  *
  * Returns object_ptr<Ok>.
  */
@@ -58387,14 +58387,14 @@ class joinChat final : public Function {
   int53 chat_id_;
 
   /**
-   * Default constructor for a function, which adds the current user as a new member to a chat. Private and secret chats can't be joined using this method. May return an error with a message &quot;INVITE_REQUEST_SENT&quot; if only a join request was created.
+   * Default constructor for a function, which adds the current user as a new member to a chat. Private and secret chats can&\#039;t be joined using this method. May return an error with a message &quot;INVITE_REQUEST_SENT&quot; if only a join request was created.
    *
    * Returns object_ptr<Ok>.
    */
   joinChat();
 
   /**
-   * Creates a function, which adds the current user as a new member to a chat. Private and secret chats can't be joined using this method. May return an error with a message &quot;INVITE_REQUEST_SENT&quot; if only a join request was created.
+   * Creates a function, which adds the current user as a new member to a chat. Private and secret chats can&\#039;t be joined using this method. May return an error with a message &quot;INVITE_REQUEST_SENT&quot; if only a join request was created.
    *
    * Returns object_ptr<Ok>.
    *
@@ -58487,7 +58487,7 @@ class joinGroupCall final : public Function {
   string payload_;
   /// Pass true to join the call with muted microphone.
   bool is_muted_;
-  /// Pass true if the user's video is enabled.
+  /// Pass true if the user&\#039;s video is enabled.
   bool is_my_video_enabled_;
   /// If non-empty, invite hash to be used to join the group call without being muted by administrators.
   string invite_hash_;
@@ -58509,7 +58509,7 @@ class joinGroupCall final : public Function {
    * \param[in] audio_source_id_ Caller audio channel synchronization source identifier; received from tgcalls.
    * \param[in] payload_ Group call join payload; received from tgcalls.
    * \param[in] is_muted_ Pass true to join the call with muted microphone.
-   * \param[in] is_my_video_enabled_ Pass true if the user's video is enabled.
+   * \param[in] is_my_video_enabled_ Pass true if the user&\#039;s video is enabled.
    * \param[in] invite_hash_ If non-empty, invite hash to be used to join the group call without being muted by administrators.
    */
   joinGroupCall(int32 group_call_id_, object_ptr<MessageSender> &&participant_id_, int32 audio_source_id_, string const &payload_, bool is_muted_, bool is_my_video_enabled_, string const &invite_hash_);
@@ -58536,7 +58536,7 @@ class joinGroupCall final : public Function {
 };
 
 /**
- * Removes the current user from chat members. Private and secret chats can't be left using this method.
+ * Removes the current user from chat members. Private and secret chats can&\#039;t be left using this method.
  *
  * Returns object_ptr<Ok>.
  */
@@ -58546,14 +58546,14 @@ class leaveChat final : public Function {
   int53 chat_id_;
 
   /**
-   * Default constructor for a function, which removes the current user from chat members. Private and secret chats can't be left using this method.
+   * Default constructor for a function, which removes the current user from chat members. Private and secret chats can&\#039;t be left using this method.
    *
    * Returns object_ptr<Ok>.
    */
   leaveChat();
 
   /**
-   * Creates a function, which removes the current user from chat members. Private and secret chats can't be left using this method.
+   * Creates a function, which removes the current user from chat members. Private and secret chats can&\#039;t be left using this method.
    *
    * Returns object_ptr<Ok>.
    *
@@ -58922,7 +58922,7 @@ class openWebApp final : public Function {
 };
 
 /**
- * Optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can't be deleted.
+ * Optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can&\#039;t be deleted.
  *
  * Returns object_ptr<StorageStatistics>.
  */
@@ -58934,7 +58934,7 @@ class optimizeStorage final : public Function {
   int32 ttl_;
   /// Limit on the total number of files after deletion. Pass -1 to use the default limit.
   int32 count_;
-  /// The amount of time after the creation of a file during which it can't be deleted, in seconds. Pass -1 to use the default value.
+  /// The amount of time after the creation of a file during which it can&\#039;t be deleted, in seconds. Pass -1 to use the default value.
   int32 immunity_delay_;
   /// If non-empty, only files with the given types are considered. By default, all types except thumbnails, profile photos, stickers and wallpapers are deleted.
   array<object_ptr<FileType>> file_types_;
@@ -58948,21 +58948,21 @@ class optimizeStorage final : public Function {
   int32 chat_limit_;
 
   /**
-   * Default constructor for a function, which optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can't be deleted.
+   * Default constructor for a function, which optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can&\#039;t be deleted.
    *
    * Returns object_ptr<StorageStatistics>.
    */
   optimizeStorage();
 
   /**
-   * Creates a function, which optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can't be deleted.
+   * Creates a function, which optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can&\#039;t be deleted.
    *
    * Returns object_ptr<StorageStatistics>.
    *
    * \param[in] size_ Limit on the total size of files after deletion, in bytes. Pass -1 to use the default limit.
    * \param[in] ttl_ Limit on the time that has passed since the last time a file was accessed (or creation time for some filesystems). Pass -1 to use the default limit.
    * \param[in] count_ Limit on the total number of files after deletion. Pass -1 to use the default limit.
-   * \param[in] immunity_delay_ The amount of time after the creation of a file during which it can't be deleted, in seconds. Pass -1 to use the default value.
+   * \param[in] immunity_delay_ The amount of time after the creation of a file during which it can&\#039;t be deleted, in seconds. Pass -1 to use the default value.
    * \param[in] file_types_ If non-empty, only files with the given types are considered. By default, all types except thumbnails, profile photos, stickers and wallpapers are deleted.
    * \param[in] chat_ids_ If non-empty, only files from the given chats are considered. Use 0 as chat identifier to delete files not belonging to any chat (e.g., profile photos).
    * \param[in] exclude_chat_ids_ If non-empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos).
@@ -59546,7 +59546,7 @@ class readAllChatReactions final : public Function {
 };
 
 /**
- * Reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct read from the file.
+ * Reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib&\#039;s file system, because it is usually slower than a direct read from the file.
  *
  * Returns object_ptr<FilePart>.
  */
@@ -59560,14 +59560,14 @@ class readFilePart final : public Function {
   int53 count_;
 
   /**
-   * Default constructor for a function, which reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct read from the file.
+   * Default constructor for a function, which reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib&\#039;s file system, because it is usually slower than a direct read from the file.
    *
    * Returns object_ptr<FilePart>.
    */
   readFilePart();
 
   /**
-   * Creates a function, which reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct read from the file.
+   * Creates a function, which reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib&\#039;s file system, because it is usually slower than a direct read from the file.
    *
    * Returns object_ptr<FilePart>.
    *
@@ -61175,7 +61175,7 @@ class resendChangePhoneNumberCode final : public Function {
 };
 
 /**
- * Re-sends the code to verify an email address to be added to a user's Telegram Passport.
+ * Re-sends the code to verify an email address to be added to a user&\#039;s Telegram Passport.
  *
  * Returns object_ptr<EmailAddressAuthenticationCodeInfo>.
  */
@@ -61183,7 +61183,7 @@ class resendEmailAddressVerificationCode final : public Function {
  public:
 
   /**
-   * Default constructor for a function, which re-sends the code to verify an email address to be added to a user's Telegram Passport.
+   * Default constructor for a function, which re-sends the code to verify an email address to be added to a user&\#039;s Telegram Passport.
    *
    * Returns object_ptr<EmailAddressAuthenticationCodeInfo>.
    */
@@ -61211,7 +61211,7 @@ class resendEmailAddressVerificationCode final : public Function {
 };
 
 /**
- * Resends messages which failed to send. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be re-sent, null will be returned instead of the message.
+ * Resends messages which failed to send. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can&\#039;t be re-sent, null will be returned instead of the message.
  *
  * Returns object_ptr<Messages>.
  */
@@ -61223,14 +61223,14 @@ class resendMessages final : public Function {
   array<int53> message_ids_;
 
   /**
-   * Default constructor for a function, which resends messages which failed to send. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be re-sent, null will be returned instead of the message.
+   * Default constructor for a function, which resends messages which failed to send. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can&\#039;t be re-sent, null will be returned instead of the message.
    *
    * Returns object_ptr<Messages>.
    */
   resendMessages();
 
   /**
-   * Creates a function, which resends messages which failed to send. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be re-sent, null will be returned instead of the message.
+   * Creates a function, which resends messages which failed to send. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed. If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can&\#039;t be re-sent, null will be returned instead of the message.
    *
    * Returns object_ptr<Messages>.
    *
@@ -61297,7 +61297,7 @@ class resendPhoneNumberConfirmationCode final : public Function {
 };
 
 /**
- * Re-sends the code to verify a phone number to be added to a user's Telegram Passport.
+ * Re-sends the code to verify a phone number to be added to a user&\#039;s Telegram Passport.
  *
  * Returns object_ptr<AuthenticationCodeInfo>.
  */
@@ -61305,7 +61305,7 @@ class resendPhoneNumberVerificationCode final : public Function {
  public:
 
   /**
-   * Default constructor for a function, which re-sends the code to verify a phone number to be added to a user's Telegram Passport.
+   * Default constructor for a function, which re-sends the code to verify a phone number to be added to a user&\#039;s Telegram Passport.
    *
    * Returns object_ptr<AuthenticationCodeInfo>.
    */
@@ -61477,7 +61477,7 @@ class resetNetworkStatistics final : public Function {
 };
 
 /**
- * Removes 2-step verification password without previous password and access to recovery email address. The password can't be reset immediately and the request needs to be repeated after the specified time.
+ * Removes 2-step verification password without previous password and access to recovery email address. The password can&\#039;t be reset immediately and the request needs to be repeated after the specified time.
  *
  * Returns object_ptr<ResetPasswordResult>.
  */
@@ -61485,7 +61485,7 @@ class resetPassword final : public Function {
  public:
 
   /**
-   * Default constructor for a function, which removes 2-step verification password without previous password and access to recovery email address. The password can't be reset immediately and the request needs to be repeated after the specified time.
+   * Default constructor for a function, which removes 2-step verification password without previous password and access to recovery email address. The password can&\#039;t be reset immediately and the request needs to be repeated after the specified time.
    *
    * Returns object_ptr<ResetPasswordResult>.
    */
@@ -61835,7 +61835,7 @@ class searchChatMessages final : public Function {
   int53 from_message_id_;
   /// Specify 0 to get results from exactly the from_message_id or a negative offset to get the specified message and some newer messages.
   int32 offset_;
-  /// The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+  /// The maximum number of messages to be returned; must be positive and can&\#039;t be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
   int32 limit_;
   /// Additional filter for messages to search; pass null to search for all messages.
   object_ptr<SearchMessagesFilter> filter_;
@@ -61859,7 +61859,7 @@ class searchChatMessages final : public Function {
    * \param[in] sender_id_ Identifier of the sender of messages to search for; pass null to search for messages from any sender. Not supported in secret chats.
    * \param[in] from_message_id_ Identifier of the message starting from which history must be fetched; use 0 to get results from the last message.
    * \param[in] offset_ Specify 0 to get results from exactly the from_message_id or a negative offset to get the specified message and some newer messages.
-   * \param[in] limit_ The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
+   * \param[in] limit_ The maximum number of messages to be returned; must be positive and can&\#039;t be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.
    * \param[in] filter_ Additional filter for messages to search; pass null to search for all messages.
    * \param[in] message_thread_id_ If not 0, only messages in the specified thread will be returned; supergroups only.
    */
@@ -62144,7 +62144,7 @@ class searchEmojis final : public Function {
   string text_;
   /// Pass true if only emojis, which exactly match the text, needs to be returned.
   bool exact_match_;
-  /// List of possible IETF language tags of the user's input language; may be empty if unknown.
+  /// List of possible IETF language tags of the user&\#039;s input language; may be empty if unknown.
   array<string> input_language_codes_;
 
   /**
@@ -62161,7 +62161,7 @@ class searchEmojis final : public Function {
    *
    * \param[in] text_ Text to search for.
    * \param[in] exact_match_ Pass true if only emojis, which exactly match the text, needs to be returned.
-   * \param[in] input_language_codes_ List of possible IETF language tags of the user's input language; may be empty if unknown.
+   * \param[in] input_language_codes_ List of possible IETF language tags of the user&\#039;s input language; may be empty if unknown.
    */
   searchEmojis(string const &text_, bool exact_match_, array<string> &&input_language_codes_);
 
@@ -62767,7 +62767,7 @@ class searchStickers final : public Function {
 };
 
 /**
- * Searches a user by their phone number. Returns a 404 error if the user can't be found.
+ * Searches a user by their phone number. Returns a 404 error if the user can&\#039;t be found.
  *
  * Returns object_ptr<User>.
  */
@@ -62777,14 +62777,14 @@ class searchUserByPhoneNumber final : public Function {
   string phone_number_;
 
   /**
-   * Default constructor for a function, which searches a user by their phone number. Returns a 404 error if the user can't be found.
+   * Default constructor for a function, which searches a user by their phone number. Returns a 404 error if the user can&\#039;t be found.
    *
    * Returns object_ptr<User>.
    */
   searchUserByPhoneNumber();
 
   /**
-   * Creates a function, which searches a user by their phone number. Returns a 404 error if the user can't be found.
+   * Creates a function, which searches a user by their phone number. Returns a 404 error if the user can&\#039;t be found.
    *
    * Returns object_ptr<User>.
    *
@@ -62814,7 +62814,7 @@ class searchUserByPhoneNumber final : public Function {
 };
 
 /**
- * Invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can't be invited to a private chat other than the chat with the bot. Bots can't be invited to channels (although they can be added as admins) and secret chats. Returns the sent message.
+ * Invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can&\#039;t be invited to a private chat other than the chat with the bot. Bots can&\#039;t be invited to channels (although they can be added as admins) and secret chats. Returns the sent message.
  *
  * Returns object_ptr<Message>.
  */
@@ -62828,14 +62828,14 @@ class sendBotStartMessage final : public Function {
   string parameter_;
 
   /**
-   * Default constructor for a function, which invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can't be invited to a private chat other than the chat with the bot. Bots can't be invited to channels (although they can be added as admins) and secret chats. Returns the sent message.
+   * Default constructor for a function, which invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can&\#039;t be invited to a private chat other than the chat with the bot. Bots can&\#039;t be invited to channels (although they can be added as admins) and secret chats. Returns the sent message.
    *
    * Returns object_ptr<Message>.
    */
   sendBotStartMessage();
 
   /**
-   * Creates a function, which invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can't be invited to a private chat other than the chat with the bot. Bots can't be invited to channels (although they can be added as admins) and secret chats. Returns the sent message.
+   * Creates a function, which invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can&\#039;t be invited to a private chat other than the chat with the bot. Bots can&\#039;t be invited to channels (although they can be added as admins) and secret chats. Returns the sent message.
    *
    * Returns object_ptr<Message>.
    *
@@ -63223,7 +63223,7 @@ class sendCustomRequest final : public Function {
 };
 
 /**
- * Sends a code to verify an email address to be added to a user's Telegram Passport.
+ * Sends a code to verify an email address to be added to a user&\#039;s Telegram Passport.
  *
  * Returns object_ptr<EmailAddressAuthenticationCodeInfo>.
  */
@@ -63233,14 +63233,14 @@ class sendEmailAddressVerificationCode final : public Function {
   string email_address_;
 
   /**
-   * Default constructor for a function, which sends a code to verify an email address to be added to a user's Telegram Passport.
+   * Default constructor for a function, which sends a code to verify an email address to be added to a user&\#039;s Telegram Passport.
    *
    * Returns object_ptr<EmailAddressAuthenticationCodeInfo>.
    */
   sendEmailAddressVerificationCode();
 
   /**
-   * Creates a function, which sends a code to verify an email address to be added to a user's Telegram Passport.
+   * Creates a function, which sends a code to verify an email address to be added to a user&\#039;s Telegram Passport.
    *
    * Returns object_ptr<EmailAddressAuthenticationCodeInfo>.
    *
@@ -63581,7 +63581,7 @@ class sendPhoneNumberConfirmationCode final : public Function {
   string hash_;
   /// Phone number value from the link.
   string phone_number_;
-  /// Settings for the authentication of the user's phone number; pass null to use default settings.
+  /// Settings for the authentication of the user&\#039;s phone number; pass null to use default settings.
   object_ptr<phoneNumberAuthenticationSettings> settings_;
 
   /**
@@ -63598,7 +63598,7 @@ class sendPhoneNumberConfirmationCode final : public Function {
    *
    * \param[in] hash_ Hash value from the link.
    * \param[in] phone_number_ Phone number value from the link.
-   * \param[in] settings_ Settings for the authentication of the user's phone number; pass null to use default settings.
+   * \param[in] settings_ Settings for the authentication of the user&\#039;s phone number; pass null to use default settings.
    */
   sendPhoneNumberConfirmationCode(string const &hash_, string const &phone_number_, object_ptr<phoneNumberAuthenticationSettings> &&settings_);
 
@@ -63624,7 +63624,7 @@ class sendPhoneNumberConfirmationCode final : public Function {
 };
 
 /**
- * Sends a code to verify a phone number to be added to a user's Telegram Passport.
+ * Sends a code to verify a phone number to be added to a user&\#039;s Telegram Passport.
  *
  * Returns object_ptr<AuthenticationCodeInfo>.
  */
@@ -63632,23 +63632,23 @@ class sendPhoneNumberVerificationCode final : public Function {
  public:
   /// The phone number of the user, in international format.
   string phone_number_;
-  /// Settings for the authentication of the user's phone number; pass null to use default settings.
+  /// Settings for the authentication of the user&\#039;s phone number; pass null to use default settings.
   object_ptr<phoneNumberAuthenticationSettings> settings_;
 
   /**
-   * Default constructor for a function, which sends a code to verify a phone number to be added to a user's Telegram Passport.
+   * Default constructor for a function, which sends a code to verify a phone number to be added to a user&\#039;s Telegram Passport.
    *
    * Returns object_ptr<AuthenticationCodeInfo>.
    */
   sendPhoneNumberVerificationCode();
 
   /**
-   * Creates a function, which sends a code to verify a phone number to be added to a user's Telegram Passport.
+   * Creates a function, which sends a code to verify a phone number to be added to a user&\#039;s Telegram Passport.
    *
    * Returns object_ptr<AuthenticationCodeInfo>.
    *
    * \param[in] phone_number_ The phone number of the user, in international format.
-   * \param[in] settings_ Settings for the authentication of the user's phone number; pass null to use default settings.
+   * \param[in] settings_ Settings for the authentication of the user&\#039;s phone number; pass null to use default settings.
    */
   sendPhoneNumberVerificationCode(string const &phone_number_, object_ptr<phoneNumberAuthenticationSettings> &&settings_);
 
@@ -63829,7 +63829,7 @@ class setAuthenticationPhoneNumber final : public Function {
  public:
   /// The phone number of the user, in international format.
   string phone_number_;
-  /// Settings for the authentication of the user's phone number; pass null to use default settings.
+  /// Settings for the authentication of the user&\#039;s phone number; pass null to use default settings.
   object_ptr<phoneNumberAuthenticationSettings> settings_;
 
   /**
@@ -63845,7 +63845,7 @@ class setAuthenticationPhoneNumber final : public Function {
    * Returns object_ptr<Ok>.
    *
    * \param[in] phone_number_ The phone number of the user, in international format.
-   * \param[in] settings_ Settings for the authentication of the user's phone number; pass null to use default settings.
+   * \param[in] settings_ Settings for the authentication of the user&\#039;s phone number; pass null to use default settings.
    */
   setAuthenticationPhoneNumber(string const &phone_number_, object_ptr<phoneNumberAuthenticationSettings> &&settings_);
 
@@ -64021,7 +64021,7 @@ class setBio final : public Function {
 };
 
 /**
- * Informs the server about the number of pending bot updates if they haven't been processed for a long time; for bots only.
+ * Informs the server about the number of pending bot updates if they haven&\#039;t been processed for a long time; for bots only.
  *
  * Returns object_ptr<Ok>.
  */
@@ -64033,14 +64033,14 @@ class setBotUpdatesStatus final : public Function {
   string error_message_;
 
   /**
-   * Default constructor for a function, which informs the server about the number of pending bot updates if they haven't been processed for a long time; for bots only.
+   * Default constructor for a function, which informs the server about the number of pending bot updates if they haven&\#039;t been processed for a long time; for bots only.
    *
    * Returns object_ptr<Ok>.
    */
   setBotUpdatesStatus();
 
   /**
-   * Creates a function, which informs the server about the number of pending bot updates if they haven't been processed for a long time; for bots only.
+   * Creates a function, which informs the server about the number of pending bot updates if they haven&\#039;t been processed for a long time; for bots only.
    *
    * Returns object_ptr<Ok>.
    *
@@ -64229,7 +64229,7 @@ class setChatDiscussionGroup final : public Function {
  public:
   /// Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages rights in the supergroup).
   int53 chat_id_;
-  /// Identifier of a new channel's discussion group. Use 0 to remove the discussion group. Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used first to change that.
+  /// Identifier of a new channel&\#039;s discussion group. Use 0 to remove the discussion group. Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don&\#039;t have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used first to change that.
   int53 discussion_chat_id_;
 
   /**
@@ -64245,7 +64245,7 @@ class setChatDiscussionGroup final : public Function {
    * Returns object_ptr<Ok>.
    *
    * \param[in] chat_id_ Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages rights in the supergroup).
-   * \param[in] discussion_chat_id_ Identifier of a new channel's discussion group. Use 0 to remove the discussion group. Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used first to change that.
+   * \param[in] discussion_chat_id_ Identifier of a new channel&\#039;s discussion group. Use 0 to remove the discussion group. Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don&\#039;t have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used first to change that.
    */
   setChatDiscussionGroup(int53 chat_id_, int53 discussion_chat_id_);
 
@@ -64477,7 +64477,7 @@ class setChatMessageSender final : public Function {
 };
 
 /**
- * Changes the message TTL in a chat. Requires can_delete_messages administrator right in basic groups, supergroups and channels Message TTL can't be changed in a chat with the current user (Saved Messages) and the chat 777000 (Telegram).
+ * Changes the message TTL in a chat. Requires can_delete_messages administrator right in basic groups, supergroups and channels Message TTL can&\#039;t be changed in a chat with the current user (Saved Messages) and the chat 777000 (Telegram).
  *
  * Returns object_ptr<Ok>.
  */
@@ -64489,14 +64489,14 @@ class setChatMessageTtl final : public Function {
   int32 ttl_;
 
   /**
-   * Default constructor for a function, which changes the message TTL in a chat. Requires can_delete_messages administrator right in basic groups, supergroups and channels Message TTL can't be changed in a chat with the current user (Saved Messages) and the chat 777000 (Telegram).
+   * Default constructor for a function, which changes the message TTL in a chat. Requires can_delete_messages administrator right in basic groups, supergroups and channels Message TTL can&\#039;t be changed in a chat with the current user (Saved Messages) and the chat 777000 (Telegram).
    *
    * Returns object_ptr<Ok>.
    */
   setChatMessageTtl();
 
   /**
-   * Creates a function, which changes the message TTL in a chat. Requires can_delete_messages administrator right in basic groups, supergroups and channels Message TTL can't be changed in a chat with the current user (Saved Messages) and the chat 777000 (Telegram).
+   * Creates a function, which changes the message TTL in a chat. Requires can_delete_messages administrator right in basic groups, supergroups and channels Message TTL can&\#039;t be changed in a chat with the current user (Saved Messages) and the chat 777000 (Telegram).
    *
    * Returns object_ptr<Ok>.
    *
@@ -64527,7 +64527,7 @@ class setChatMessageTtl final : public Function {
 };
 
 /**
- * Changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can't be changed.
+ * Changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can&\#039;t be changed.
  *
  * Returns object_ptr<Ok>.
  */
@@ -64539,14 +64539,14 @@ class setChatNotificationSettings final : public Function {
   object_ptr<chatNotificationSettings> notification_settings_;
 
   /**
-   * Default constructor for a function, which changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can't be changed.
+   * Default constructor for a function, which changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can&\#039;t be changed.
    *
    * Returns object_ptr<Ok>.
    */
   setChatNotificationSettings();
 
   /**
-   * Creates a function, which changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can't be changed.
+   * Creates a function, which changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can&\#039;t be changed.
    *
    * Returns object_ptr<Ok>.
    *
@@ -64837,7 +64837,7 @@ class setCommands final : public Function {
   object_ptr<BotCommandScope> scope_;
   /// A two-letter ISO 639-1 language code. If empty, the commands will be applied to all users from the given scope, for which language there are no dedicated commands.
   string language_code_;
-  /// List of the bot's commands.
+  /// List of the bot&\#039;s commands.
   array<object_ptr<botCommand>> commands_;
 
   /**
@@ -64854,7 +64854,7 @@ class setCommands final : public Function {
    *
    * \param[in] scope_ The scope to which the commands are relevant; pass null to change commands in the default bot command scope.
    * \param[in] language_code_ A two-letter ISO 639-1 language code. If empty, the commands will be applied to all users from the given scope, for which language there are no dedicated commands.
-   * \param[in] commands_ List of the bot's commands.
+   * \param[in] commands_ List of the bot&\#039;s commands.
    */
   setCommands(object_ptr<BotCommandScope> &&scope_, string const &language_code_, array<object_ptr<botCommand>> &&commands_);
 
@@ -64886,7 +64886,7 @@ class setCommands final : public Function {
  */
 class setCustomLanguagePack final : public Function {
  public:
-  /// Information about the language pack. Language pack ID must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
+  /// Information about the language pack. Language pack ID must start with &\#039;X&\#039;, consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
   object_ptr<languagePackInfo> info_;
   /// Strings of the new language pack.
   array<object_ptr<languagePackString>> strings_;
@@ -64903,7 +64903,7 @@ class setCustomLanguagePack final : public Function {
    *
    * Returns object_ptr<Ok>.
    *
-   * \param[in] info_ Information about the language pack. Language pack ID must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
+   * \param[in] info_ Information about the language pack. Language pack ID must start with &\#039;X&\#039;, consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization.
    * \param[in] strings_ Strings of the new language pack.
    */
   setCustomLanguagePack(object_ptr<languagePackInfo> &&info_, array<object_ptr<languagePackString>> &&strings_);
@@ -65244,7 +65244,7 @@ class setGroupCallParticipantIsSpeaking final : public Function {
  public:
   /// Group call identifier.
   int32 group_call_id_;
-  /// Group call participant's synchronization audio source identifier, or 0 for the current user.
+  /// Group call participant&\#039;s synchronization audio source identifier, or 0 for the current user.
   int32 audio_source_;
   /// Pass true if the user is speaking.
   bool is_speaking_;
@@ -65262,7 +65262,7 @@ class setGroupCallParticipantIsSpeaking final : public Function {
    * Returns object_ptr<Ok>.
    *
    * \param[in] group_call_id_ Group call identifier.
-   * \param[in] audio_source_ Group call participant's synchronization audio source identifier, or 0 for the current user.
+   * \param[in] audio_source_ Group call participant&\#039;s synchronization audio source identifier, or 0 for the current user.
    * \param[in] is_speaking_ Pass true if the user is speaking.
    */
   setGroupCallParticipantIsSpeaking(int32 group_call_id_, int32 audio_source_, bool is_speaking_);
@@ -65289,7 +65289,7 @@ class setGroupCallParticipantIsSpeaking final : public Function {
 };
 
 /**
- * Changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with the default volume level.
+ * Changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant&\#039;s volume level will be changed for all users with the default volume level.
  *
  * Returns object_ptr<Ok>.
  */
@@ -65299,24 +65299,24 @@ class setGroupCallParticipantVolumeLevel final : public Function {
   int32 group_call_id_;
   /// Participant identifier.
   object_ptr<MessageSender> participant_id_;
-  /// New participant's volume level; 1-20000 in hundreds of percents.
+  /// New participant&\#039;s volume level; 1-20000 in hundreds of percents.
   int32 volume_level_;
 
   /**
-   * Default constructor for a function, which changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with the default volume level.
+   * Default constructor for a function, which changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant&\#039;s volume level will be changed for all users with the default volume level.
    *
    * Returns object_ptr<Ok>.
    */
   setGroupCallParticipantVolumeLevel();
 
   /**
-   * Creates a function, which changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with the default volume level.
+   * Creates a function, which changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant&\#039;s volume level will be changed for all users with the default volume level.
    *
    * Returns object_ptr<Ok>.
    *
    * \param[in] group_call_id_ Group call identifier.
    * \param[in] participant_id_ Participant identifier.
-   * \param[in] volume_level_ New participant's volume level; 1-20000 in hundreds of percents.
+   * \param[in] volume_level_ New participant&\#039;s volume level; 1-20000 in hundreds of percents.
    */
   setGroupCallParticipantVolumeLevel(int32 group_call_id_, object_ptr<MessageSender> &&participant_id_, int32 volume_level_);
 
@@ -65942,7 +65942,7 @@ class setOption final : public Function {
 };
 
 /**
- * Adds an element to the user's Telegram Passport. May return an error with a message &quot;PHONE_VERIFICATION_NEEDED&quot; or &quot;EMAIL_VERIFICATION_NEEDED&quot; if the chosen phone number or the chosen email address must be verified first.
+ * Adds an element to the user&\#039;s Telegram Passport. May return an error with a message &quot;PHONE_VERIFICATION_NEEDED&quot; or &quot;EMAIL_VERIFICATION_NEEDED&quot; if the chosen phone number or the chosen email address must be verified first.
  *
  * Returns object_ptr<PassportElement>.
  */
@@ -65954,14 +65954,14 @@ class setPassportElement final : public Function {
   string password_;
 
   /**
-   * Default constructor for a function, which adds an element to the user's Telegram Passport. May return an error with a message &quot;PHONE_VERIFICATION_NEEDED&quot; or &quot;EMAIL_VERIFICATION_NEEDED&quot; if the chosen phone number or the chosen email address must be verified first.
+   * Default constructor for a function, which adds an element to the user&\#039;s Telegram Passport. May return an error with a message &quot;PHONE_VERIFICATION_NEEDED&quot; or &quot;EMAIL_VERIFICATION_NEEDED&quot; if the chosen phone number or the chosen email address must be verified first.
    *
    * Returns object_ptr<PassportElement>.
    */
   setPassportElement();
 
   /**
-   * Creates a function, which adds an element to the user's Telegram Passport. May return an error with a message &quot;PHONE_VERIFICATION_NEEDED&quot; or &quot;EMAIL_VERIFICATION_NEEDED&quot; if the chosen phone number or the chosen email address must be verified first.
+   * Creates a function, which adds an element to the user&\#039;s Telegram Passport. May return an error with a message &quot;PHONE_VERIFICATION_NEEDED&quot; or &quot;EMAIL_VERIFICATION_NEEDED&quot; if the chosen phone number or the chosen email address must be verified first.
    *
    * Returns object_ptr<PassportElement>.
    *
@@ -67054,7 +67054,7 @@ class stopPoll final : public Function {
 };
 
 /**
- * Fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization.
+ * Fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn&\#039;t need to be called explicitly for the current used/base language packs. Can be called before authorization.
  *
  * Returns object_ptr<Ok>.
  */
@@ -67064,14 +67064,14 @@ class synchronizeLanguagePack final : public Function {
   string language_pack_id_;
 
   /**
-   * Default constructor for a function, which fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization.
+   * Default constructor for a function, which fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn&\#039;t need to be called explicitly for the current used/base language packs. Can be called before authorization.
    *
    * Returns object_ptr<Ok>.
    */
   synchronizeLanguagePack();
 
   /**
-   * Creates a function, which fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization.
+   * Creates a function, which fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn&\#039;t need to be called explicitly for the current used/base language packs. Can be called before authorization.
    *
    * Returns object_ptr<Ok>.
    *
@@ -67816,7 +67816,7 @@ class toggleAllDownloadsArePaused final : public Function {
  */
 class toggleBotIsAddedToAttachmentMenu final : public Function {
  public:
-  /// Bot's user identifier.
+  /// Bot&\#039;s user identifier.
   int53 bot_user_id_;
   /// Pass true to add the bot to attachment menu; pass false to remove the bot from attachment menu.
   bool is_added_;
@@ -67833,7 +67833,7 @@ class toggleBotIsAddedToAttachmentMenu final : public Function {
    *
    * Returns object_ptr<Ok>.
    *
-   * \param[in] bot_user_id_ Bot's user identifier.
+   * \param[in] bot_user_id_ Bot&\#039;s user identifier.
    * \param[in] is_added_ Pass true to add the bot to attachment menu; pass false to remove the bot from attachment menu.
    */
   toggleBotIsAddedToAttachmentMenu(int53 bot_user_id_, bool is_added_);
@@ -68163,7 +68163,7 @@ class toggleGroupCallEnabledStartNotification final : public Function {
 };
 
 /**
- * Toggles whether current user's video is enabled.
+ * Toggles whether current user&\#039;s video is enabled.
  *
  * Returns object_ptr<Ok>.
  */
@@ -68171,23 +68171,23 @@ class toggleGroupCallIsMyVideoEnabled final : public Function {
  public:
   /// Group call identifier.
   int32 group_call_id_;
-  /// Pass true if the current user's video is enabled.
+  /// Pass true if the current user&\#039;s video is enabled.
   bool is_my_video_enabled_;
 
   /**
-   * Default constructor for a function, which toggles whether current user's video is enabled.
+   * Default constructor for a function, which toggles whether current user&\#039;s video is enabled.
    *
    * Returns object_ptr<Ok>.
    */
   toggleGroupCallIsMyVideoEnabled();
 
   /**
-   * Creates a function, which toggles whether current user's video is enabled.
+   * Creates a function, which toggles whether current user&\#039;s video is enabled.
    *
    * Returns object_ptr<Ok>.
    *
    * \param[in] group_call_id_ Group call identifier.
-   * \param[in] is_my_video_enabled_ Pass true if the current user's video is enabled.
+   * \param[in] is_my_video_enabled_ Pass true if the current user&\#039;s video is enabled.
    */
   toggleGroupCallIsMyVideoEnabled(int32 group_call_id_, bool is_my_video_enabled_);
 
@@ -68213,7 +68213,7 @@ class toggleGroupCallIsMyVideoEnabled final : public Function {
 };
 
 /**
- * Toggles whether current user's video is paused.
+ * Toggles whether current user&\#039;s video is paused.
  *
  * Returns object_ptr<Ok>.
  */
@@ -68221,23 +68221,23 @@ class toggleGroupCallIsMyVideoPaused final : public Function {
  public:
   /// Group call identifier.
   int32 group_call_id_;
-  /// Pass true if the current user's video is paused.
+  /// Pass true if the current user&\#039;s video is paused.
   bool is_my_video_paused_;
 
   /**
-   * Default constructor for a function, which toggles whether current user's video is paused.
+   * Default constructor for a function, which toggles whether current user&\#039;s video is paused.
    *
    * Returns object_ptr<Ok>.
    */
   toggleGroupCallIsMyVideoPaused();
 
   /**
-   * Creates a function, which toggles whether current user's video is paused.
+   * Creates a function, which toggles whether current user&\#039;s video is paused.
    *
    * Returns object_ptr<Ok>.
    *
    * \param[in] group_call_id_ Group call identifier.
-   * \param[in] is_my_video_paused_ Pass true if the current user's video is paused.
+   * \param[in] is_my_video_paused_ Pass true if the current user&\#039;s video is paused.
    */
   toggleGroupCallIsMyVideoPaused(int32 group_call_id_, bool is_my_video_paused_);
 
@@ -68323,7 +68323,7 @@ class toggleGroupCallParticipantIsHandRaised final : public Function {
   int32 group_call_id_;
   /// Participant identifier.
   object_ptr<MessageSender> participant_id_;
-  /// Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed group call flag to lower other's hand.
+  /// Pass true if the user&\#039;s hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed group call flag to lower other&\#039;s hand.
   bool is_hand_raised_;
 
   /**
@@ -68340,7 +68340,7 @@ class toggleGroupCallParticipantIsHandRaised final : public Function {
    *
    * \param[in] group_call_id_ Group call identifier.
    * \param[in] participant_id_ Participant identifier.
-   * \param[in] is_hand_raised_ Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed group call flag to lower other's hand.
+   * \param[in] is_hand_raised_ Pass true if the user&\#039;s hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed group call flag to lower other&\#039;s hand.
    */
   toggleGroupCallParticipantIsHandRaised(int32 group_call_id_, object_ptr<MessageSender> &&participant_id_, bool is_hand_raised_);
 
@@ -68874,7 +68874,7 @@ class transferChatOwnership final : public Function {
  public:
   /// Chat identifier.
   int53 chat_id_;
-  /// Identifier of the user to which transfer the ownership. The ownership can't be transferred to a bot or to a deleted user.
+  /// Identifier of the user to which transfer the ownership. The ownership can&\#039;t be transferred to a bot or to a deleted user.
   int53 user_id_;
   /// The 2-step verification password of the current user.
   string password_;
@@ -68892,7 +68892,7 @@ class transferChatOwnership final : public Function {
    * Returns object_ptr<Ok>.
    *
    * \param[in] chat_id_ Chat identifier.
-   * \param[in] user_id_ Identifier of the user to which transfer the ownership. The ownership can't be transferred to a bot or to a deleted user.
+   * \param[in] user_id_ Identifier of the user to which transfer the ownership. The ownership can&\#039;t be transferred to a bot or to a deleted user.
    * \param[in] password_ The 2-step verification password of the current user.
    */
   transferChatOwnership(int53 chat_id_, int53 user_id_, string const &password_);
@@ -68919,7 +68919,7 @@ class transferChatOwnership final : public Function {
 };
 
 /**
- * Translates a text to the given language. Returns a 404 error if the translation can't be performed.
+ * Translates a text to the given language. Returns a 404 error if the translation can&\#039;t be performed.
  *
  * Returns object_ptr<Text>.
  */
@@ -68933,14 +68933,14 @@ class translateText final : public Function {
   string to_language_code_;
 
   /**
-   * Default constructor for a function, which translates a text to the given language. Returns a 404 error if the translation can't be performed.
+   * Default constructor for a function, which translates a text to the given language. Returns a 404 error if the translation can&\#039;t be performed.
    *
    * Returns object_ptr<Text>.
    */
   translateText();
 
   /**
-   * Creates a function, which translates a text to the given language. Returns a 404 error if the translation can't be performed.
+   * Creates a function, which translates a text to the given language. Returns a 404 error if the translation can&\#039;t be performed.
    *
    * Returns object_ptr<Text>.
    *
@@ -69369,7 +69369,7 @@ class viewTrendingStickerSets final : public Function {
 };
 
 /**
- * Writes a part of a generated file. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct write to the destination file.
+ * Writes a part of a generated file. This method is intended to be used only if the application has no direct access to TDLib&\#039;s file system, because it is usually slower than a direct write to the destination file.
  *
  * Returns object_ptr<Ok>.
  */
@@ -69383,14 +69383,14 @@ class writeGeneratedFilePart final : public Function {
   bytes data_;
 
   /**
-   * Default constructor for a function, which writes a part of a generated file. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct write to the destination file.
+   * Default constructor for a function, which writes a part of a generated file. This method is intended to be used only if the application has no direct access to TDLib&\#039;s file system, because it is usually slower than a direct write to the destination file.
    *
    * Returns object_ptr<Ok>.
    */
   writeGeneratedFilePart();
 
   /**
-   * Creates a function, which writes a part of a generated file. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct write to the destination file.
+   * Creates a function, which writes a part of a generated file. This method is intended to be used only if the application has no direct access to TDLib&\#039;s file system, because it is usually slower than a direct write to the destination file.
    *
    * Returns object_ptr<Ok>.
    *

@@ -1,4 +1,4 @@
-prefix=/tmp/1/tdlib
+prefix=/home/parallels/root/projects/1/tdlib
 
 Name: tdjson_static
 Description: Telegram Library - JSON interface (static)

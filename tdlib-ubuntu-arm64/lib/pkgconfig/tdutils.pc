@@ -1,0 +1,9 @@
+prefix=/home/parallels/root/projects/1/tdlib
+
+Name: tdutils
+Description: Telegram Library - Utils
+Version: 1.8.5
+
+CFlags: -I"${prefix}/include"
+Libs: -L"${prefix}/lib" -ltdutils
+Libs.private: -L"/usr/lib/aarch64-linux-gnu" -l:libcrypto.so -ldl -L"/usr/lib/aarch64-linux-gnu" -l:libz.so

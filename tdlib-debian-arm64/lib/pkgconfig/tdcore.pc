@@ -1,4 +1,4 @@
-prefix=/tmp/1/tdlib
+prefix=/home/parallels/root/projects/1/tdlib
 
 Name: tdcore
 Description: Telegram Library - Core
