@@ -24,19 +24,22 @@ func NewSimpleCustomEvent(state CustomEventTypeEnum) CustomEvent {
 	return event
 }
 
-func NewUpdateNewMessageTextEvent(chatId int64, chatTitle, text string) CustomEvent {
+func NewUpdateNewMessageTextEvent(chatId int64, chatTitle, text string, timeStamp float64) CustomEvent {
 	var event = make(CustomEvent)
 	event["@type"] = string(UpdateNewMessageTextType)
 	event["chatId"] = chatId
 	event["chatTitle"] = chatTitle
 	event["text"] = text
+	event["timeStamp"] = timeStamp
 	return event
 }
 
 var events = make(chan CustomEvent)
 
-func PublishEvent(event CustomEvent) {
-	events <- event
+func PublishEvents(eventsToPublish ...CustomEvent) {
+	for _, event := range eventsToPublish {
+		events <- event
+	}
 }
 
 func ReadEvent() CustomEvent {

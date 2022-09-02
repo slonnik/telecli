@@ -1,13 +1,16 @@
 package core
 
 import (
+	"fmt"
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
+	"time"
 )
 
 type listItem struct {
-	MainText      string // The main text of the list item.
-	SecondaryText string // A secondary text to be shown underneath the main text.
+	MainText      string  // The main text of the list item.
+	SecondaryText string  // A secondary text to be shown underneath the main text.
+	TimeStamp     float64 // item date-time creation
 }
 
 type TeleList struct {
@@ -21,11 +24,12 @@ func NewTeleList() *TeleList {
 	}
 }
 
-func (teleList *TeleList) AddItem(mainText, secondaryText string) *TeleList {
+func (teleList *TeleList) AddItem(mainText, secondaryText string, timeStamp float64) *TeleList {
 
 	item := &listItem{
 		MainText:      mainText,
 		SecondaryText: secondaryText,
+		TimeStamp:     timeStamp,
 	}
 
 	teleList.items = append(teleList.items, item)
@@ -44,7 +48,10 @@ func (teleList *TeleList) Draw(screen tcell.Screen) {
 	x, y := innerLeft, innerTop
 	for index, item := range teleList.items {
 		tview.Print(screen, item.MainText, x, y+index*2, 100, 0, tcell.ColorOlive)
-		tview.Print(screen, item.SecondaryText, x+4, y+index*2+1, 100, 0, tcell.ColorGreen)
+		itemTime := time.Unix(int64(item.TimeStamp), 0).Local()
+		year, month, day := itemTime.Date()
+		timeText := fmt.Sprintf("%v-%v-%v %v:%v", year, month, day, itemTime.Hour(), itemTime.Minute())
+		tview.Print(screen, fmt.Sprintf("[%v] %v", timeText, item.SecondaryText), x+4, y+index*2+1, 100, 0, tcell.ColorGreen)
 	}
 }
 
@@ -54,6 +61,6 @@ func (teleList *TeleList) SetBorder(show bool) *TeleList {
 }
 
 func (teleList *TeleList) SetTitle(title string) *TeleList {
-	teleList.Box.SetTitle(title)
+	teleList.Box.SetTitle(fmt.Sprintf("= %v =", title))
 	return teleList
 }

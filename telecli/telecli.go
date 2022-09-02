@@ -81,15 +81,15 @@ func main() {
 			switch currentState.GetAuthorizationStateEnum() {
 			case tdlib.AuthorizationStateWaitPhoneNumberType:
 				{
-					core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateWaitPhoneNumberType))
+					core.PublishEvents(core.NewSimpleCustomEvent(core.AuthorizationStateWaitPhoneNumberType))
 				}
 			case tdlib.AuthorizationStateWaitCodeType:
 				{
-					core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateWaitCodeType))
+					core.PublishEvents(core.NewSimpleCustomEvent(core.AuthorizationStateWaitCodeType))
 				}
 			case tdlib.AuthorizationStateReadyType:
 				{
-					core.PublishEvent(core.NewSimpleCustomEvent(core.AuthorizationStateReadyType))
+					core.PublishEvents(core.NewSimpleCustomEvent(core.AuthorizationStateReadyType))
 					goto MAIN_LOOP
 				}
 			}
@@ -109,9 +109,8 @@ func main() {
 				switch tdlib.MessageContentEnum(messageType.(string)) {
 				case tdlib.MessageTextType:
 					messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
-					event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, messageText.(string))
-					core.PublishEvent(event)
-
+					event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, messageText.(string), message["date"].(float64))
+					core.PublishEvents(event)
 				}
 			}
 		}
@@ -125,47 +124,43 @@ func main() {
 				{
 					chatId := event["chatId"].(int64)
 					chat, _ := client.GetChat(chatId)
+
+					app.QueueUpdate(func() {
+						_, page := pages.GetFrontPage()
+						list := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
+						list.SetTitle(chat.Title)
+						list.ClearItems()
+					})
+					app.Draw()
+
 					fromMessageId := chat.LastReadInboxMessageID
-					var messages []tdlib.Message
 					count := 0
+					var events []core.CustomEvent
 					for count < 2 {
 						history, _ := client.GetChatHistory(chatId, fromMessageId, 0, 10, false)
 						if len(history.Messages) == 0 {
 							break
 						}
 						for _, message := range history.Messages {
-							if message.Content != nil {
-								messages = append(messages, message)
 
+							var eventText string
+							switch message.Content.GetMessageContentEnum() {
+							case tdlib.MessageTextType:
+								eventText = message.Content.(*tdlib.MessageText).Text.Text
+							default:
+								eventText = string(message.Content.GetMessageContentEnum())
 							}
+
+							event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, eventText, float64(message.Date))
+							events = append(events, event)
 							fromMessageId = message.ID
 						}
 						count++
-
 					}
+					go func() {
+						core.PublishEvents(events...)
+					}()
 
-					app.QueueUpdate(func() {
-						_, page := pages.GetFrontPage()
-						list := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
-						list.ClearItems()
-						for _, message := range messages {
-							if message.Content == nil {
-								continue
-							}
-							switch message.Content.GetMessageContentEnum() {
-							case tdlib.MessageTextType:
-								{
-									list.AddItem(chat.Title, message.Content.(*tdlib.MessageText).Text.Text)
-
-								}
-							default:
-								{
-									list.AddItem(chat.Title, string(message.Content.GetMessageContentEnum()))
-								}
-							}
-						}
-					})
-					app.Draw()
 				}
 			case core.AuthorizationStateWaitPhoneNumberType:
 				{
@@ -203,13 +198,14 @@ func main() {
 				{
 					chatTitle := event["chatTitle"]
 					messageText := event["text"]
+					timeStamp := event["timeStamp"]
 					chatId := event["chatId"]
 					app.QueueUpdate(func() {
 						_, page := pages.GetFrontPage()
 						chatList := page.(*tview.Flex).GetItem(1).(*core.ChatList)
 						if chatList.GetSelectedChatId() == chatId {
 							mainList := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
-							mainList.AddItem(chatTitle.(string), messageText.(string))
+							mainList.AddItem(chatTitle.(string), messageText.(string), timeStamp.(float64))
 						}
 
 					})

@@ -43,7 +43,7 @@ func (chatList *ChatList) onKeyDown(event *tcell.EventKey) {
 		chatList.scrollDown()
 	}
 	chat := chatList.selectNext()
-	PublishEvent(NewChatSelectedEvent(chat.Id))
+	PublishEvents(NewChatSelectedEvent(chat.Id))
 }
 
 func (chatList *ChatList) onKeyUp(event *tcell.EventKey) {
@@ -51,7 +51,7 @@ func (chatList *ChatList) onKeyUp(event *tcell.EventKey) {
 		chatList.scrollUp()
 	}
 	chat := chatList.selectPrevious()
-	PublishEvent(NewChatSelectedEvent(chat.Id))
+	PublishEvents(NewChatSelectedEvent(chat.Id))
 }
 
 func (chatList *ChatList) AddChat(title string, id int64) *ChatList {
