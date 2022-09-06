@@ -5,10 +5,15 @@ import (
 	"github.com/rivo/tview"
 )
 
+type tListNotification interface {
+	itemChanged()
+}
+
 type ScrollableBox struct {
 	*tview.Box
-	selectedIndex int
-	startIndex    int
+	selectedIndex    int
+	startIndex       int
+	listNotification tListNotification
 }
 
 func newScrollableBox() *ScrollableBox {
@@ -24,6 +29,7 @@ func newScrollableBox() *ScrollableBox {
 			}
 		case tcell.KeyUp:
 			{
+
 				scrollableBox.onKeyUp(event)
 			}
 		}
@@ -32,28 +38,36 @@ func newScrollableBox() *ScrollableBox {
 	return scrollableBox
 }
 
+func (scrollableBox *ScrollableBox) subscribe(notification tListNotification) *ScrollableBox {
+	scrollableBox.listNotification = notification
+	return scrollableBox
+}
+
 func (scrollableBox *ScrollableBox) onKeyDown(event *tcell.EventKey) {
 
 	if scrollableBox.isScrollDownRequired() {
 		scrollableBox.scrollDown()
+	} else {
+		scrollableBox.selectedIndex++
 	}
-
+	scrollableBox.listNotification.itemChanged()
 }
 
 func (scrollableBox *ScrollableBox) onKeyUp(event *tcell.EventKey) {
 	if scrollableBox.isScrollUpRequired() {
 		scrollableBox.scrollUp()
+	} else {
+		scrollableBox.selectedIndex--
 	}
+	scrollableBox.listNotification.itemChanged()
 }
 
 func (scrollableBox *ScrollableBox) scrollDown() {
 	scrollableBox.startIndex++
-	scrollableBox.selectedIndex--
 }
 
 func (scrollableBox *ScrollableBox) scrollUp() {
 	scrollableBox.startIndex--
-	scrollableBox.selectedIndex++
 	if scrollableBox.startIndex < 0 {
 		scrollableBox.startIndex = 0
 	}
@@ -67,16 +81,3 @@ func (scrollableBox *ScrollableBox) isScrollDownRequired() bool {
 func (scrollableBox *ScrollableBox) isScrollUpRequired() bool {
 	return scrollableBox.selectedIndex == 0
 }
-
-/*func (chatList *ScrollableBox) selectNext() *chatItem {
-	chatList.selectedIndex++
-	return chatList.chats[chatList.startIndex+chatList.selectedIndex]
-}
-
-func (chatList *ScrollableBox) selectPrevious() *chatItem {
-	chatList.selectedIndex--
-	if chatList.selectedIndex < 0 {
-		chatList.selectedIndex = 0
-	}
-	return chatList.chats[chatList.startIndex+chatList.selectedIndex]
-}*/
