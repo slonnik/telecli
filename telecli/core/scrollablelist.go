@@ -9,11 +9,17 @@ type tListNotification interface {
 	itemChanged()
 }
 
+type tRow interface {
+	getHeight() int
+}
+
 type ScrollableBox struct {
 	*tview.Box
 	selectedIndex    int
 	startIndex       int
 	listNotification tListNotification
+	rows             []tRow
+	parent           tview.Primitive
 }
 
 func newScrollableBox() *ScrollableBox {
@@ -36,6 +42,43 @@ func newScrollableBox() *ScrollableBox {
 		return event
 	})
 	return scrollableBox
+}
+
+func (scrollableBox *ScrollableBox) setParent(parent tview.Primitive) {
+	scrollableBox.parent = parent
+}
+
+func (scrollableBox *ScrollableBox) addRow(row tRow) {
+	scrollableBox.rows = append(scrollableBox.rows, row)
+}
+
+func (scrollableBox *ScrollableBox) clearRows() {
+	scrollableBox.rows = []tRow{}
+}
+
+func (scrollableBox *ScrollableBox) getVisibleRows() []tRow {
+	_, _, _, height := scrollableBox.Box.GetInnerRect()
+
+	var rowsHeight int
+	endIndex := scrollableBox.startIndex
+	for _, row := range scrollableBox.rows[scrollableBox.startIndex:] {
+		rowsHeight += row.getHeight()
+		if rowsHeight <= height {
+			endIndex++
+
+		} else {
+			break
+		}
+	}
+	return scrollableBox.rows[scrollableBox.startIndex:endIndex]
+}
+
+func (scrollableBox *ScrollableBox) getSelectedRow() tRow {
+	return scrollableBox.rows[scrollableBox.selectedIndex]
+}
+
+func (scrollableBox *ScrollableBox) setSelectedRow(index int) {
+	scrollableBox.selectedIndex = index
 }
 
 func (scrollableBox *ScrollableBox) subscribe(notification tListNotification) *ScrollableBox {
@@ -80,4 +123,19 @@ func (scrollableBox *ScrollableBox) isScrollDownRequired() bool {
 
 func (scrollableBox *ScrollableBox) isScrollUpRequired() bool {
 	return scrollableBox.selectedIndex == 0
+}
+
+func (scrollableBox *ScrollableBox) SetTitle(title string) *ScrollableBox {
+	scrollableBox.Box.SetTitle(title)
+	return scrollableBox
+}
+
+func (scrollableBox *ScrollableBox) SetFocus() tview.Primitive {
+	scrollableBox.Box.Focus(nil)
+	return scrollableBox.parent
+}
+
+func (scrollableBox *ScrollableBox) SetBorder(show bool) tview.Primitive {
+	scrollableBox.Box.SetBorder(show)
+	return scrollableBox.parent
 }

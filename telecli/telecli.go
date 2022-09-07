@@ -67,7 +67,7 @@ func main() {
 						SetDirection(tview.FlexRow).
 						AddItem(core.NewTeleList().SetBorder(true), 0, 3, false).
 						AddItem(tview.NewBox().SetBorder(true), 3, 1, false), 0, 2, false).
-				AddItem(core.NewChatList().SetBorder(true).SetTitle(" Chats "), 20, 1, false),
+				AddItem(core.NewChatList().SetTitle(" Chats ").SetBorder(true), 20, 1, false),
 			true, true)
 
 	pages.SwitchToPage(startPageLabel)
