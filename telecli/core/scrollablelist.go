@@ -118,10 +118,7 @@ func (scrollableBox *ScrollableBox) onMouseLeftClick(event *tcell.EventMouse) {
 	yPos := 1
 	for index, row := range visibleRows {
 		rowHeight := row.getHeight()
-		if rowHeight == 1 && yClick == yPos {
-			scrollableBox.setSelectedRow(index)
-			break
-		} else if yClick >= yPos && yClick < yPos+rowHeight {
+		if yClick >= yPos && yClick < yPos+rowHeight {
 			scrollableBox.setSelectedRow(index)
 			break
 		}
