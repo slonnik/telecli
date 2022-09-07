@@ -57,7 +57,7 @@ func (chatList *ChatList) Draw(screen tcell.Screen) {
 		title := row.(chatItem).Title
 		if index == chatList.selectedIndex {
 			for pos := 0; pos < width; pos++ {
-				screen.SetContent(x+pos, y+index, 1, nil, tcell.StyleDefault.Background(tcell.ColorWhite))
+				screen.SetContent(x+pos, y+index, 1, nil, tcell.StyleDefault.Background(tcell.ColorGray))
 			}
 
 		}

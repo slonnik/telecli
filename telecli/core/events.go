@@ -9,6 +9,7 @@ const (
 	AuthorizationStateWaitCodeType        CustomEventTypeEnum = "authorizationStateWaitCodeType"
 	AuthorizationStateReadyType           CustomEventTypeEnum = "authorizationStateReadyType"
 	UpdateNewMessageTextType              CustomEventTypeEnum = "updateNewMessageTextType"
+	UpdateScreenEventType                 CustomEventTypeEnum = "updateScreenEventType"
 )
 
 func NewChatSelectedEvent(chatId int64) CustomEvent {
@@ -34,12 +35,18 @@ func NewUpdateNewMessageTextEvent(chatId int64, chatTitle, text string, timeStam
 	return event
 }
 
+func NewUpdateScreenEvent() CustomEvent {
+	return NewSimpleCustomEvent(UpdateScreenEventType)
+}
+
 var events = make(chan CustomEvent)
 
 func PublishEvents(eventsToPublish ...CustomEvent) {
-	for _, event := range eventsToPublish {
-		events <- event
-	}
+	go func() {
+		for _, event := range eventsToPublish {
+			events <- event
+		}
+	}()
 }
 
 func ReadEvent() CustomEvent {

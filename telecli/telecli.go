@@ -211,6 +211,10 @@ func main() {
 					})
 					app.Draw()
 				}
+			case core.UpdateScreenEventType:
+				{
+					app.Draw()
+				}
 
 			}
 

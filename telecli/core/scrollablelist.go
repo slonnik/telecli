@@ -27,6 +27,13 @@ func newScrollableBox() *ScrollableBox {
 		Box: tview.NewBox(),
 	}
 
+	scrollableBox.Box.SetMouseCapture(func(action tview.MouseAction, event *tcell.EventMouse) (tview.MouseAction, *tcell.EventMouse) {
+		switch action {
+		case tview.MouseLeftClick:
+			scrollableBox.onMouseLeftClick(event)
+		}
+		return action, event
+	})
 	scrollableBox.Box.SetInputCapture(func(event *tcell.EventKey) *tcell.EventKey {
 		switch event.Key() {
 		case tcell.KeyDown:
@@ -101,6 +108,25 @@ func (scrollableBox *ScrollableBox) onKeyUp(event *tcell.EventKey) {
 		scrollableBox.scrollUp()
 	} else {
 		scrollableBox.selectedIndex--
+	}
+	scrollableBox.listNotification.itemChanged()
+}
+
+func (scrollableBox *ScrollableBox) onMouseLeftClick(event *tcell.EventMouse) {
+	visibleRows := scrollableBox.getVisibleRows()
+	_, yClick := event.Position()
+	yPos := 1
+	for index, row := range visibleRows {
+		rowHeight := row.getHeight()
+		if rowHeight == 1 && yClick == yPos {
+			scrollableBox.setSelectedRow(index)
+			break
+		} else if yClick >= yPos && yClick < yPos+rowHeight {
+			scrollableBox.setSelectedRow(index)
+			break
+		}
+		yPos += row.getHeight()
+
 	}
 	scrollableBox.listNotification.itemChanged()
 }
