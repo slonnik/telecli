@@ -1,5 +1,7 @@
 package core
 
+import "github.com/Arman92/go-tdlib"
+
 type CustomEventTypeEnum string
 type CustomEvent map[string]interface{}
 
@@ -25,13 +27,10 @@ func NewSimpleCustomEvent(state CustomEventTypeEnum) CustomEvent {
 	return event
 }
 
-func NewUpdateNewMessageTextEvent(chatId int64, chatTitle, text string, timeStamp int64) CustomEvent {
+func NewUpdateNewMessageTextEvent(message tdlib.Message) CustomEvent {
 	var event = make(CustomEvent)
 	event["@type"] = string(UpdateNewMessageTextType)
-	event["chatId"] = chatId
-	event["chatTitle"] = chatTitle
-	event["text"] = text
-	event["timeStamp"] = timeStamp
+	event["message"] = message
 	return event
 }
 

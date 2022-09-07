@@ -2,15 +2,31 @@ package core
 
 import (
 	"fmt"
+	"github.com/Arman92/go-tdlib"
 	"github.com/gdamore/tcell/v2"
 	"github.com/rivo/tview"
 	"time"
 )
 
+type tItemStyle struct {
+	headerColor tcell.Color
+	bodyColor   tcell.Color
+}
+
+var greyStyle = tItemStyle{
+	headerColor: tcell.ColorDarkGray,
+	bodyColor:   tcell.ColorDarkGray,
+}
+
+var mainStyle = tItemStyle{
+	headerColor: tcell.ColorOlive,
+	bodyColor:   tcell.ColorGreen,
+}
+
 type tListItem struct {
-	MainText      string    // The main text of the list item.
-	SecondaryText string    // A secondary text to be shown underneath the main text.
-	CreationTime  time.Time // item date-time creation
+	text         string    // The main text of the list item.
+	CreationTime time.Time // item date-time creation
+	style        tItemStyle
 }
 
 func (item tListItem) getHeight() int {
@@ -30,17 +46,37 @@ func NewTeleList() *TeleList {
 	return teleList
 }
 
-func (teleList *TeleList) AddItem(mainText, secondaryText string, timeStamp int64) *TeleList {
+func (teleList *TeleList) AddItemFromMessage(message tdlib.Message) {
+
+	var eventText string
+	var style tItemStyle = greyStyle
+	switch message.Content.GetMessageContentEnum() {
+	case tdlib.MessageTextType:
+		eventText = message.Content.(*tdlib.MessageText).Text.Text
+		style = mainStyle
+	default:
+		eventText = string(message.Content.GetMessageContentEnum())
+	}
 
 	item := &tListItem{
-		MainText:      mainText,
+		text:         eventText,
+		CreationTime: time.Unix(int64(message.Date), 0),
+		style:        style,
+	}
+
+	teleList.addRow(item)
+}
+
+/*func (teleList *TeleList) AddItem(mainText, secondaryText string, timeStamp int64) {
+
+	item := &tListItem{
+		text:      mainText,
 		SecondaryText: secondaryText,
 		CreationTime:  time.Unix(timeStamp, 0),
 	}
 
 	teleList.addRow(item)
-	return teleList
-}
+}*/
 
 func (teleList *TeleList) ClearItems() *TeleList {
 	teleList.clearRows()
@@ -61,11 +97,11 @@ func (teleList *TeleList) Draw(screen tcell.Screen) {
 			}
 
 		}
-		tview.Print(screen, item.MainText, x, currentYPos, 100, 0, tcell.ColorOlive)
 		year, month, day := item.CreationTime.Date()
 		hour, minute, _ := item.CreationTime.Clock()
 		timeText := fmt.Sprintf("%v-%v-%v %v:%v", year, month, day, hour, minute)
-		tview.Print(screen, fmt.Sprintf("[%v] %v", timeText, item.SecondaryText), x+4, currentYPos+1, 100, 0, tcell.ColorGreen)
+		tview.Print(screen, timeText, x, currentYPos, 100, 0, item.style.headerColor)
+		tview.Print(screen, item.text, x+4, currentYPos+1, 100, 0, item.style.bodyColor)
 		currentYPos += 2
 	}
 }

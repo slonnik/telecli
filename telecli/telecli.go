@@ -105,12 +105,12 @@ func main() {
 
 				message := update.Data["message"].(map[string]interface{})
 				messageType := message["content"].(map[string]interface{})["@type"]
-				chat, _ := client.GetChat(int64(message["chat_id"].(float64)))
+				//chat, _ := client.GetChat(int64(message["chat_id"].(float64)))
 				switch tdlib.MessageContentEnum(messageType.(string)) {
 				case tdlib.MessageTextType:
-					messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
+					/*messageText := message["content"].(map[string]interface{})["text"].(map[string]interface{})["text"]
 					event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, messageText.(string), int64(message["date"].(float64)))
-					core.PublishEvents(event)
+					core.PublishEvents(event)*/
 				}
 			}
 		}
@@ -143,15 +143,7 @@ func main() {
 						}
 						for _, message := range history.Messages {
 
-							var eventText string
-							switch message.Content.GetMessageContentEnum() {
-							case tdlib.MessageTextType:
-								eventText = message.Content.(*tdlib.MessageText).Text.Text
-							default:
-								eventText = string(message.Content.GetMessageContentEnum())
-							}
-
-							event := core.NewUpdateNewMessageTextEvent(chat.ID, chat.Title, eventText, int64(message.Date))
+							event := core.NewUpdateNewMessageTextEvent(message)
 							events = append(events, event)
 							fromMessageId = message.ID
 						}
@@ -196,18 +188,12 @@ func main() {
 
 			case core.UpdateNewMessageTextType:
 				{
-					chatTitle := event["chatTitle"]
-					messageText := event["text"]
-					timeStamp := event["timeStamp"]
-					chatId := event["chatId"]
+					message := event["message"]
+
 					app.QueueUpdate(func() {
 						_, page := pages.GetFrontPage()
-						chatList := page.(*tview.Flex).GetItem(1).(*core.ChatList)
-						if chatList.GetSelectedChatId() == chatId {
-							mainList := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
-							mainList.AddItem(chatTitle.(string), messageText.(string), timeStamp.(int64))
-						}
-
+						mainList := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
+						mainList.AddItemFromMessage(message.(tdlib.Message))
 					})
 					app.Draw()
 				}
