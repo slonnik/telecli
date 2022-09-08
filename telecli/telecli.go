@@ -188,12 +188,12 @@ func main() {
 
 			case core.UpdateNewMessageTextType:
 				{
-					message := event["message"]
+					message := event["message"].(tdlib.Message)
 
 					app.QueueUpdate(func() {
 						_, page := pages.GetFrontPage()
 						mainList := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
-						mainList.AddItemFromMessage(message.(tdlib.Message))
+						mainList.AddItem(core.TMessage(message).ToListItem())
 					})
 					app.Draw()
 				}

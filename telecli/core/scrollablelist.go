@@ -5,7 +5,7 @@ import (
 	"github.com/rivo/tview"
 )
 
-type tListNotification interface {
+type tListNotificator interface {
 	itemChanged()
 }
 
@@ -17,7 +17,7 @@ type ScrollableBox struct {
 	*tview.Box
 	selectedIndex    int
 	startIndex       int
-	listNotification tListNotification
+	listNotification tListNotificator
 	rows             []tRow
 	parent           tview.Primitive
 }
@@ -63,7 +63,7 @@ func (scrollableBox *ScrollableBox) clearRows() {
 	scrollableBox.rows = []tRow{}
 }
 
-func (scrollableBox *ScrollableBox) getVisibleRows() []tRow {
+func (scrollableBox ScrollableBox) getVisibleRows() []tRow {
 	_, _, _, height := scrollableBox.Box.GetInnerRect()
 
 	var rowsHeight int
@@ -80,7 +80,7 @@ func (scrollableBox *ScrollableBox) getVisibleRows() []tRow {
 	return scrollableBox.rows[scrollableBox.startIndex:endIndex]
 }
 
-func (scrollableBox *ScrollableBox) getSelectedRow() tRow {
+func (scrollableBox ScrollableBox) getSelectedRow() tRow {
 	return scrollableBox.rows[scrollableBox.selectedIndex]
 }
 
@@ -88,7 +88,7 @@ func (scrollableBox *ScrollableBox) setSelectedRow(index int) {
 	scrollableBox.selectedIndex = index
 }
 
-func (scrollableBox *ScrollableBox) subscribe(notification tListNotification) *ScrollableBox {
+func (scrollableBox *ScrollableBox) subscribe(notification tListNotificator) *ScrollableBox {
 	scrollableBox.listNotification = notification
 	return scrollableBox
 }
@@ -139,12 +139,12 @@ func (scrollableBox *ScrollableBox) scrollUp() {
 	}
 }
 
-func (scrollableBox *ScrollableBox) isScrollDownRequired() bool {
+func (scrollableBox ScrollableBox) isScrollDownRequired() bool {
 	_, _, _, height := scrollableBox.Box.GetInnerRect()
 	return scrollableBox.selectedIndex == height-1
 }
 
-func (scrollableBox *ScrollableBox) isScrollUpRequired() bool {
+func (scrollableBox ScrollableBox) isScrollUpRequired() bool {
 	return scrollableBox.selectedIndex == 0
 }
 

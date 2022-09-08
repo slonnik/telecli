@@ -41,11 +41,11 @@ func (chatList *ChatList) SelectChat(index int) {
 	chatList.setSelectedRow(index)
 }
 
-func (chatList *ChatList) GetSelectedChatId() int64 {
+func (chatList ChatList) GetSelectedChatId() int64 {
 	return chatList.getSelectedRow().(chatItem).Id
 }
 
-func (chatList *ChatList) itemChanged() {
+func (chatList ChatList) itemChanged() {
 	PublishEvents(NewChatSelectedEvent(chatList.GetSelectedChatId()))
 }
 
