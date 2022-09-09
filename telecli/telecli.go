@@ -1,11 +1,11 @@
 package main
 
 import (
-	"math"
-
 	"github.com/Arman92/go-tdlib"
 	"github.com/rivo/tview"
+	"math"
 	"slonnik.ru/telecli/core"
+	"sort"
 )
 
 const (
@@ -14,6 +14,14 @@ const (
 	codePageLabel  = "Code"
 	mainPageLabel  = "Main"
 )
+
+type ByMessageId []core.CustomEvent
+
+func (a ByMessageId) Len() int { return len(a) }
+func (a ByMessageId) Less(i, j int) bool {
+	return a[i]["message"].(tdlib.Message).ID < a[j]["message"].(tdlib.Message).ID
+}
+func (a ByMessageId) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
 func main() {
 	tdlib.SetLogVerbosityLevel(1)
@@ -143,16 +151,13 @@ func main() {
 						}
 						for _, message := range history.Messages {
 
-							event := core.NewUpdateNewMessageTextEvent(message)
-							events = append(events, event)
+							events = append(events, core.NewUpdateNewMessageTextEvent(message))
 							fromMessageId = message.ID
 						}
 						count++
 					}
-					go func() {
-						core.PublishEvents(events...)
-					}()
-
+					sort.Sort(ByMessageId(events))
+					core.PublishEvents(events...)
 				}
 			case core.AuthorizationStateWaitPhoneNumberType:
 				{
