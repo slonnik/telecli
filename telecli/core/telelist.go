@@ -148,7 +148,7 @@ func (teleList *TeleList) SetTitle(title string) *TeleList {
 }
 
 func (teleList *TeleList) itemChanged() {
-	PublishEvents(NewUpdateScreenEvent())
+	CoreEvents <- NewUpdateScreenEvent()
 }
 
 func chunkText(text string, chunkSize int) []string {

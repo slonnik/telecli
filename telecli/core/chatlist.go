@@ -46,7 +46,7 @@ func (chatList ChatList) GetSelectedChatId() int64 {
 }
 
 func (chatList ChatList) itemChanged() {
-	PublishEvents(NewChatSelectedEvent(chatList.GetSelectedChatId()))
+	CoreEvents <- NewChatSelectedEvent(chatList.GetSelectedChatId())
 }
 
 func (chatList *ChatList) Draw(screen tcell.Screen) {

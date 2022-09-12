@@ -15,11 +15,11 @@ const (
 	mainPageLabel  = "Main"
 )
 
-type ByMessageId []core.CustomEvent
+type ByMessageId []tdlib.Message
 
 func (a ByMessageId) Len() int { return len(a) }
 func (a ByMessageId) Less(i, j int) bool {
-	return a[i]["message"].(tdlib.Message).ID < a[j]["message"].(tdlib.Message).ID
+	return a[i].ID < a[j].ID
 }
 func (a ByMessageId) Swap(i, j int) { a[i], a[j] = a[j], a[i] }
 
@@ -80,31 +80,18 @@ func main() {
 
 	pages.SwitchToPage(startPageLabel)
 
+	var authEvents = make(chan tdlib.AuthorizationStateEnum)
+
 	go func() {
 
 		for {
-
 			currentState, _ := client.Authorize()
-
-			switch currentState.GetAuthorizationStateEnum() {
-			case tdlib.AuthorizationStateWaitPhoneNumberType:
-				{
-					core.PublishEvents(core.NewSimpleCustomEvent(core.AuthorizationStateWaitPhoneNumberType))
-				}
-			case tdlib.AuthorizationStateWaitCodeType:
-				{
-					core.PublishEvents(core.NewSimpleCustomEvent(core.AuthorizationStateWaitCodeType))
-				}
-			case tdlib.AuthorizationStateReadyType:
-				{
-					core.PublishEvents(core.NewSimpleCustomEvent(core.AuthorizationStateReadyType))
-					goto MAIN_LOOP
-				}
+			authEvents <- currentState.GetAuthorizationStateEnum()
+			if currentState.GetAuthorizationStateEnum() == tdlib.AuthorizationStateReadyType {
+				break
 			}
-
 		}
 
-	MAIN_LOOP: // Main loop
 		rawUpdates := client.GetRawUpdatesChannel(100)
 		for update := range rawUpdates {
 
@@ -126,87 +113,90 @@ func main() {
 
 	go func() {
 		for {
-			event := core.ReadEvent()
-			switch core.CustomEventTypeEnum(event["@type"].(string)) {
-			case core.ChatSelectedEventType:
+			select {
+			case authState := <-authEvents:
 				{
-					chatId := event["chatId"].(int64)
-					chat, _ := client.GetChat(chatId)
-
-					app.QueueUpdate(func() {
-						_, page := pages.GetFrontPage()
-						list := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
-						list.SetTitle(chat.Title)
-						list.ClearItems()
-					})
-					app.Draw()
-
-					fromMessageId := chat.LastReadInboxMessageID
-					count := 0
-					var events []core.CustomEvent
-					for count < 2 {
-						history, _ := client.GetChatHistory(chatId, fromMessageId, 0, 10, false)
-						if len(history.Messages) == 0 {
-							break
+					switch authState {
+					case tdlib.AuthorizationStateWaitPhoneNumberType:
+						{
+							app.QueueUpdate(func() {
+								pages.SwitchToPage(phonePageLabel)
+							})
+							app.Draw()
 						}
-						for _, message := range history.Messages {
-
-							events = append(events, core.NewUpdateNewMessageTextEvent(message))
-							fromMessageId = message.ID
+					case tdlib.AuthorizationStateWaitCodeType:
+						{
+							app.QueueUpdate(func() {
+								pages.SwitchToPage(codePageLabel)
+							})
+							app.Draw()
 						}
-						count++
+					case tdlib.AuthorizationStateReadyType:
+						{
+							app.QueueUpdate(func() {
+								pages.SwitchToPage(mainPageLabel)
+								_, page := pages.GetFrontPage()
+								chats := page.(*tview.Flex).GetItem(1).(*core.ChatList)
+
+								chatList, _ := getChatList(client, 100)
+
+								for _, chat := range chatList {
+									chats.AddChat(chat.Title, chat.ID)
+								}
+								chats.SelectChat(7)
+								chats.SetFocus()
+							})
+							app.Draw()
+						}
 					}
-					sort.Sort(ByMessageId(events))
-					core.PublishEvents(events...)
 				}
-			case core.AuthorizationStateWaitPhoneNumberType:
+			case coreEvent := <-core.CoreEvents:
 				{
-					app.QueueUpdate(func() {
-						pages.SwitchToPage(phonePageLabel)
-					})
-					app.Draw()
-				}
-			case core.AuthorizationStateWaitCodeType:
-				{
-					app.QueueUpdate(func() {
-						pages.SwitchToPage(codePageLabel)
-					})
-					app.Draw()
-				}
-			case core.AuthorizationStateReadyType:
-				{
-					app.QueueUpdate(func() {
-						pages.SwitchToPage(mainPageLabel)
-						_, page := pages.GetFrontPage()
-						chats := page.(*tview.Flex).GetItem(1).(*core.ChatList)
+					switch core.CustomEventTypeEnum(coreEvent["@type"].(string)) {
+					case core.ChatSelectedEventType:
+						{
+							chatId := coreEvent["chatId"].(int64)
+							chat, _ := client.GetChat(chatId)
 
-						chatList, _ := getChatList(client, 100)
+							fromMessageId := chat.LastReadInboxMessageID
+							count := 0
+							var messages []tdlib.Message
+							for count < 2 {
+								history, _ := client.GetChatHistory(chatId, fromMessageId, 0, 10, false)
+								if len(history.Messages) == 0 {
+									break
+								}
+								for _, message := range history.Messages {
 
-						for _, chat := range chatList {
-							chats.AddChat(chat.Title, chat.ID)
+									messages = append(messages, message)
+									fromMessageId = message.ID
+								}
+								count++
+							}
+							sort.Sort(ByMessageId(messages))
+
+							app.QueueUpdate(func() {
+								_, page := pages.GetFrontPage()
+								list := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
+								list.SetTitle(chat.Title)
+								list.ClearItems()
+
+								for _, message := range messages {
+									list.AddItem(core.TMessage(message).ToListItem())
+								}
+
+							})
+							app.Draw()
 						}
-						chats.SelectChat(7)
-						chats.SetFocus()
-					})
-					app.Draw()
-				}
 
-			case core.UpdateNewMessageTextType:
-				{
-					message := event["message"].(tdlib.Message)
+					case core.UpdateScreenEventType:
+						{
+							app.Draw()
+						}
 
-					app.QueueUpdate(func() {
-						_, page := pages.GetFrontPage()
-						mainList := page.(*tview.Flex).GetItem(0).(*tview.Flex).GetItem(0).(*core.TeleList)
-						mainList.AddItem(core.TMessage(message).ToListItem())
-					})
-					app.Draw()
-				}
-			case core.UpdateScreenEventType:
-				{
-					app.Draw()
-				}
+					}
 
+				}
 			}
 
 		}
